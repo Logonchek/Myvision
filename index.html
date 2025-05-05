@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MV Agency — Маркетинг, который считает деньги</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#" class="logo"><span class="logo__accent">MV</span> AGENCY</a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#services">Услуги</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#about">Обо&nbsp;мне</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <button class="btn btn--primary nav__cta">Брейншторм →</button>
+      <button class="burger" id="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero__watermark">MV</span>
+    <div class="container hero__content">
+      <h1 class="hero__title">Маркетинг, который <span class="text-accent">считает деньги</span>,<br /> а не лайки</h1>
+      <p class="hero__subtitle">B2B‑ и DTC‑компаниям приношу рост <strong>+30‑90&nbsp;%</strong> за счёт точной стратегии и системной рекламы. Готов доказать цифрами.</p>
+      <button class="btn btn--primary btn--lg">Записаться на брейншторм →</button>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section dark">
+    <div class="container">
+      <h2 class="section__title">Услуги</h2>
+      <ul class="services">
+        <li>Разработка маркетинговой стратегии</li>
+        <li>Лидогенерация под ключ (лендинг, реклама, квизы)</li>
+        <li>Разработка рекламы</li>
+        <li>Разработка лендингов</li>
+        <li>Разработка чат-ботов</li>
+        <li>Запуск MVP</li>
+        <li>Создание отдела маркетинга под ключ</li>
+        <li>Внедрение всех норм маркетинга в компанию</li>
+        <li>Внедрение автоматизации маркетинга в компании</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section id="cases" class="section">
+    <div class="container">
+      <h2 class="section__title">Кейсы</h2>
+      <p class="placeholder">Скоро добавлю цифры и скриншоты роста 🚀</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section dark">
+    <div class="container">
+      <h2 class="section__title">Обо мне</h2>
+      <p class="placeholder">Тут появится история, факты и интервью</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section__title">Контакты</h2>
+      <form id="contactForm" class="form">
+        <input type="text" placeholder="Имя" required />
+        <input type="email" placeholder="Email" required />
+        <textarea rows="4" placeholder="Расскажите о задаче…" required></textarea>
+        <button class="btn btn--primary" type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">© 2025 MV Agency. Все права защищены.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
