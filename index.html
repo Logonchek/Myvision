@@ -4,87 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MV Agency — Маркетинг, который считает деньги</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="styles.css" rel="stylesheet" />
+
+  <!-- Дополнительные стили конкретно для новых секций -->
+  <style>
+    section{padding:100px 0;border-bottom:1px solid var(--border)}
+    h2.section__title{font-size:48px;margin:0 0 24px;font-weight:700;letter-spacing:-0.02em}
+    .grid{display:grid;gap:32px}
+    .services__grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+    .service{background:var(--graphite);padding:32px;border-radius:12px;transition:transform .3s}
+    .service:hover{transform:translateY(-6px);outline:1px solid var(--accent)}
+    .cases__wrapper{display:flex;gap:40px;overflow-x:auto;scroll-snap-type:x mandatory}
+    .case{flex:0 0 320px;background:var(--graphite);padding:24px;border-radius:12px;scroll-snap-align:start}
+    .testimonial{max-width:600px;margin:0 auto;text-align:center}
+    .contact__form{display:grid;gap:16px;max-width:500px;margin:0 auto}
+    input,textarea{padding:14px 18px;border-radius:8px;border:none;font-size:16px}
+    button.btn{padding:14px 32px;font-size:16px;font-weight:600;border:none;border-radius:8px;background:var(--accent);color:var(--black);cursor:pointer;transition:background .3s}
+    button.btn:hover{background:var(--accent-light)}
+    @media(max-width:768px){h2.section__title{font-size:36px}}
+  </style>
 </head>
 <body>
-  <!-- NAVIGATION -->
+  <!-- ===== NAVIGATION ===== -->
   <header class="nav">
     <div class="container nav__inner">
-      <a href="#" class="logo"><span class="logo__accent">MV</span> AGENCY</a>
-      <nav class="nav__links" id="navLinks">
-        <a href="#services">Услуги</a>
-        <a href="#cases">Кейсы</a>
-        <a href="#about">Обо&nbsp;мне</a>
-        <a href="#contact">Контакты</a>
+      <a href="#hero" class="logo">MV</a>
+      <nav>
+        <ul class="nav__links" id="navLinks">
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#cases">Кейсы</a></li>
+          <li><a href="#testimonials">Отзывы</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+        <div class="burger" id="burger"><span></span><span></span><span></span></div>
       </nav>
-      <button class="btn btn--primary nav__cta">Брейншторм →</button>
-      <button class="burger" id="burger" aria-label="Открыть меню">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <span class="hero__watermark">MV</span>
-    <div class="container hero__content">
-      <h1 class="hero__title">Маркетинг, который <span class="text-accent">считает деньги</span>,<br /> а не лайки</h1>
-      <p class="hero__subtitle">B2B‑ и DTC‑компаниям приношу рост <strong>+30‑90&nbsp;%</strong> за счёт точной стратегии и системной рекламы. Готов доказать цифрами.</p>
-      <button class="btn btn--primary btn--lg">Записаться на брейншторм →</button>
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <div class="container grid" style="align-items:center;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px;">
+      <div>
+        <h1 style="font-size:56px;font-weight:800;max-width:700px;line-height:1.1">Маркетинг, который <span style="color:var(--accent)">считает&nbsp;деньги</span>,<br> а не лайки</h1>
+        <p style="max-width:500px;margin:24px 0 40px;color:#cfcfcf">Рост +30‑90 % выручки у B2B‑брендов благодаря
+          точной стратегии, системной рекламе и автоматизации.</p>
+        <a href="#contact" class="btn">Записаться на брейншторм →</a>
+      </div>
+      <div style="text-align:center">
+        <!-- ⚡ Замените hero.jpg на своё фото -->
+        <img src="images/hero.jpg" alt="Ваш портрет" style="width:100%;max-width:380px;border-radius:16px"/>
+      </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="section dark">
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container grid" style="align-items:center;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:60px;">
+      <img src="images/about.jpg" alt="Вне офиса" style="width:100%;border-radius:16px"/>
+      <div>
+        <h2 class="section__title">Кто я</h2>
+        <p>Я руководитель интернет‑маркетинга в одном из крупнейших B2B‑маркетплейсов России «Пульс‑цен». За 2 года:
+          <strong>+34 % лидов</strong>, <strong>+71 % средний чек</strong>, <strong>+91 % выручка</strong>. <br>Создаю отделы
+          маркетинга с нуля, строю автоматизацию и запускаю MVP‑продукты без слива бюджета.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services">
     <div class="container">
-      <h2 class="section__title">Услуги</h2>
-      <ul class="services">
-        <li>Разработка маркетинговой стратегии</li>
-        <li>Лидогенерация под ключ (лендинг, реклама, квизы)</li>
-        <li>Разработка рекламы</li>
-        <li>Разработка лендингов</li>
-        <li>Разработка чат-ботов</li>
-        <li>Запуск MVP</li>
-        <li>Создание отдела маркетинга под ключ</li>
-        <li>Внедрение всех норм маркетинга в компанию</li>
-        <li>Внедрение автоматизации маркетинга в компании</li>
-      </ul>
+      <h2 class="section__title">Чем помогу вашему бизнесу</h2>
+      <div class="grid services__grid">
+        <div class="service">Разработка маркетинговой стратегии</div>
+        <div class="service">Лидогенерация под ключ<br>(лендинг, реклама, квизы)</div>
+        <div class="service">Разработка рекламы</div>
+        <div class="service">Разработка лендингов</div>
+        <div class="service">Разработка чат‑ботов</div>
+        <div class="service">Запуск MVP</div>
+        <div class="service">Создание отдела маркетинга под ключ</div>
+        <div class="service">Внедрение норм маркетинга в компании</div>
+        <div class="service">Внедрение автоматизации маркетинга</div>
+      </div>
     </div>
   </section>
 
-  <!-- CASES -->
-  <section id="cases" class="section">
+  <!-- ===== CASES ===== -->
+  <section id="cases">
     <div class="container">
       <h2 class="section__title">Кейсы</h2>
-      <p class="placeholder">Скоро добавлю цифры и скриншоты роста 🚀</p>
+      <div class="cases__wrapper">
+        <div class="case">
+          <h3>Пульс‑цен</h3>
+          <p>+34 % лидов, +71 % средний чек, +91 % выручка за 24 мес.</p>
+        </div>
+        <div class="case">
+          <h3>Brandoss</h3>
+          <p>80‑100 лидов/мес по 900 ₽. Лидогенерация и CRM‑связка.</p>
+        </div>
+        <div class="case">
+          <h3>Это важно</h3>
+          <p>Вывод сервиса психологов на рынок. Медийная кампания с нуля.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section dark">
-    <div class="container">
-      <h2 class="section__title">Обо мне</h2>
-      <p class="placeholder">Тут появится история, факты и интервью</p>
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials">
+    <div class="container testimonial">
+      <h2 class="section__title">Отзывы</h2>
+      <p>«Умножаю выручку через точный маркетинг. +91 % за 2 года»</p>
+      <p>«34 % больше лидов без лишних бюджетов — проверено на B2B‑гигантах»</p>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
     <div class="container">
-      <h2 class="section__title">Контакты</h2>
-      <form id="contactForm" class="form">
-        <input type="text" placeholder="Имя" required />
-        <input type="email" placeholder="Email" required />
-        <textarea rows="4" placeholder="Расскажите о задаче…" required></textarea>
-        <button class="btn btn--primary" type="submit">Отправить</button>
+      <h2 class="section__title">Свяжитесь со мной</h2>
+      <form id="contactForm" class="contact__form">
+        <input type="text" name="name" placeholder="Ваше имя" required />
+        <input type="email" name="email" placeholder="E‑mail" required />
+        <textarea name="message" rows="4" placeholder="Опишите задачу"></textarea>
+        <button class="btn" type="submit">Отправить</button>
       </form>
     </div>
   </section>
-
-  <footer class="footer">© 2025 MV Agency. Все права защищены.</footer>
 
   <script src="script.js"></script>
 </body>
