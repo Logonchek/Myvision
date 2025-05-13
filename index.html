@@ -456,6 +456,7 @@
 
 
 <!-- Cases Section -->
+<!-- Cases Section -->
 <style>
   :root{--neon-green:#22c55e;}
   #cases{
@@ -477,7 +478,7 @@
   /* ===== Карусель ===== */
   .cases-grid{
       display:flex;
-      gap:1rem;                       /* сшили карты плотнее */
+      gap:1rem;
       overflow-x:auto;
       overscroll-behavior-x:contain;
       scroll-behavior:smooth;
@@ -527,6 +528,7 @@
       max-width:32rem;width:100%;position:relative;color:#e5e5e5;
   }
   .modal-close{position:absolute;top:1rem;right:1rem;cursor:pointer;font-size:1.25rem;color:#fff;}
+  .modal img {max-width: 100%; margin-top: 1rem; border-radius: 0.5rem;}
 </style>
 
 <section id="cases">
@@ -583,122 +585,148 @@
 </div>
 
 <script>
-/* ===== контент модалок ===== */
-const caseDetails={
-  ural:`<h3>Уралрегионстрой</h3><p>Внедрили CRM-систему, автоматизировали приём заявок и настроили сквозную аналитику. Обработка ускорилась на 40 %, количество заявок выросло на 35 %.</p>`,
-  brendoss:`<h3>Мебельная фабрика Brendoss</h3><p>Полностью выстроили лидогенерацию: таргет, лендинги, интеграция с CRM. Продажи +41 % за первый квартал.</p>`,
-  puls:`<h3>Пульс цен</h3><p>Контекст, таргетинг, ремаркетинг — новых поставщиков +28 %.</p>`,
-  blocks:`<h3>Продажа пеноблоков</h3><p>MyTarget, VK, лендинг, CRM-связка. Продажи +52 % за два месяца.</p>`,
-  asm:`<h3>Асм мебель</h3><p>Оптимизировали SEO, контекст и UX. Конверсия +22 %.</p>`
-};
-document.querySelectorAll('.case-more').forEach(btn=>{
-  btn.addEventListener('click',e=>{
-    e.preventDefault();
-    document.getElementById('modalContent').innerHTML=caseDetails[btn.dataset.case];
-    document.getElementById('modalBackdrop').style.display='flex';
-  });
-});
-document.getElementById('modalClose').onclick=()=>document.getElementById('modalBackdrop').style.display='none';
-
-/* ===== бесконечная карусель ===== */
-const grid=document.querySelector('.cases-grid');
-const originals=[...grid.querySelectorAll('.case-card')];
-const clonesBefore=originals.map(n=>n.cloneNode(true));
-const clonesAfter=originals.map(n=>n.cloneNode(true));
-clonesBefore.forEach(clone=>grid.insertBefore(clone,grid.firstChild));
-clonesAfter.forEach(clone=>grid.appendChild(clone));
-
-const gap=parseFloat(getComputedStyle(grid).gap)||0;
-const cardW=originals[0].offsetWidth+gap;
-const loopWidth=cardW*originals.length;
-grid.scrollLeft=loopWidth;                  // старт посредине
-
-grid.addEventListener('scroll',()=>{
-  if(grid.scrollLeft<=gap)                  grid.scrollLeft+=loopWidth;
-  else if(grid.scrollLeft>=loopWidth*2-gap) grid.scrollLeft-=loopWidth;
-});
-
-/* ===== колесо: ещё легче ===== */
-grid.addEventListener('wheel',e=>{
-  if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
-    e.preventDefault();
-    grid.scrollLeft+=e.deltaY*2.5;          // лёгкий ход
-    pauseAuto();
-  }
-},{passive:false});
-
-/* ===== drag + инерция ===== */
-let drag=false,startX,scrollStart,vel=0,lastX,lastT;
-grid.addEventListener('mousedown',e=>{
-  drag=true;startX=e.clientX;scrollStart=grid.scrollLeft;
-  lastX=e.clientX;lastT=performance.now();vel=0;
-  grid.classList.add('dragging');pauseAuto();
-});
-window.addEventListener('mousemove',e=>{
-  if(!drag)return;
-  const dx=e.clientX-startX;
-  grid.scrollLeft=scrollStart-dx;
-  const now=performance.now();
-  vel=(e.clientX-lastX)/(now-lastT);
-  lastX=e.clientX;lastT=now;
-});
-window.addEventListener('mouseup',()=>{
-  if(!drag)return;drag=false;grid.classList.remove('dragging');
-  glide(vel*1500);                           // инерция
-});
-function glide(v){
-  let s=v;
-  (function step(){
-    if(Math.abs(s)<2){resumeAuto();return;}
-    grid.scrollLeft-=s*0.016;
-    s*=0.95;
-    requestAnimationFrame(step);
-  })();
-}
-
-/* ===== авто-кручение ===== */
-let auto=true;const speed=0.3;
-(function autoLoop(){
-  if(auto) grid.scrollLeft+=speed;
-  requestAnimationFrame(autoLoop);
-})();
-function pauseAuto(){auto=false;clearTimeout(pauseAuto.t);pauseAuto.t=setTimeout(()=>auto=true,2500);}
-function resumeAuto(){auto=true;}
-</script>
-
-
-
-
-
-
-
-<!-- Модальное окно -->
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal">
-    <div class="modal-close" id="modalClose">&times;</div>
-    <div id="modalContent"></div>
-  </div>
-</div>
-
-<script>
+document.addEventListener('DOMContentLoaded', () => {
+  /* ===== контент модалок ===== */
   const caseDetails = {
-    ural: '<h3>Уралрегионстрой</h3><p>В рамках проекта мы внедрили CRM-систему, автоматизировали приём заявок и настроили сквозную аналитику. Это позволило сократить время обработки заявок на 40% и увеличить их количество на 35%.</p>',
-    brendoss: '<h3>Мебельная фабрика Brendoss</h3><p>Полностью разработали сквозную систему лидогенерации: таргетинговые кампании, лендинги и интеграция с CRM. Внедрённая аналитика дала рост продаж на 41% за первый квартал.</p>',
-    puls: '<h3>Пульс цен</h3><p>Запустили комплексную стратегию по привлечению поставщиков: контекст, таргетинг и ремаркетинг. Число новых поставщиков выросло на 28%.</p>',
-    blocks: '<h3>Продажа пеноблоков</h3><p>Настроили рекламные кампании в MyTarget и ВКонтакте, запустили лендинг и CRM-интеграцию. Продажи выросли на 52% в течение двух месяцев.</p>',
-    asm: '<h3>Асм мебель</h3><p>Оптимизировали SEO, контекстную рекламу и UX сайта. Благодаря внедрённым рекомендациям конверсия увеличилась на 22%.</p>'
+    ural: `
+      <h3>Уралрегионстрой</h3>
+      <p>На старте проекта строительная компания "Уралрегионстрой" сталкивалась с проблемой низкой скорости обработки заявок. Менеджеры тратили слишком много времени на ручной ввод данных, а потенциальные клиенты уходили из-за долгих ответов. Лидов было мало, и продажи стагнировали из-за отсутствия системного подхода к маркетингу.</p>
+      <p>Мы начали с внедрения CRM-системы, которая автоматизировала прием и обработку заявок. Затем настроили таргетированную рекламу в социальных сетях и контекстную рекламу в Яндекс.Директ, чтобы привлечь целевую аудиторию. Также разработали лендинг с высокой конверсией, где клиенты могли быстро оставить заявку.</p>
+      <p>В результате время обработки заявок сократилось на 40%, а их количество выросло на 35%. Компания смогла увеличить объем продаж, так как менеджеры начали успевать обрабатывать больше клиентов. Сквозная аналитика помогла отслеживать эффективность каждого канала и оптимизировать бюджет.</p>
+      <p><img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Снимок%20экрана%202025-05-13%20064455.png?alt=media&token=517a596c-65f5-4aa8-a2dc-8e19aa7bb9b5" alt="Скриншот кабинета Уралрегионстрой"></p>
+    `,
+    brendoss: `
+      <h3>Мебельная фабрика Brendoss</h3>
+      <p>Мебельная фабрика "Brendoss" на момент обращения имела слабый поток клиентов. Основной канал продаж — офлайн-магазины — не приносил достаточно дохода, а онлайн-продажи практически отсутствовали. Лидов было мало, так как не было ни сайта, ни рекламы, а конкуренты активно захватывали рынок.</p>
+      <p>Мы разработали полноценную систему лидогенерации: создали современный сайт с каталогом мебели, настроили таргетированную рекламу в Instagram и ВКонтакте, а также интегрировали CRM для автоматизации работы с клиентами. Особое внимание уделили аналитике — настроили сквозную аналитику, чтобы отслеживать путь клиента от клика до покупки.</p>
+      <p>За первый квартал после внедрения изменений продажи выросли на 41%. Сайт стал основным источником новых клиентов, а автоматизация через CRM позволила менеджерам сосредоточиться на продажах, а не на рутинных задачах. Компания смогла выйти на новый уровень и обойти конкурентов.</p>
+      <p><img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Снимок%20экрана%202025-05-13%20064556.png?alt=media&token=3ce1aa0f-722a-484f-85d7-a4bc3783b921" alt="Скриншот кабинета Brendoss"></p>
+    `,
+    puls: `
+      <h3>Пульс цен</h3>
+      <p>Маркетплейс "Пульс цен" столкнулся с проблемой недостаточного количества поставщиков. На старте их было всего несколько десятков, что ограничивало ассортимент и привлекательность платформы для покупателей. Лидов на привлечение новых поставщиков практически не было, так как компания не использовала digital-инструменты.</p>
+      <p>Мы разработали стратегию привлечения поставщиков через контекстную рекламу в Google Ads и таргетинг в LinkedIn, ориентированный на B2B-аудиторию. Также настроили ремаркетинг, чтобы возвращать тех, кто проявил интерес, но не зарегистрировался. Для повышения конверсии создали серию лендингов с акцентом на выгоды для поставщиков.</p>
+      <p>Результаты превзошли ожидания: число новых поставщиков выросло на 28% за три месяца. Ассортимент платформы расширился, что привлекло больше покупателей и увеличило общий оборот маркетплейса. Аналитика показала, что ремаркетинг стал одним из самых эффективных каналов.</p>
+      <p><img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Снимок%20экрана%202025-05-13%20064715.png?alt=media&token=b98abc51-967a-46ea-89a1-b6d229c415ff" alt="Скриншот кабинета Пульс цен"></p>
+    `,
+    blocks: `
+      <h3>Продажа пеноблоков</h3>
+      <p>Компания по продаже пеноблоков на старте проекта имела низкие продажи из-за отсутствия онлайн-присутствия. Основной канал — сарафанное радио — приносил мало клиентов, а конкуренция на рынке стройматериалов была высокой. Лидов практически не было, так как компания не использовала рекламу.</p>
+      <p>Мы запустили комплексную лидогенерацию: создали лендинг с акцентом на выгоды пеноблоков (цена, качество, доставка), настроили рекламные кампании в MyTarget и ВКонтакте, ориентированные на владельцев частных домов и небольших строительных компаний. Также интегрировали CRM, чтобы менеджеры могли быстро обрабатывать заявки.</p>
+      <p>За два месяца продажи выросли на 52%. Лендинг стал основным источником лидов, а реклама привлекла аудиторию, которая ранее не знала о компании. Автоматизация через CRM позволила сократить время обработки заявок, что увеличило удовлетворенность клиентов и повторные продажи.</p>
+    `,
+    asm: `
+      <h3>Асм мебель</h3>
+      <p>Магазин "Асм мебель" на момент обращения имел сайт с низкой конверсией. Посетители приходили, но уходили без покупок из-за неудобного интерфейса и отсутствия продвижения. Лидов и продаж было мало, так как компания не использовала SEO и контекстную рекламу, а конкуренты активно привлекали клиентов.</p>
+      <p>Мы провели аудит сайта и оптимизировали UX: упростили навигацию, добавили удобные фильтры и кнопки CTA. Затем настроили SEO, чтобы сайт ранжировался по ключевым запросам, и запустили контекстную рекламу в Яндекс.Директ. Также внедрили A/B-тестирование, чтобы определить самые эффективные элементы сайта.</p>
+      <p>Конверсия сайта выросла на 22% за счет улучшенного UX и SEO. Контекстная реклама принесла стабильный поток новых клиентов, а A/B-тестирование позволило увеличить средний чек за счет персонализированных предложений. Компания смогла укрепить позиции на рынке и обойти конкурентов.</p>
+    `
   };
-  document.querySelectorAll('.case-more').forEach(btn => {
+
+  // Привязка обработчиков событий для кнопок "Подробнее"
+  const caseMoreButtons = document.querySelectorAll('.case-more');
+  caseMoreButtons.forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-      const key = btn.dataset.case;
-      document.getElementById('modalContent').innerHTML = caseDetails[key];
-      document.getElementById('modalBackdrop').style.display = 'flex';
+      const caseKey = btn.getAttribute('data-case');
+      console.log('Клик по кнопке Подробнее, caseKey:', caseKey); // Отладка
+      if (caseDetails[caseKey]) {
+        document.getElementById('modalContent').innerHTML = caseDetails[caseKey];
+        document.getElementById('modalBackdrop').style.display = 'flex';
+      } else {
+        console.error('Описание для кейса не найдено:', caseKey);
+      }
     });
   });
-  document.getElementById('modalClose').addEventListener('click', () => {
-    document.getElementById('modalBackdrop').style.display = 'none';
+
+  // Закрытие модального окна
+  const modalClose = document.getElementById('modalClose');
+  if (modalClose) {
+    modalClose.addEventListener('click', () => {
+      document.getElementById('modalBackdrop').style.display = 'none';
+    });
+  } else {
+    console.error('Элемент modalClose не найден');
+  }
+
+  /* ===== бесконечная карусель ===== */
+  const grid = document.querySelector('.cases-grid');
+  const originals = [...grid.querySelectorAll('.case-card')];
+  const clonesBefore = originals.map(n => n.cloneNode(true));
+  const clonesAfter = originals.map(n => n.cloneNode(true));
+  clonesBefore.forEach(clone => grid.insertBefore(clone, grid.firstChild));
+  clonesAfter.forEach(clone => grid.appendChild(clone));
+
+  const gap = parseFloat(getComputedStyle(grid).gap) || 0;
+  const cardW = originals[0].offsetWidth + gap;
+  const loopWidth = cardW * originals.length;
+  grid.scrollLeft = loopWidth; // старт посредине
+
+  grid.addEventListener('scroll', () => {
+    if (grid.scrollLeft <= gap) grid.scrollLeft += loopWidth;
+    else if (grid.scrollLeft >= loopWidth * 2 - gap) grid.scrollLeft -= loopWidth;
   });
+
+  /* ===== колесо: ещё легче ===== */
+  grid.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      grid.scrollLeft += e.deltaY * 2.5; // лёгкий ход
+      pauseAuto();
+    }
+  }, { passive: false });
+
+  /* ===== drag + инерция ===== */
+  let drag = false, startX, scrollStart, vel = 0, lastX, lastT;
+  grid.addEventListener('mousedown', e => {
+    drag = true;
+    startX = e.clientX;
+    scrollStart = grid.scrollLeft;
+    lastX = e.clientX;
+    lastT = performance.now();
+    vel = 0;
+    grid.classList.add('dragging');
+    pauseAuto();
+  });
+  window.addEventListener('mousemove', e => {
+    if (!drag) return;
+    const dx = e.clientX - startX;
+    grid.scrollLeft = scrollStart - dx;
+    const now = performance.now();
+    vel = (e.clientX - lastX) / (now - lastT);
+    lastX = e.clientX;
+    lastT = now;
+  });
+  window.addEventListener('mouseup', () => {
+    if (!drag) return;
+    drag = false;
+    grid.classList.remove('dragging');
+    glide(vel * 1500); // инерция
+  });
+  function glide(v) {
+    let s = v;
+    (function step() {
+      if (Math.abs(s) < 2) { resumeAuto(); return; }
+      grid.scrollLeft -= s * 0.016;
+      s *= 0.95;
+      requestAnimationFrame(step);
+    })();
+  }
+
+  /* ===== авто-кручение ===== */
+  let auto = true;
+  const speed = 0.3;
+  (function autoLoop() {
+    if (auto) grid.scrollLeft += speed;
+    requestAnimationFrame(autoLoop);
+  })();
+  function pauseAuto() {
+    auto = false;
+    clearTimeout(pauseAuto.t);
+    pauseAuto.t = setTimeout(() => auto = true, 2500);
+  }
+  function resumeAuto() { auto = true; }
+});
 </script>
 
 
