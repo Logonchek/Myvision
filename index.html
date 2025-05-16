@@ -171,14 +171,13 @@
     transition: transform 0.3s;
     touch-action: pan-y pinch-zoom;
     cursor: grab;
-    width: 100%;
-    overflow: visible;
+    width: max-content;
     padding: 1rem;
 }
 
 .case-card {
-    flex: 0 0 calc(33.333% - 1rem);
-    min-width: 300px;
+    flex: 0 0 400px;
+    min-width: 400px;
     background: rgba(44, 40, 40, 0.95);
     border: 1px solid rgba(34, 197, 94, 0.1);
     border-radius: 1rem;
@@ -255,14 +254,53 @@
 .modal.active {
     transform: translateY(0);
     opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
 }
 
-/* Стили для отзывов */
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.testimonials-container {
+    display: flex;
     gap: 2rem;
-    margin-top: 4rem;
+    width: max-content;
+    transition: transform 0.3s ease;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
 }
 
 .testimonial-card {
@@ -1141,9 +1179,10 @@ startAutoScroll();
             <div class="text-center">
                 <h2 class="text-4xl font-bold neon-green mb-4">Отзывы клиентов</h2>
                 <p class="text-gray-400 text-lg mb-12">Что говорят о нашей работе те, кто уже добился результата</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
+            </div>            <div class="testimonials-wrapper">
+                <div class="testimonials-nav prev">❮</div>
+                <div class="testimonials-container">
+                    <!-- Testimonial 1 -->
                 <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
                     <div class="testimonial-quote">❝</div>
                     <div class="testimonial-image-wrapper">
@@ -1192,10 +1231,10 @@ startAutoScroll();
                 </div>
             </div>
         </div>
-    </section>    <section id="contact" class="py-20 px-6 contact-section">
-        <div class="max-w-3xl mx-auto relative z-10">
-            <h2 class="text-4xl font-bold neon-green text-center mb-4">Готовы к результатам?</h2>
-            <p class="text-xl text-gray-300 text-center mb-12">
+    </section>    <section id="contact" class="py-16 px-6 contact-section">
+        <div class="max-w-xl mx-auto relative z-10">
+            <h2 class="text-3xl font-bold neon-green text-center mb-3">Готовы к результатам?</h2>
+            <p class="text-lg text-gray-300 text-center mb-8">
                 Давайте обсудим, как вывести ваш бизнес на новый уровень
             </p>
             <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit()">
