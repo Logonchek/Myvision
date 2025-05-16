@@ -163,6 +163,283 @@
 #services h2 .neon-green { color: var(--neon-green); }
 #services p { color: #9ca3af; }
 
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s;
+    touch-action: pan-y pinch-zoom;
+    cursor: grab;
+    width: 100%;
+    overflow: visible;
+    padding: 1rem;
+}
+
+.case-card {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: 300px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+.case-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.3);
+    z-index: 2;
+}
+
+.cases-wrapper {
+    overflow: hidden;
+    position: relative;
+    margin: 0 -1rem;
+}
+
+.case-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+.case-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.case-nav.prev { left: 1rem; }
+.case-nav.next { right: 1rem; }
+
+/* Стили для иконок навигации */
+.case-nav::before {
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    display: inline-block;
+    transform: rotate(45deg);
+    margin-left: -4px;
+}
+
+.case-nav.prev::before {
+    transform: rotate(-135deg);
+    margin-left: 4px;
+}
+
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Стили для отзывов */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.testimonial-card {
+    position: relative;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+    transition: all 0.3s ease;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    font-family: Georgia, serif;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+.testimonial-text {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #e5e7eb;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-info {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.testimonial-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #22c55e;
+    margin-bottom: 0.25rem;
+}
+
+.testimonial-position {
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+
+.testimonial-rating {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    color: #fbbf24;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Стили для контактной формы */
+.contact-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.95));
+}
+
+.contact-form {
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.2);
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(17, 24, 39, 0.8);
+    border: 2px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    background: rgba(17, 24, 39, 0.95);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: rgba(156, 163, 175, 0.8);
+}
+
+.submit-button {
+    background: var(--neon-green);
+    color: black;
+    font-weight: 600;
+    padding: 1.25rem 2.5rem;
+    border-radius: 1rem;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+}
+
+.submit-button:hover::before {
+    left: 100%;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+    background: rgba(17, 24, 39, 0.8);
+    color: var(--neon-green);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     <script>
@@ -185,6 +462,77 @@
             }
 
             elements.forEach(el => observer.observe(el));
+
+            // Управление каруселью
+            const casesGrid = document.querySelector('.cases-grid');
+            const cards = [...casesGrid.querySelectorAll('.case-card')];
+            const prev = document.querySelector('.case-nav.prev');
+            const next = document.querySelector('.case-nav.next');
+            
+            let currentIndex = 0;
+            const cardWidth = cards[0].offsetWidth + parseFloat(getComputedStyle(casesGrid).gap);
+            
+            function updateCarousel() {
+                casesGrid.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+                
+                // Проверяем границы
+                if (currentIndex === 0) {
+                    prev.style.opacity = '0.5';
+                    prev.style.cursor = 'not-allowed';
+                } else {
+                    prev.style.opacity = '1';
+                    prev.style.cursor = 'pointer';
+                }
+                
+                if (currentIndex === cards.length - 3) {
+                    next.style.opacity = '0.5';
+                    next.style.cursor = 'not-allowed';
+                } else {
+                    next.style.opacity = '1';
+                    next.style.cursor = 'pointer';
+                }
+            }
+            
+            // Обработчики навигации
+            prev.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+            
+            next.addEventListener('click', () => {
+                if (currentIndex < cards.length - 3) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+            
+            // Автопрокрутка
+            let autoScrollInterval;
+            
+            function startAutoScroll() {
+                autoScrollInterval = setInterval(() => {
+                    if (currentIndex < cards.length - 3) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    updateCarousel();
+                }, 5000);
+            }
+            
+            function stopAutoScroll() {
+                clearInterval(autoScrollInterval);
+            }
+            
+            // Управление автопрокруткой при наведении
+            const casesWrapper = document.querySelector('.cases-wrapper');
+            casesWrapper.addEventListener('mouseenter', stopAutoScroll);
+            casesWrapper.addEventListener('mouseleave', startAutoScroll);
+            
+            // Запускаем автопрокрутку
+            startAutoScroll();
         });
     </script>
 </head>
@@ -534,44 +882,46 @@
     <div class="cases-header">
       <h2>Наши <span class="neon-green">кейсы</span></h2>
       <p>Реальные примеры наших экспертных решений и их результатов</p>
-    </div>
+    </div>    <div class="cases-wrapper">
+      <div class="case-nav prev"></div>
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-header"><h3>Уралрегионстрой</h3><div class="case-label">Строительство</div></div>
+          <p>Внедрили CRM и настроили лидогенерацию, сократив время обработки заявок на 40 %, увеличив их число на 35 %.</p>
+          <div class="stats"><div class="percentage">+35%</div><div class="label">увеличение заявок</div></div>
+          <a href="#" class="case-details" data-id="ural">Подробнее →</a>
+        </div>
 
-    <div class="cases-grid">
-      <div class="case-card">
-        <div class="case-header"><h3>Уралрегионстрой</h3><div class="case-label">Строительство</div></div>
-        <p>Внедрили CRM и настроили лидогенерацию, сократив время обработки заявок на 40 %, увеличив их число на 35 %.</p>
-        <div class="stats"><div class="percentage">+35%</div><div class="label">увеличение заявок</div></div>
-        <a href="#" class="case-more" data-case="ural">Подробнее →</a>
-      </div>
+        <div class="case-card">
+          <div class="case-header"><h3>Мебельная фабрика Brendoss</h3><div class="case-label">Производство</div></div>
+          <p>Разработали систему лидогенерации, интегрировали аналитику и CRM; рост продаж на 41 %.</p>
+          <div class="stats"><div class="percentage">+41%</div><div class="label">рост продаж</div></div>
+          <a href="#" class="case-details" data-id="brendoss">Подробнее →</a>
+        </div>
 
-      <div class="case-card">
-        <div class="case-header"><h3>Мебельная фабрика Brendoss</h3><div class="case-label">Производство</div></div>
-        <p>Разработали систему лидогенерации, интегрировали аналитику и CRM; рост продаж на 41 %.</p>
-        <div class="stats"><div class="percentage">+41%</div><div class="label">рост продаж</div></div>
-        <a href="#" class="case-more" data-case="brendoss">Подробнее →</a>
-      </div>
+        <div class="case-card">
+          <div class="case-header"><h3>Пульс цен</h3><div class="case-label">B2B</div></div>
+          <p>Привлечение поставщиков на маркетплейс через таргетинг и ремаркетинг; +28 % партнёров.</p>
+          <div class="stats"><div class="percentage">+28%</div><div class="label">новых поставщиков</div></div>
+          <a href="#" class="case-details" data-id="puls">Подробнее →</a>
+        </div>
 
-      <div class="case-card">
-        <div class="case-header"><h3>Пульс цен</h3><div class="case-label">B2B</div></div>
-        <p>Привлечение поставщиков на маркетплейс через таргетинг и ремаркетинг; +28 % партнёров.</p>
-        <div class="stats"><div class="percentage">+28%</div><div class="label">новых поставщиков</div></div>
-        <a href="#" class="case-more" data-case="puls">Подробнее →</a>
-      </div>
+        <div class="case-card">
+          <div class="case-header"><h3>Продажа пеноблоков</h3><div class="case-label">Стройматериалы</div></div>
+          <p>Запустили кампании в MyTarget и VK, интегрировали лендинг и CRM; рост продаж 52 % за 2 мес.</p>
+          <div class="stats"><div class="percentage">+52%</div><div class="label">рост продаж</div></div>
+          <a href="#" class="case-details" data-id="blocks">Подробнее →</a>
+        </div>
 
-      <div class="case-card">
-        <div class="case-header"><h3>Продажа пеноблоков</h3><div class="case-label">Стройматериалы</div></div>
-        <p>Запустили кампании в MyTarget и VK, интегрировали лендинг и CRM; рост продаж 52 % за 2 мес.</p>
-        <div class="stats"><div class="percentage">+52%</div><div class="label">рост продаж</div></div>
-        <a href="#" class="case-more" data-case="blocks">Подробнее →</a>
+        <div class="case-card">
+          <div class="case-header"><h3>Асм мебель</h3><div class="case-label">Розница</div></div>
+          <p>Оптимизировали SEO, контекст и UX; конверсия сайта выросла на 22 %.</p>
+          <div class="stats"><div class="percentage">+22%</div><div class="label">рост конверсии</div></div>
+          <a href="#" class="case-details" data-id="asm">Подробнее →</a>
+        </div>
       </div>
-
-      <div class="case-card">
-        <div class="case-header"><h3>Асм мебель</h3><div class="case-label">Розница</div></div>
-        <p>Оптимизировали SEO, контекст и UX; конверсия сайта выросла на 22 %.</p>
-        <div class="stats"><div class="percentage">+22%</div><div class="label">рост конверсии</div></div>
-        <a href="#" class="case-more" data-case="asm">Подробнее →</a>
-      </div>
-    </div><!-- .cases-grid -->
+      <div class="case-nav next"></div>
+    </div><!-- .cases-wrapper -->
   </div>
 </section>
 
@@ -583,87 +933,145 @@
 </div>
 
 <script>
-/* ===== контент модалок ===== */
-const caseDetails={
-  ural:`<h3>Уралрегионстрой</h3><p>Внедрили CRM-систему, автоматизировали приём заявок и настроили сквозную аналитику. Обработка ускорилась на 40 %, количество заявок выросло на 35 %.</p>`,
-  brendoss:`<h3>Мебельная фабрика Brendoss</h3><p>Полностью выстроили лидогенерацию: таргет, лендинги, интеграция с CRM. Продажи +41 % за первый квартал.</p>`,
-  puls:`<h3>Пульс цен</h3><p>Контекст, таргетинг, ремаркетинг — новых поставщиков +28 %.</p>`,
-  blocks:`<h3>Продажа пеноблоков</h3><p>MyTarget, VK, лендинг, CRM-связка. Продажи +52 % за два месяца.</p>`,
-  asm:`<h3>Асм мебель</h3><p>Оптимизировали SEO, контекст и UX. Конверсия +22 %.</p>`
-};
-document.querySelectorAll('.case-more').forEach(btn=>{
-  btn.addEventListener('click',e=>{
-    e.preventDefault();
-    document.getElementById('modalContent').innerHTML=caseDetails[btn.dataset.case];
-    document.getElementById('modalBackdrop').style.display='flex';
-  });
-});
-document.getElementById('modalClose').onclick=()=>document.getElementById('modalBackdrop').style.display='none';
+/* ===== Карусель и модальное окно ===== */
+const grid = document.querySelector('.cases-grid');
+const cards = [...grid.querySelectorAll('.case-card')];
+let isDragging = false;
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let currentIndex = 0;
+let animationID = 0;
+let startTime = null;
 
-/* ===== бесконечная карусель ===== */
-const grid=document.querySelector('.cases-grid');
-const originals=[...grid.querySelectorAll('.case-card')];
-const clonesBefore=originals.map(n=>n.cloneNode(true));
-const clonesAfter=originals.map(n=>n.cloneNode(true));
-clonesBefore.forEach(clone=>grid.insertBefore(clone,grid.firstChild));
-clonesAfter.forEach(clone=>grid.appendChild(clone));
-
-const gap=parseFloat(getComputedStyle(grid).gap)||0;
-const cardW=originals[0].offsetWidth+gap;
-const loopWidth=cardW*originals.length;
-grid.scrollLeft=loopWidth;                  // старт посредине
-
-grid.addEventListener('scroll',()=>{
-  if(grid.scrollLeft<=gap)                  grid.scrollLeft+=loopWidth;
-  else if(grid.scrollLeft>=loopWidth*2-gap) grid.scrollLeft-=loopWidth;
-});
-
-/* ===== колесо: ещё легче ===== */
-grid.addEventListener('wheel',e=>{
-  if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
-    e.preventDefault();
-    grid.scrollLeft+=e.deltaY*2.5;          // лёгкий ход
-    pauseAuto();
-  }
-},{passive:false});
-
-/* ===== drag + инерция ===== */
-let drag=false,startX,scrollStart,vel=0,lastX,lastT;
-grid.addEventListener('mousedown',e=>{
-  drag=true;startX=e.clientX;scrollStart=grid.scrollLeft;
-  lastX=e.clientX;lastT=performance.now();vel=0;
-  grid.classList.add('dragging');pauseAuto();
-});
-window.addEventListener('mousemove',e=>{
-  if(!drag)return;
-  const dx=e.clientX-startX;
-  grid.scrollLeft=scrollStart-dx;
-  const now=performance.now();
-  vel=(e.clientX-lastX)/(now-lastT);
-  lastX=e.clientX;lastT=now;
-});
-window.addEventListener('mouseup',()=>{
-  if(!drag)return;drag=false;grid.classList.remove('dragging');
-  glide(vel*1500);                           // инерция
-});
-function glide(v){
-  let s=v;
-  (function step(){
-    if(Math.abs(s)<2){resumeAuto();return;}
-    grid.scrollLeft-=s*0.016;
-    s*=0.95;
-    requestAnimationFrame(step);
-  })();
+// Создаем клоны для бесконечного скролла
+function setupInfiniteScroll() {
+    const firstCard = cards[0].cloneNode(true);
+    const lastCard = cards[cards.length - 1].cloneNode(true);
+    grid.appendChild(firstCard);
+    grid.insertBefore(lastCard, grid.firstChild);
+    grid.style.transform = `translateX(-${getCardWidth()}px)`;
 }
 
-/* ===== авто-кручение ===== */
-let auto=true;const speed=0.3;
-(function autoLoop(){
-  if(auto) grid.scrollLeft+=speed;
-  requestAnimationFrame(autoLoop);
-})();
-function pauseAuto(){auto=false;clearTimeout(pauseAuto.t);pauseAuto.t=setTimeout(()=>auto=true,2500);}
-function resumeAuto(){auto=true;}
+function getCardWidth() {
+    return cards[0].offsetWidth + parseFloat(getComputedStyle(grid).columnGap || 0);
+}
+
+function setPositionByIndex() {
+    currentTranslate = (currentIndex + 1) * -getCardWidth();
+    prevTranslate = currentTranslate;
+    setSliderPosition();
+}
+
+function setSliderPosition() {
+    grid.style.transform = `translateX(${currentTranslate}px)`;
+}
+
+function animation() {
+    setSliderPosition();
+    if (isDragging) requestAnimationFrame(animation);
+}
+
+function touchStart(event) {
+    isDragging = true;
+    startPos = getPositionX(event);
+    animationID = requestAnimationFrame(animation);
+    grid.style.cursor = 'grabbing';
+    startTime = new Date();
+}
+
+function touchMove(event) {
+    if (isDragging) {
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+}
+
+function touchEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    const movedBy = currentTranslate - prevTranslate;
+    const timeElapsed = new Date() - startTime;
+    
+    if (Math.abs(movedBy) > getCardWidth() / 3 || (Math.abs(movedBy) > 50 && timeElapsed < 300)) {
+        if (movedBy < 0) {
+            currentIndex++;
+        } else {
+            currentIndex--;
+        }
+    }
+
+    if (currentIndex === cards.length) {
+        currentIndex = 0;
+        grid.style.transition = 'none';
+        setPositionByIndex();
+        setTimeout(() => {
+            grid.style.transition = 'transform 0.3s';
+            currentIndex = 0;
+            setPositionByIndex();
+        }, 10);
+    } else if (currentIndex < 0) {
+        currentIndex = cards.length - 1;
+        grid.style.transition = 'none';
+        setPositionByIndex();
+        setTimeout(() => {
+            grid.style.transition = 'transform 0.3s';
+            currentIndex = cards.length - 1;
+            setPositionByIndex();
+        }, 10);
+    } else {
+        setPositionByIndex();
+    }
+
+    grid.style.cursor = 'grab';
+}
+
+function getPositionX(event) {
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+}
+
+// Добавляем слушатели событий
+grid.addEventListener('mousedown', touchStart);
+grid.addEventListener('touchstart', touchStart);
+grid.addEventListener('mousemove', touchMove);
+grid.addEventListener('touchmove', touchMove);
+grid.addEventListener('mouseup', touchEnd);
+grid.addEventListener('touchend', touchEnd);
+grid.addEventListener('mouseleave', touchEnd);
+
+// Автоматическое прокручивание
+let autoScrollInterval;
+
+function startAutoScroll() {
+    autoScrollInterval = setInterval(() => {
+        if (!isDragging) {
+            currentIndex++;
+            if (currentIndex === cards.length) {
+                currentIndex = 0;
+                grid.style.transition = 'none';
+                setPositionByIndex();
+                setTimeout(() => {
+                    grid.style.transition = 'transform 0.3s';
+                    currentIndex = 0;
+                    setPositionByIndex();
+                }, 10);
+            } else {
+                setPositionByIndex();
+            }
+        }
+    }, 3000);
+}
+
+function stopAutoScroll() {
+    clearInterval(autoScrollInterval);
+}
+
+grid.addEventListener('mouseenter', stopAutoScroll);
+grid.addEventListener('mouseleave', startAutoScroll);
+
+// Инициализация
+setupInfiniteScroll();
+startAutoScroll();
 </script>
 
 
@@ -681,62 +1089,165 @@ function resumeAuto(){auto=true;}
 </div>
 
 <script>
-  const caseDetails = {
-    ural: '<h3>Уралрегионстрой</h3><p>В рамках проекта мы внедрили CRM-систему, автоматизировали приём заявок и настроили сквозную аналитику. Это позволило сократить время обработки заявок на 40% и увеличить их количество на 35%.</p>',
-    brendoss: '<h3>Мебельная фабрика Brendoss</h3><p>Полностью разработали сквозную систему лидогенерации: таргетинговые кампании, лендинги и интеграция с CRM. Внедрённая аналитика дала рост продаж на 41% за первый квартал.</p>',
-    puls: '<h3>Пульс цен</h3><p>Запустили комплексную стратегию по привлечению поставщиков: контекст, таргетинг и ремаркетинг. Число новых поставщиков выросло на 28%.</p>',
-    blocks: '<h3>Продажа пеноблоков</h3><p>Настроили рекламные кампании в MyTarget и ВКонтакте, запустили лендинг и CRM-интеграцию. Продажи выросли на 52% в течение двух месяцев.</p>',
-    asm: '<h3>Асм мебель</h3><p>Оптимизировали SEO, контекстную рекламу и UX сайта. Благодаря внедрённым рекомендациям конверсия увеличилась на 22%.</p>'
-  };
-  document.querySelectorAll('.case-more').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      const key = btn.dataset.case;
-      document.getElementById('modalContent').innerHTML = caseDetails[key];
-      document.getElementById('modalBackdrop').style.display = 'flex';
+  document.addEventListener('DOMContentLoaded', function() {
+    const caseData = {
+        ural: {
+            title: 'Уралрегионстрой',
+            description: 'Полностью реорганизовали процесс работы с клиентами. Внедрили CRM-систему, автоматизировали приём заявок и настроили сквозную аналитику. Сократили время обработки на 40%, увеличили количество заявок на 35%, ROI рекламного бюджета вырос в 2.5 раза.'
+        },
+        brendoss: {
+            title: 'Мебельная фабрика Brendoss',
+            description: 'Разработали и внедрили комплексную систему лидогенерации. Запустили таргетированные кампании с глубокой сегментацией аудитории, создали серию целевых лендингов и настроили интеграцию с CRM. Продажи выросли на 41% за первый квартал, стоимость привлечения клиента снизилась на 25%.'
+        },
+        puls: {
+            title: 'Пульс цен',
+            description: 'Реализовали стратегию масштабирования B2B-маркетплейса. Оптимизировали воронку привлечения поставщиков через контекст, таргетинг и ремаркетинг. Увеличили базу активных поставщиков на 28%, снизили стоимость привлечения на 35%.'
+        },
+        blocks: {
+            title: 'Продажа пеноблоков',
+            description: 'Разработали омниканальную стратегию продвижения. Запустили кампании в MyTarget и VK с точным таргетингом на целевую аудиторию, интегрировали высококонверсионный лендинг с CRM. Достигли роста продаж на 52% за два месяца, конверсия выросла на 75%.'
+        },
+        asm: {
+            title: 'Асм мебель',
+            description: 'Провели комплексный аудит и оптимизацию всех каналов продвижения. Улучшили SEO-показатели, перестроили контекстную рекламу и оптимизировали UX сайта. В результате конверсия выросла на 22%, органический трафик увеличился на 45%.'
+        }
+    };
+
+    // Обработка модального окна
+    document.querySelectorAll('.case-details').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            const id = btn.dataset.id;
+            const data = caseData[id];
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <h3 class="text-2xl font-bold mb-4">${data.title}</h3>
+                <p class="text-gray-300 leading-relaxed">${data.description}</p>
+            `;
+            const modal = document.getElementById('modalBackdrop');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.querySelector('.modal').classList.add('active'), 10);
+        });
     });
-  });
-  document.getElementById('modalClose').addEventListener('click', () => {
-    document.getElementById('modalBackdrop').style.display = 'none';
-  });
-</script>
 
-
-    <section id="testimonials" class="py-12 px-6 bg-gray-900">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold neon-green text-center mb-12 animate-on-scroll" style="font-family: 'Poppins', sans-serif;">Отзывы</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="flex items-start space-x-4 animate-on-scroll">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" alt="Клиент 1" class="w-16 h-16 rounded-full glow">
-                    <div>
-                        <p class="text-gray-300 italic">"Лидогенерация выросла в 2 раза. Это реальный результат!"</p>
-                        <p class="text-lime-500 font-semibold mt-2">— Алексей, 40 лет</p>
+    document.getElementById('modalClose').addEventListener('click', () => {
+        const modal = document.getElementById('modalBackdrop');
+        modal.querySelector('.modal').classList.remove('active');
+        setTimeout(() => modal.style.display = 'none', 300);
+    });
+</script>    <section id="testimonials" class="py-16 px-6 bg-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold neon-green mb-4">Отзывы клиентов</h2>
+                <p class="text-gray-400 text-lg mb-12">Что говорят о нашей работе те, кто уже добился результата</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
+                    <div class="testimonial-quote">❝</div>
+                    <div class="testimonial-image-wrapper">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
+                             alt="Алексей Петров"
+                             class="testimonial-image">
+                    </div>
+                    <p class="testimonial-text">"Лидогенерация выросла в 2 раза, а затраты на привлечение снизились на 30%. Это реальный результат, который превзошел все наши ожидания. Команда работает профессионально и оперативно."</p>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Алексей Петров</div>
+                        <div class="testimonial-position">Директор по развитию</div>
+                        <div class="testimonial-rating">★★★★★</div>
                     </div>
                 </div>
-                <div class="flex items-start space-x-4 animate-on-scroll">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Pink%20Simple%20Online%20Consultations%20Instagram%20Post%20(1).png?alt=media&token=e0e32873-9a02-4d29-ab1b-c785d8bfa70c" alt="Клиент 2" class="w-16 h-16 rounded-full glow">
-                    <div>
-                        <p class="text-gray-300 italic">"Чат-боты изменили наш подход к клиентам. 80% автоматизации!"</p>
-                        <p class="text-lime-500 font-semibold mt-2">— Марина, 35 лет</p>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
+                    <div class="testimonial-quote">❝</div>
+                    <div class="testimonial-image-wrapper">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Pink%20Simple%20Online%20Consultations%20Instagram%20Post%20(1).png?alt=media&token=e0e32873-9a02-4d29-ab1b-c785d8bfa70c" 
+                             alt="Марина Соколова"
+                             class="testimonial-image">
+                    </div>
+                    <p class="testimonial-text">"Внедренные чат-боты полностью изменили наш подход к работе с клиентами. Мы достигли 80% автоматизации в обработке запросов, что значительно разгрузило отдел продаж и повысило скорость реакции."</p>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Марина Соколова</div>
+                        <div class="testimonial-position">Руководитель отдела продаж</div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
+                    <div class="testimonial-quote">❝</div>
+                    <div class="testimonial-image-wrapper">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
+                             alt="Дмитрий Волков"
+                             class="testimonial-image">
+                    </div>
+                    <p class="testimonial-text">"За три месяца сотрудничества мы увеличили конверсию сайта на 45% и снизили стоимость привлечения клиента вдвое. Особенно впечатлила глубина аналитики и внимание к деталям."</p>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Дмитрий Волков</div>
+                        <div class="testimonial-position">CEO, TechStart</div>
+                        <div class="testimonial-rating">★★★★★</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="contact" class="py-20 px-6 max-w-7xl mx-auto text-center">
-        <h2 class="text-4xl font-bold neon-green mb-8 animate-on-scroll" style="font-family: 'Poppins', sans-serif;">Готовы к результатам?</h2>
-        <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto animate-on-scroll">
-            Давайте обсудим, как вывести ваш бизнес на новый уровень.
-        </p>
-        <div class="max-w-lg mx-auto animate-on-scroll">
-            <input type="text" placeholder="Ваше имя" class="w-full bg-gray-900 text-white p-4 rounded-lg mb-4 glow focus:outline-none focus:ring-2 focus:ring-lime-500">
-            <input type="email" placeholder="Ваш email" class="w-full bg-gray-900 text-white p-4 rounded-lg mb-4 glow focus:outline-none focus:ring-2 focus:ring-lime-500">
-            <textarea placeholder="Ваше сообщение" class="w-full bg-gray-900 text-white p-4 rounded-lg mb-4 glow focus:outline-none focus:ring-2 focus:ring-lime-500" rows="6"></textarea>
-            <button class="bg-lime-500 text-black font-semibold py-3 px-8 rounded-lg hover:bg-lime-400 transition glow btn-glow">
-                Запустить рост
-            </button>
+    </section>    <section id="contact" class="py-20 px-6 contact-section">
+        <div class="max-w-3xl mx-auto relative z-10">
+            <h2 class="text-4xl font-bold neon-green text-center mb-4">Готовы к результатам?</h2>
+            <p class="text-xl text-gray-300 text-center mb-12">
+                Давайте обсудим, как вывести ваш бизнес на новый уровень
+            </p>
+            <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit()">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <label class="form-label">Ваше имя</label>
+                        <input type="text" 
+                               class="form-input" 
+                               id="name"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Ваш email</label>
+                        <input type="email" 
+                               class="form-input" 
+                               id="email"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group mt-6">
+                    <label class="form-label">Ваше сообщение</label>
+                    <textarea class="form-input" 
+                              rows="6"
+                              id="message"
+                              required></textarea>
+                </div>
+                <div class="text-center mt-8">
+                    <button type="submit" class="submit-button">
+                        Запустить рост
+                    </button>
+                </div>
+            </form>
         </div>
+        <script>
+            function handleSubmit() {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // Здесь можно добавить валидацию и отправку формы
+                console.log('Form submitted:', { name, email, message });
+                
+                // Показываем уведомление об успешной отправке
+                alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+                
+                // Очищаем форму
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            }
+        </script>
+    </section>
     </section>
 
     <footer class="py-8 bg-gray-900 text-center text-gray-300">
