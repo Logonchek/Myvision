@@ -504,7 +504,6 @@
 
 
 <!-- Cases Section -->
-<!-- Cases Section -->
 <style>
   :root{--neon-green:#22c55e;}
   #cases{
@@ -638,10 +637,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const caseDetails = {
     ural: `
       <h3>Уралрегионстрой</h3>
-      <p>Сфера деятельности: Строительство частных домов</p>
-      <p>Задача: Нужно выйти на объем в 300-400 лидов в месяц</p>
-      <p>Работы: Проанализироватьи текущуую ситуацию, посадочные страницы, сайт, СРМ, рекламные кампании которые были. Подготовили маркетинговый план по достижению целей включая инструменты для запуска, посадочные страницы, офферы, креативы и т.д. </p>
-      <p>Результат: За 1 месяц было проведенно 14 различных тестов с офферами и посадочными страницами, выявленны 4 самых результативных и поним уже расширяли рекламу на полную, к 3 месяцу вышли на план 250-350 лидов. </p>
+      <p>На старте проекта строительная компания "Уралрегионстрой" сталкивалась с проблемой низкой скорости обработки заявок. Менеджеры тратили слишком много времени на ручной ввод данных, а потенциальные клиенты уходили из-за долгих ответов. Лидов было мало, и продажи стагнировали из-за отсутствия системного подхода к маркетингу.</p>
+      <p>Мы начали с внедрения CRM-системы, которая автоматизировала прием и обработку заявок. Затем настроили таргетированную рекламу в социальных сетях и контекстную рекламу в Яндекс.Директ, чтобы привлечь целевую аудиторию. Также разработали лендинг с высокой конверсией, где клиенты могли быстро оставить заявку.</p>
+      <p>В результате время обработки заявок сократилось на 40%, а их количество выросло на 35%. Компания смогла увеличить объем продаж, так как менеджеры начали успевать обрабатывать больше клиентов. Сквозная аналитика помогла отслеживать эффективность каждого канала и оптимизировать бюджет.</p>
       <p><img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Снимок%20экрана%202025-05-13%20064455.png?alt=media&token=517a596c-65f5-4aa8-a2dc-8e19aa7bb9b5" alt="Скриншот кабинета Уралрегионстрой"></p>
     `,
     brendoss: `
@@ -775,176 +773,147 @@ document.addEventListener('DOMContentLoaded', () => {
     pauseAuto.t = setTimeout(() => auto = true, 2500);
   }
   function resumeAuto() { auto = true; }
-
-  // Исправление бага с кейсами
-  const casesGrid = document.querySelector('.cases-grid');
-  
-  function attachCaseHandlers() {
-    const caseButtons = document.querySelectorAll('.case-more');
-    caseButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const caseKey = btn.getAttribute('data-case');
-        if (caseDetails[caseKey]) {
-          document.getElementById('modalContent').innerHTML = caseDetails[caseKey];
-          document.getElementById('modalBackdrop').style.display = 'flex';
-        }
-      });
-    });
-  }
-  
-  // Переназначаем обработчики при скролле карусели
-  casesGrid.addEventListener('scroll', () => {
-    requestAnimationFrame(() => {
-      attachCaseHandlers();
-    });
-  });
-  
-  // Обработка контактной формы
-  const contactBtn = document.getElementById('contactBtn');
-  const contactModal = document.getElementById('contactModal');
-  const closeContactModal = document.getElementById('closeContactModal');
-  const contactForm = document.getElementById('contactForm');
-  
-  contactBtn?.addEventListener('click', () => {
-    contactModal.style.display = 'flex';
-  });
-  
-  closeContactModal?.addEventListener('click', () => {
-    contactModal.style.display = 'none';
-  });
-  
-  contactForm?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(contactForm);
-    const data = {
-      name: formData.get('name'),
-      phone: formData.get('phone')
-    };
-    
-    try {
-      const response = await fetch('/.netlify/functions/submit-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
-      
-      if (response.ok) {
-        document.getElementById('successMessage').style.display = 'block';
-        contactForm.reset();
-        setTimeout(() => {
-          contactModal.style.display = 'none';
-          document.getElementById('successMessage').style.display = 'none';
-        }, 2000);
-      } else {
-        throw new Error('Ошибка отправки формы');
-      }
-    } catch (error) {
-      console.error('Ошибка отправки:', error);
-      alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
-    }
-  });
 });
 </script>
 
-<!-- Модальное окно для формы -->
-<div id="contactModal" class="contact-modal">
-  <div class="modal-content">
-    <span id="closeContactModal" class="close-modal">&times;</span>
-    <h3 class="text-2xl font-bold text-white mb-6">Оставьте ваши контакты</h3>
-    <form id="contactForm">
-      <input type="text" name="name" class="form-field" placeholder="Ваше имя" required>
-      <input type="tel" name="phone" class="form-field" placeholder="Ваш телефон" required>
-      <button type="submit" class="submit-btn">Отправить</button>
-    </form>
-    <div id="successMessage" class="success-message">
-      Спасибо! Мы свяжемся с вами в ближайшее время.
-    </div>
-  </div>
-</div>
-
-<!-- Testimonials Section -->
-<style>
-  /* Обновляем стили для секции отзывов */
-  #testimonials {
-    background-color: rgba(36,32,32,1); /* Такой же фон как у "Мои услуги" */
-    padding: 6rem 1.5rem; /* Увеличиваем отступы сверху и снизу */
-    margin-bottom: 4rem; /* Отступ от кнопки "Обсудить проект" */
-  }
-
-  /* Обновляем стили для карточек отзывов */
-  .testimonial {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: rgba(44, 40, 40, 1);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: none; /* Убираем постоянную подсветку */
-  }
-
-  .testimonial:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(34, 197, 94, 0.5); /* Подсветка только при наведении */
-  }
-
-  /* Сетка отзывов */
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem; /* Увеличиваем отступы между карточками */
-    max-width: 1280px; /* Максимальная ширина контейнера */
-    margin: 0 auto;
-  }
-
-  /* Стили для кнопки "Обсудить проект" */
-  #contact {
-    padding: 4rem 1.5rem; /* Увеличиваем отступы */
-    margin-top: 2rem; /* Добавляем отступ сверху */
-  }
-</style>
-
-<section id="testimonials">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold mb-4">Что говорят наши <span class="neon-green">клиенты</span></h2>
-      <p class="text-gray-400">Реальные отзывы от реальных клиентов</p>
-    </div>
-
-    <div class="testimonials-grid">
-      <!-- Отзыв 1 -->
-      <div class="testimonial">
-        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/testimonial1.jpg?alt=media&token=YOUR-TOKEN" alt="Александр">
-        <div class="testimonial-content">
-          <p>"Маркетинговая стратегия, разработанная для нашей компании, превзошла все ожидания. За первый квартал продажи выросли на 45%."</p>
-          <div class="author">Александр, CEO Уралрегионстрой</div>
+  <!-- Улучшенная секция отзывов -->
+    <section id="testimonials" class="py-16 px-6 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold neon-green text-center mb-12">Отзывы клиентов</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="testimonial-card">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
+                             alt="Клиент 1" 
+                             class="testimonial-image">
+                        <div>
+                            <p class="text-gray-300 italic text-lg">"Лидогенерация выросла в 2 раза. Это реальный результат!"</p>
+                            <p class="text-lime-500 font-semibold mt-4">— Алексей, 40 лет</p>
+                            <p class="text-gray-400 text-sm">Директор по развитию</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Pink%20Simple%20Online%20Consultations%20Instagram%20Post%20(1).png?alt=media&token=e0e32873-9a02-4d29-ab1b-c785d8bfa70c" 
+                             alt="Клиент 2" 
+                             class="testimonial-image">
+                        <div>
+                            <p class="text-gray-300 italic text-lg">"Чат-боты изменили наш подход к клиентам. 80% автоматизации!"</p>
+                            <p class="text-lime-500 font-semibold mt-4">— Марина, 35 лет</p>
+                            <p class="text-gray-400 text-sm">Руководитель отдела продаж</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- Отзыв 2 -->
-      <div class="testimonial">
-        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/testimonial2.jpg?alt=media&token=YOUR-TOKEN" alt="Мария">
-        <div class="testimonial-content">
-          <p>"Профессиональный подход и глубокое понимание нашего бизнеса помогли создать эффективную систему лидогенерации. Теперь у нас стабильный поток клиентов."</p>
-          <div class="author">Мария, Директор по развитию Brendoss</div>
+    <!-- Улучшенная контактная форма -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-4xl font-bold neon-green mb-8">Готовы к результатам?</h2>
+            <p class="text-lg text-gray-300 mb-12">
+                Давайте обсудим, как вывести ваш бизнес на новый уровень
+            </p>
+            <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" 
+                           placeholder="Ваше имя" 
+                           class="contact-input w-full p-4 rounded-lg text-white">
+                    <input type="email" 
+                           placeholder="Ваш email" 
+                           class="contact-input w-full p-4 rounded-lg text-white">
+                </div>
+                <textarea placeholder="Ваше сообщение" 
+                          class="contact-input w-full p-4 rounded-lg text-white" 
+                          rows="6"></textarea>
+                <button type="submit" class="submit-button">
+                    Запустить рост
+                </button>
+            </form>
         </div>
-      </div>
+    </section>
 
-      <!-- Отзыв 3 -->
-      <div class="testimonial">
-        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/testimonial3.jpg?alt=media&token=YOUR-TOKEN" alt="Дмитрий">
-        <div class="testimonial-content">
-          <p>"Результаты превзошли наши ожидания. Количество заявок выросло в 3 раза, а стоимость привлечения клиента снизилась на 40%."</p>
-          <div class="author">Дмитрий, Владелец Асм мебель</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <script>
+        // Улучшенный скрипт для карусели
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.querySelector('.cases-grid');
+            const cards = [...grid.querySelectorAll('.case-card')];
+            
+            // Клонируем карточки для бесконечной прокрутки
+            const clonesBefore = cards.map(card => card.cloneNode(true));
+            const clonesAfter = cards.map(card => card.cloneNode(true));
+            
+            clonesBefore.forEach(clone => grid.insertBefore(clone, grid.firstChild));
+            clonesAfter.forEach(clone => grid.appendChild(clone));
+
+            const cardWidth = cards[0].offsetWidth + 24; // 24px - это gap
+            const totalWidth = cardWidth * cards.length;
+            
+            // Устанавливаем начальную позицию
+            grid.scrollLeft = totalWidth;
+
+            // Обработка прокрутки для бесконечного эффекта
+            grid.addEventListener('scroll', () => {
+                if (grid.scrollLeft <= cardWidth) {
+                    grid.scrollLeft = totalWidth + grid.scrollLeft;
+                } else if (grid.scrollLeft >= totalWidth * 2) {
+                    grid.scrollLeft = totalWidth;
+                }
+            });
+
+            // Автоматическая прокрутка
+            let autoScroll;
+            const startAutoScroll = () => {
+                autoScroll = setInterval(() => {
+                    grid.scrollLeft += 1;
+                }, 30);
+            };
+
+            const stopAutoScroll = () => {
+                clearInterval(autoScroll);
+            };
+
+            // Управление автопрокруткой
+            grid.addEventListener('mouseenter', stopAutoScroll);
+            grid.addEventListener('mouseleave', startAutoScroll);
+            
+            // Запускаем автопрокрутку
+            startAutoScroll();
+
+            // Плавная прокрутка при колесике мыши
+            grid.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                grid.scrollLeft += e.deltaY;
+            });
+        });
+
+        // Обработка модальных окон с анимацией
+        const modalBackdrop = document.getElementById('modalBackdrop');
+        const modalContent = document.getElementById('modalContent');
+        const modalClose = document.getElementById('modalClose');
+
+        document.querySelectorAll('.case-more').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const caseKey = btn.dataset.case;
+                modalContent.innerHTML = caseDetails[caseKey];
+                modalBackdrop.style.display = 'flex';
+                modalBackdrop.style.opacity = '0';
+                setTimeout(() => {
+                    modalBackdrop.style.opacity = '1';
+                }, 10);
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modalBackdrop.style.opacity = '0';
+            setTimeout(() => {
+                modalBackdrop.style.display = 'none';
+            }, 300);
+        });
+    </script>
 
 <!-- Заменяем секцию контактов на кнопку -->
 <section id="contact" class="max-w-7xl mx-auto text-center">
