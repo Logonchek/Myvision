@@ -375,136 +375,81 @@
   }
 </style>
 
-<section id="about">
-  <div class="about-grid animate-on-scroll">
-    <!-- Фото: начало и конец фото совпадают с заголовком и статистикой -->
-    <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/replicate-prediction-mab28pbrc5rm80cpma38e7q6y8.jpg?alt=media&token=fec2bc6c-15bb-4176-8e3d-14b9f11002b4"
-         alt="Обо мне">
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container max-w-7xl mx-auto px-6">
+            <div class="flex justify-center items-center space-x-8">
+                <a href="#about" class="nav-item">Обо мне</a>
+                <a href="#services" class="nav-item">Услуги</a>
+                <a href="#cases" class="nav-item">Кейсы</a>
+                <a href="#testimonials" class="nav-item">Отзывы</a>
+                <a href="#contact" class="nav-item">Контакты</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Заголовок: ровно на верхней линии -->
-    <h2 style="font-size:4.5rem; font-weight:800; color:var(--neon-green); text-shadow:0 0 15px rgba(34,197,94,0.8); margin:0;">
-      Обо мне
-    </h2>
+    <!-- Hero Section -->
+    <section class="hero-bg">
+        <div class="container max-w-7xl mx-auto px-6">
+            <div class="flex flex-col items-center justify-center min-h-screen text-center">
+                <h1 class="text-6xl md:text-7xl font-extrabold mb-8">
+                    Маркетинг, <br>который <span class="neon-green">работает</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl">
+                    Помогаю бизнесу выстраивать системный маркетинг и увеличивать продажи через интернет
+                </p>
+                <div class="button-container">
+                    <a href="#contact" class="btn-green">Обсудить проект</a>
+                    <a href="#cases" class="btn-outline">Посмотреть кейсы</a>
+                </div>
+                <div class="check-down">↓</div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Описание: занимает второй ряд -->
-    <div>
-      <p style="color:#9ca3af; font-weight:600; margin:0 0 1rem;">
-        Я эксперт по маркетингу с более чем 10-летним опытом создания и реализации успешных маркетинговых стратегий. Руководил маркетингом в крупнейшем B2B маркетплейсе России, а также работал в известном брендинговом агентстве BeBrand.
-      </p>
-      <p style="color:#9ca3af; font-weight:600; margin:0;">
-        Моя специализация — построение эффективных маркетинговых отделов и систем лидогенерации, которые приносят измеримые результаты. Работаю на стыке стратегии, аналитики и технологий, помогая бизнесу выстраивать маркетинг как системный процесс, а не набор разрозненных активностей.
-      </p>
-    </div>
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-grid animate-on-scroll">
+            <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/replicate-prediction-mab28pbrc5rm80cpma38e7q6y8.jpg?alt=media&token=fec2bc6c-15bb-4176-8e3d-14b9f11002b4"
+                 alt="Обо мне">
 
-    <!-- Статистика: ровно на нижней линии -->
-    <div class="stats-flex">
-      <div class="stats-item">
-        <div class="num">10+</div>
-        <div class="label">лет опыта</div>
-      </div>
-      <div class="stats-item">
-        <div class="num">50+</div>
-        <div class="label">проектов</div>
-      </div>
-      <div class="stats-item">
-        <div class="num">85%</div>
-        <div class="label">рост ROI</div>
-      </div>
-      <div class="stats-item">
-        <div class="num">5+</div>
-        <div class="label">отраслей</div>
-      </div>
-    </div>
-  </div>
-</section>
+            <h2 style="font-size:4.5rem; font-weight:800; color:var(--neon-green); text-shadow:0 0 15px rgba(34,197,94,0.8); margin:0;">
+                Обо мне
+            </h2>
 
-<!-- Services Section -->
-<style>
-  /* Фон секции */
-  #services {
-    background-color: var(rgba(36, 32, 32, 1));
-    padding: 4rem 1.5rem;
-  }
-  /* Контейнер */
-  .services-container {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  /* Заголовок и подзаголовок */
-  .services-header h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-  .services-header h2 .neon-green {
-    color: var(--neon-green);
-  }
-  .services-header p {
-    font-size: 1rem;
-    text-align: center;
-    color: #9ca3af;
-    margin-bottom: 2rem;
-  }
-  /* Сетка карточек: 3 в ряд */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-  /* Карточка услуги */
-  .service-card {
-    background-color: rgba(44, 40, 40, 1);
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 16px rgba(34, 197, 94, 0.3);
-  }
-  /* Иконка в зеленом кружке */
-  .service-card .icon {
-    background-color: var(--neon-green);
-    color: #000;
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  /* Заголовок карточки */
-  .service-card h3 {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  /* Описание */
-  .service-card p {
-    color: #ccc;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  /* Ссылка подробнее */
-  .service-card a {
-    color: var(--neon-green);
-    font-weight: 500;
-    text-decoration: none;
-  }
-  .service-card a:hover {
-    text-decoration: underline;
-  }
-</style>
+            <div>
+                <p style="color:#9ca3af; font-weight:600; margin:0 0 1rem;">
+                    Я эксперт по маркетингу с более чем 10-летним опытом создания и реализации успешных маркетинговых стратегий. Руководил маркетингом в крупнейшем B2B маркетплейсе России, а также работал в известном брендинговом агентстве BeBrand.
+                </p>
+                <p style="color:#9ca3af; font-weight:600; margin:0;">
+                    Моя специализация — построение эффективных маркетинговых отделов и систем лидогенерации, которые приносят измеримые результаты. Работаю на стыке стратегии, аналитики и технологий, помогая бизнесу выстраивать маркетинг как системный процесс, а не набор разрозненных активностей.
+                </p>
+            </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+            <div class="stats-flex">
+                <div class="stats-item">
+                    <div class="num">10+</div>
+                    <div class="label">лет опыта</div>
+                </div>
+                <div class="stats-item">
+                    <div class="num">50+</div>
+                    <div class="label">проектов</div>
+                </div>
+                <div class="stats-item">
+                    <div class="num">85%</div>
+                    <div class="label">рост ROI</div>
+                </div>
+                <div class="stats-item">
+                    <div class="num">5+</div>
+                    <div class="label">отраслей</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="services">
+    <!-- Services Section -->
+    <section id="services">
   <div class="services-container animate-on-scroll">
     <div class="services-header">
       <h2>Мои <span class="neon-green">услуги</span></h2>
