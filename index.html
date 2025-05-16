@@ -53,12 +53,18 @@
             z-index: 10;
             background-color: rgba(10, 10, 10, 0.9);
             padding: 0.5rem 0;
-        }
-        .nav .container {
+        }        .nav .container {
             display: flex;
             align-items: center;
-            justify-content: center; /* Центрирование навигации */
-            gap: 0.5rem;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
         }
         .nav-item {
             color: #e5e5e5;
@@ -155,7 +161,7 @@
   gap: 2rem;
 }
 @media(min-width:768px) {
-  .services-grid { grid-template-columns: repeat(3, 1fr); }
+  .services-grid { grid-template-columns: repeat(
 }
 
 /* Заголовок и подзаголовок */
@@ -168,11 +174,9 @@
     position: relative;
     display: flex;
     gap: 1.5rem;
-    transition: transform 0.3s;
-    touch-action: pan-y pinch-zoom;
-    cursor: grab;
+    transition: transform 0.3s ease;
     width: max-content;
-    padding: 1rem;
+    padding: 0;
 }
 
 .case-card {
@@ -181,66 +185,17 @@
     background: rgba(44, 40, 40, 0.95);
     border: 1px solid rgba(34, 197, 94, 0.1);
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     transition: all 0.3s ease;
-    transform-origin: center center;
-    backface-visibility: hidden;
-}
-
-.case-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
-    border-color: rgba(34, 197, 94, 0.3);
-    z-index: 2;
 }
 
 .cases-wrapper {
-    overflow: hidden;
     position: relative;
-    margin: 0 -1rem;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
 }
-
-.case-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3rem;
-    height: 3rem;
-    background: rgba(34, 197, 94, 0.9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 3;
-    transition: all 0.3s ease;
-}
-
-.case-nav:hover {
-    background: rgba(34, 197, 94, 1);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.case-nav.prev { left: 1rem; }
-.case-nav.next { right: 1rem; }
-
-/* Стили для иконок навигации */
-.case-nav::before {
-    content: '';
-    width: 0.8rem;
-    height: 0.8rem;
-    border-style: solid;
-    border-width: 2px 2px 0 0;
-    display: inline-block;
-    transform: rotate(45deg);
-    margin-left: -4px;
-}
-
-.case-nav.prev::before {
-    transform: rotate(-135deg);
-    margin-left: 4px;
-}
-
 /* Modal styles */
 .modal {
     background: rgba(44, 40, 40, 0.95);
@@ -385,33 +340,67 @@
     position: relative;
     overflow: hidden;
     background: linear-gradient(to bottom, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.95));
+    padding: 2rem 0;
 }
 
 .contact-form {
     background: rgba(31, 41, 55, 0.7);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(34, 197, 94, 0.1);
-    border-radius: 2rem;
-    padding: 3rem;
+    border-radius: 1rem;
+    padding: 1.5rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-.contact-form:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(34, 197, 94, 0.15);
-    border-color: rgba(34, 197, 94, 0.2);
+.form-group {
+    position: relative;
+    margin-bottom: 1rem;
 }
 
 .form-input {
     width: 100%;
     background: rgba(17, 24, 39, 0.8);
     border: 2px solid rgba(34, 197, 94, 0.1);
-    border-radius: 1rem;
-    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
     color: white;
     font-size: 1rem;
     transition: all 0.3s ease;
+}
+
+.form-label {
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+    background: rgba(17, 24, 39, 0.8);
+    color: var(--neon-green);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.submit-button {
+    background: var(--neon-green);
+    color: black;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+    width: auto;
+}
+
+/* Анимации и эффекты при наведении */
+.contact-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.2);
 }
 
 .form-input:focus {
@@ -422,20 +411,9 @@
     outline: none;
 }
 
-.form-input::placeholder {
-    color: rgba(156, 163, 175, 0.8);
-}
-
-.submit-button {
-    background: var(--neon-green);
-    color: black;
-    font-weight: 600;
-    padding: 1.25rem 2.5rem;
-    border-radius: 1rem;
-    font-size: 1.125rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
 }
 
 .submit-button::before {
@@ -452,11 +430,6 @@
         transparent
     );
     transition: 0.5s;
-}
-
-.submit-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
 }
 
 .submit-button:hover::before {
@@ -478,10 +451,79 @@
     font-size: 0.875rem;
     transition: all 0.3s ease;
 }
+
+/* Стили карусели */
+#cases .cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+
+#cases .cases-grid {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0.5rem 0;
+}
+
+#cases .case-card {
+    flex: 0 0 380px;
+    min-width: 380px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+#cases .case-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+#cases .case-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+#cases .case-nav.prev { left: -0.5rem; }
+#cases .case-nav.next { right: -0.5rem; }
+
+/* Дополнительные стили навигации */
+#cases .case-nav::before {
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    display: inline-block;
+    transform: rotate(45deg);
+    margin-left: -4px;
+}
+
+#cases .case-nav.prev::before {
+    transform: rotate(-135deg);
+    margin-left: 4px;
+}
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Анимация при скролле
             const elements = document.querySelectorAll('.animate-on-scroll');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -492,6 +534,9 @@
                 });
             }, { threshold: 0.2 });
 
+            elements.forEach(el => observer.observe(el));
+
+            // Прокрутка вниз по клику на галочку
             const check = document.querySelector('.check-down');
             if (check) {
                 check.addEventListener('click', () => {
@@ -499,95 +544,91 @@
                 });
             }
 
-            elements.forEach(el => observer.observe(el));
-
-            // Управление каруселью
+            // Управление каруселью кейсов
             const casesGrid = document.querySelector('.cases-grid');
-            const cards = [...casesGrid.querySelectorAll('.case-card')];
-            const prev = document.querySelector('.case-nav.prev');
-            const next = document.querySelector('.case-nav.next');
-            
-            let currentIndex = 0;
-            const cardWidth = cards[0].offsetWidth + parseFloat(getComputedStyle(casesGrid).gap);
-            
-            function updateCarousel() {
-                casesGrid.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+            if (casesGrid) {
+                const cards = casesGrid.querySelectorAll('.case-card');
+                const prev = document.querySelector('#cases .case-nav.prev');
+                const next = document.querySelector('#cases .case-nav.next');
                 
-                // Проверяем границы
-                if (currentIndex === 0) {
-                    prev.style.opacity = '0.5';
-                    prev.style.cursor = 'not-allowed';
-                } else {
-                    prev.style.opacity = '1';
-                    prev.style.cursor = 'pointer';
-                }
+                let currentIndex = 0;
+                const cardWidth = 380 + 20; // ширина карточки + отступ
+                const visibleCards = 2.5; // показываем 2.5 карточки
                 
-                if (currentIndex === cards.length - 3) {
-                    next.style.opacity = '0.5';
-                    next.style.cursor = 'not-allowed';
-                } else {
-                    next.style.opacity = '1';
-                    next.style.cursor = 'pointer';
-                }
-            }
-            
-            // Обработчики навигации
-            prev.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            });
-            
-            next.addEventListener('click', () => {
-                if (currentIndex < cards.length - 3) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            });
-            
-            // Автопрокрутка
-            let autoScrollInterval;
-            
-            function startAutoScroll() {
-                autoScrollInterval = setInterval(() => {
-                    if (currentIndex < cards.length - 3) {
-                        currentIndex++;
-                    } else {
-                        currentIndex = 0;
+                function updateCarousel() {
+                    const maxTranslate = (cards.length - visibleCards) * cardWidth;
+                    const translateX = -currentIndex * cardWidth;
+                    casesGrid.style.transform = `translateX(${translateX}px)`;
+                    
+                    // Обновляем состояние кнопок
+                    if (prev) {
+                        prev.style.opacity = currentIndex === 0 ? '0.5' : '1';
+                        prev.style.cursor = currentIndex === 0 ? 'not-allowed' : 'pointer';
                     }
-                    updateCarousel();
-                }, 5000);
+                    if (next) {
+                        next.style.opacity = currentIndex >= cards.length - visibleCards ? '0.5' : '1';
+                        next.style.cursor = currentIndex >= cards.length - visibleCards ? 'not-allowed' : 'pointer';
+                    }
+                }
+                
+                if (prev) {
+                    prev.addEventListener('click', () => {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateCarousel();
+                        }
+                    });
+                }
+                
+                if (next) {
+                    next.addEventListener('click', () => {
+                        if (currentIndex < cards.length - visibleCards) {
+                            currentIndex++;
+                            updateCarousel();
+                        }
+                    });
+                }
+                
+                // Свайпы на мобильных
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                casesGrid.addEventListener('touchstart', e => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                
+                casesGrid.addEventListener('touchend', e => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    if (touchStartX - touchEndX > 50 && currentIndex < cards.length - visibleCards) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                    if (touchEndX - touchStartX > 50 && currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                });
+                
+                // Инициализация карусели
+                updateCarousel();
             }
-            
-            function stopAutoScroll() {
-                clearInterval(autoScrollInterval);
-            }
-            
-            // Управление автопрокруткой при наведении
-            const casesWrapper = document.querySelector('.cases-wrapper');
-            casesWrapper.addEventListener('mouseenter', stopAutoScroll);
-            casesWrapper.addEventListener('mouseleave', startAutoScroll);
-            
-            // Запускаем автопрокрутку
-            startAutoScroll();
         });
     </script>
 </head>
 <body>
     <!-- Hero Section -->
     <section class="hero-bg">
-        <!-- Navigation -->
-        <nav class="nav">
-            <div class="container flex items-center px-6">
+        <!-- Navigation -->        <nav class="nav">
+            <div class="container flex items-center justify-between px-6">
                 <div class="text-xl font-bold neon-green">My Vision</div>
-                <div class="flex gap-2">
-                    <a href="#home" class="nav-item">Главная</a>
-                    <a href="#about" class="nav-item">Обо мне</a>
-                    <a href="#services" class="nav-item">Услуги</a>
-                    <a href="#cases" class="nav-item">Кейсы</a>
-                    <a href="#testimonials" class="nav-item">Отзывы</a>
-                    <a href="#contact" class="nav-item">Связаться</a>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-4">
+                        <a href="#home" class="nav-item">Главная</a>
+                        <a href="#about" class="nav-item">Обо мне</a>
+                        <a href="#services" class="nav-item">Услуги</a>
+                        <a href="#cases" class="nav-item">Кейсы</a>
+                        <a href="#testimonials" class="nav-item">Отзывы</a>
+                    </div>
                     <a href="#contact" class="btn-green">Связаться</a>
                 </div>
             </div>
@@ -849,9 +890,9 @@
       padding:4rem 1.5rem;
   }
   .cases-container{
-      max-width:80rem;
+      max-width:1200px;
       margin:0 auto;
-      padding:0 1.5rem;
+      padding:0;
   }
   .cases-header{text-align:center;margin-bottom:2rem;}
   .cases-header h2{
@@ -863,27 +904,20 @@
   /* ===== Карусель ===== */
   .cases-grid{
       display:flex;
-      gap:1rem;                       /* сшили карты плотнее */
-      overflow-x:auto;
-      overscroll-behavior-x:contain;
-      scroll-behavior:smooth;
-      scrollbar-width:none;
+      gap:1.5rem;                       /* сшили карты плотнее */
+      transition: transform 0.3s ease;
+      width: max-content;
+      padding: 0 2rem;
   }
-  .cases-grid::-webkit-scrollbar{display:none;}
-  .cases-grid.dragging{
-      cursor:grabbing;
-      user-select:none;
-      scroll-behavior:auto;
-  }
-
   .case-card{
-      background:rgba(44,40,40,1);
-      border-radius:0.5rem;
+      flex:0 0 300px;
+      min-width:300px;
+      background:rgba(44,40,40,0.95);
+      border: 1px solid rgba(34, 197, 94, 0.1);
+      border-radius:1rem;
       padding:1.5rem;
-      flex:0 0 calc(40% - 1rem);
-      display:flex;flex-direction:column;justify-content:space-between;
-      transition:transform .3s,box-shadow .3s;
-      min-height:200px;
+      transform-origin: center center;
+      transition: all 0.3s ease;
   }
   .case-card:hover{
       transform:translateY(-8px);
@@ -1190,12 +1224,7 @@ startAutoScroll();
                              alt="Алексей Петров"
                              class="testimonial-image">
                     </div>
-                    <p class="testimonial-text">"Лидогенерация выросла в 2 раза, а затраты на привлечение снизились на 30%. Это реальный результат, который превзошел все наши ожидания. Команда работает профессионально и оперативно."</p>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Алексей Петров</div>
-                        <div class="testimonial-position">Директор по развитию</div>
-                        <div class="testimonial-rating">★★★★★</div>
-                    </div>
+                    <p class="testimonial-text">"Лидогенерация вырос
                 </div>
 
                 <!-- Testimonial 2 -->
@@ -1231,63 +1260,44 @@ startAutoScroll();
                 </div>
             </div>
         </div>
-    </section>    <section id="contact" class="py-16 px-6 contact-section">
-        <div class="max-w-xl mx-auto relative z-10">
-            <h2 class="text-3xl font-bold neon-green text-center mb-3">Готовы к результатам?</h2>
-            <p class="text-lg text-gray-300 text-center mb-8">
-                Давайте обсудим, как вывести ваш бизнес на новый уровень
-            </p>
-            <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit()">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="form-group">
-                        <label class="form-label">Ваше имя</label>
-                        <input type="text" 
-                               class="form-input" 
-                               id="name"
-                               required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Ваш email</label>
-                        <input type="email" 
-                               class="form-input" 
-                               id="email"
-                               required>
-                    </div>
+    </section>    <section id="contact" class="py-8 px-6 contact-section">
+    <div class="max-w-xl mx-auto relative z-10">
+        <h2 class="text-3xl font-bold neon-green text-center mb-2">Готовы к результатам?</h2>
+        <p class="text-lg text-gray-300 text-center mb-6">
+            Давайте обсудим, как вывести ваш бизнес на новый уровень
+        </p>
+        <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit()">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="form-group">
+                    <label class="form-label">Ваше имя</label>
+                    <input type="text" 
+                           class="form-input" 
+                           id="name"
+                           required>
                 </div>
-                <div class="form-group mt-6">
-                    <label class="form-label">Ваше сообщение</label>
-                    <textarea class="form-input" 
-                              rows="6"
-                              id="message"
-                              required></textarea>
+                <div class="form-group">
+                    <label class="form-label">Ваш email</label>
+                    <input type="email" 
+                           class="form-input" 
+                           id="email"
+                           required>
                 </div>
-                <div class="text-center mt-8">
-                    <button type="submit" class="submit-button">
-                        Запустить рост
-                    </button>
-                </div>
-            </form>
-        </div>
-        <script>
-            function handleSubmit() {
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                // Здесь можно добавить валидацию и отправку формы
-                console.log('Form submitted:', { name, email, message });
-                
-                // Показываем уведомление об успешной отправке
-                alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
-                
-                // Очищаем форму
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('message').value = '';
-            }
-        </script>
-    </section>
-    </section>
+            </div>
+            <div class="form-group mt-4">
+                <label class="form-label">Ваше сообщение</label>
+                <textarea class="form-input" 
+                          rows="4"
+                          id="message"
+                          required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="submit-button">
+                    Запустить рост
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
 
     <footer class="py-8 bg-gray-900 text-center text-gray-300">
         <p>© 2025 Маркетинг, который работает. Все права защищены.</p>
