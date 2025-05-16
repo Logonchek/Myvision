@@ -813,27 +813,111 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
-    <section id="testimonials" class="py-12 px-6 bg-gray-900">
+    <section id="testimonials" class="py-16 px-6 bg-gray-900">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold neon-green text-center mb-12 animate-on-scroll" style="font-family: 'Poppins', sans-serif;">Отзывы</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="flex items-start space-x-4 animate-on-scroll">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" alt="Клиент 1" class="w-16 h-16 rounded-full glow">
-                    <div>
-                        <p class="text-gray-300 italic">"Лидогенерация выросла в 2 раза. Это реальный результат!"</p>
-                        <p class="text-lime-500 font-semibold mt-2">— Алексей, 40 лет</p>
+            <h2 class="text-4xl font-bold mb-12 text-center animate-on-scroll" style="font-family: 'Poppins', sans-serif;">
+                <span class="neon-green">Отзывы</span> клиентов
+            </h2>
+            <div class="testimonials-grid">
+                <div class="testimonial animate-on-scroll">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
+                         alt="Алексей">
+                    <div class="testimonial-content">
+                        <p>"После внедрения новой системы лидогенерации наши показатели выросли более чем в 2 раза. Это реальный, измеримый результат, который превзошел все наши ожидания!"</p>
+                        <div class="author">Алексей, Директор по развитию</div>
                     </div>
                 </div>
-                <div class="flex items-start space-x-4 animate-on-scroll">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Pink%20Simple%20Online%20Consultations%20Instagram%20Post%20(1).png?alt=media&token=e0e32873-9a02-4d29-ab1b-c785d8bfa70c" alt="Клиент 2" class="w-16 h-16 rounded-full glow">
-                    <div>
-                        <p class="text-gray-300 italic">"Чат-боты изменили наш подход к клиентам. 80% автоматизации!"</p>
-                        <p class="text-lime-500 font-semibold mt-2">— Марина, 35 лет</p>
+                
+                <div class="testimonial animate-on-scroll">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Pink%20Simple%20Online%20Consultations%20Instagram%20Post%20(1).png?alt=media&token=e0e32873-9a02-4d29-ab1b-c785d8bfa70c" 
+                         alt="Марина">
+                    <div class="testimonial-content">
+                        <p>"Внедренные чат-боты полностью изменили наш подход к обслуживанию клиентов. Теперь 80% запросов обрабатываются автоматически, что позволило нашей команде сосредоточиться на более сложных задачах."</p>
+                        <div class="author">Марина, Руководитель отдела продаж</div>
+                    </div>
+                </div>
+
+                <div class="testimonial animate-on-scroll">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Gray%20Simple%20Online%20Consultations%20Instagram%20Post.png?alt=media&token=7357bd98-168c-4881-8daa-f9ed62eff7f4" 
+                         alt="Дмитрий">
+                    <div class="testimonial-content">
+                        <p>"Профессиональный подход к маркетингу помог нам увеличить конверсию сайта на 45%. Особенно впечатлила аналитика и постоянная оптимизация рекламных кампаний."</p>
+                        <div class="author">Дмитрий, CEO технологического стартапа</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <style>
+        /* Стили для секции отзывов */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(44, 40, 40, 1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.2);
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--neon-green);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+            flex-shrink: 0;
+        }
+
+        .testimonial-content {
+            flex: 1;
+        }
+
+        .testimonial-content p {
+            color: #e5e5e5;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0 0 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-content .author {
+            color: var(--neon-green);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .testimonial img {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 
     <section id="contact" class="py-20 px-6 max-w-7xl mx-auto text-center">
         <h2 class="text-4xl font-bold neon-green mb-8 animate-on-scroll" style="font-family: 'Poppins', sans-serif;">Готовы к результатам?</h2>
