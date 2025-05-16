@@ -182,10 +182,12 @@
             width: 4rem;
             height: 4rem;
             border-radius: 50%;
+            object-fit: cover;
             box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
         }
         .testimonial-content {
             color: #ccc;
+            flex: 1;
         }
         .testimonial-content p {
             margin: 0;
@@ -196,6 +198,13 @@
             color: var(--neon-green);
             font-weight: 600;
             margin-top: 0.5rem;
+        }
+
+        /* Сетка отзывов */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         /* Доработка карусели */
