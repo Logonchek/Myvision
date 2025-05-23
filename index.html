@@ -742,150 +742,11 @@
   </div>
 </section>
 
-<!-- Services Section -->
-<style>
-  /* Фон секции */
-  #services {
-    background-color: var(rgba(36, 32, 32, 1));
-    padding: 4rem 1.5rem;
-  }
-  /* Контейнер */
-  .services-container {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  /* Заголовок и подзаголовок */
-  .services-header h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-  .services-header h2 .neon-green {
-    color: var(--neon-green);
-  }
-  .services-header p {
-    font-size: 1rem;
-    text-align: center;
-    color: #9ca3af;
-    margin-bottom: 2rem;
-  }
-  /* Сетка карточек: 3 в ряд */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-  /* Карточка услуги */
-  .service-card {
-    background-color: rgba(44, 40, 40, 1);
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 16px rgba(34, 197, 94, 0.3);
-  }
-  /* Иконка в зеленом кружке */
-  .service-card .icon {
-    background-color: var(--neon-green);
-    color: #000;
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  /* Заголовок карточки */
-  .service-card h3 {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  /* Описание */
-  .service-card p {
-    color: #ccc;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  /* Ссылка подробнее */
-  .service-card a {
-    color: var(--neon-green);
-    font-weight: 500;
-    text-decoration: none;
-  }
-  .service-card a:hover {
-    text-decoration: underline;
-  }
-</style>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
-<section id="services">
-  <div class="services-container animate-on-scroll">
-    <div class="services-header">
-      <h2>Мои <span class="neon-green">услуги</span></h2>
-      <p>Комплексные решения для развития вашего бизнеса через эффективный маркетинг</p>
-    </div>
-    <div class="services-grid">
-      <!-- 1 -->
-      <div class="service-card">
-        <i class="fas fa-chart-line icon"></i>
-        <h3>Разработка маркетинговой стратегии</h3>
-        <p>Создание комплексной стратегии продвижения с учётом специфики вашего бизнеса, целевой аудитории и конкурентной среды.</p>
-        <a href="#contact">Подробнее →</a>
-      </div>
-      <!-- 2 -->
-      <div class="service-card">
-        <i class="fas fa-users icon"></i>
-        <h3>Создание отдела маркетинга</h3>
-        <p>Формирование эффективной структуры отдела, подбор специалистов, настройка процессов и KPI.</p>
-        <a href="#contact">Подробнее →</a>
-      </div>
-      <!-- 3 -->
-      <div class="service-card">
-        <i class="fas fa-rocket icon"></i>
-        <h3>Ускорение отдела маркетинга</h3>
-        <p>Аудит и оптимизация процессов, внедрение новых инструментов и методик для повышения эффективности.</p>
-        <a href="#contact">Подробнее →</a>
-      </div>
-      <!-- 4 -->
-      <div class="service-card">
-        <i class="fas fa-funnel-dollar icon"></i>
-        <h3>Настройка лидогенерации под ключ</h3>
-        <p>Комплексное решение: создание лендинга, настройка рекламных кампаний и внедрение аналитики.</p>
-        <a href="#contact">Подробнее →</a>
-      </div>
-      <!-- 5 -->
-      <div class="service-card">
-        <i class="fas fa-robot icon"></i>
-        <h3>Создание чат-ботов</h3>
-        <p>Разработка и внедрение интеллектуальных чат-ботов для автоматизации общения с клиентами.</p>
-        <a href="#contact">Подробнее →</a>
-      </div>
-      <!-- 6 -->
-      <div class="service-card">
-        <i class="fas fa-code icon"></i>
-        <h3>Запуск MVP и создание сайтов</h3>
-        <p>Быстрый запуск минимального жизнеспособного продукта и создание конверсионных сайтов и лендингов.</p>
-        <a href="#contact">Подробнее →</a>
-      </div>
-    </div>
-  </div>
-</section>
-```html
 <!-- Cases Section -->
 <style>
   :root{--neon-green:#22c55e;}
   #cases{
-      background:rgba(36,32,32,1);
+     background-color: var(rgba(36, 32, 32, 1));
       padding:4rem 1.5rem;
   }
   .cases-container{
@@ -902,7 +763,7 @@
   /* ===== Карусель ===== */
   .cases-wrapper {
       position: relative;
-      width: 750px; /* 2 карточки (300px) + половина третьей (150px) + gap (1.5rem * 2) */
+      width: 1548px; /* 2 карточки (600px * 2) + половина третьей (300px) + gap (1.5rem * 2 = 48px) */
       margin: 0 auto;
       overflow-x: hidden;
   }
@@ -918,8 +779,8 @@
       cursor: grabbing;
   }
   .case-card{
-      flex:0 0 300px;
-      min-width:300px;
+      flex:0 0 600px; /* Увеличено в 2 раза с 300px */
+      min-width:600px;
       background:rgba(44,40,40,0.95);
       border: 1px solid rgba(34, 197, 94, 0.1);
       border-radius:1rem;
@@ -968,31 +829,31 @@
           <div class="case-header"><h3>Уралрегионстрой</h3><div class="case-label">Строительство</div></div>
           <p>Внедрили CRM и настроили лидогенерацию, сократив время обработки заявок на 40 %, увеличив их число на 35 %.</p>
           <div class="stats"><div class="percentage">+35%</div><div class="label">увеличение заявок</div></div>
-          <a href="#" class="case-details" data-id="ural" onclick="openMarquiz()">Подробнее →</a>
+          <a href="#" class="case-details" data-id="ural">Подробнее →</a>
         </div>
         <div class="case-card">
           <div class="case-header"><h3>Мебельная фабрика Brendoss</h3><div class="case-label">Производство</div></div>
           <p>Разработали систему лидогенерации, интегрировали аналитику и CRM; рост продаж на 41 %.</p>
           <div class="stats"><div class="percentage">+41%</div><div class="label">рост продаж</div></div>
-          <a href="#" class="case-details" data-id="brendoss" onclick="openMarquiz()">Подробнее →</a>
+          <a href="#" class="case-details" data-id="brendoss">Подробнее →</a>
         </div>
         <div class="case-card">
           <div class="case-header"><h3>Пульс цен</h3><div class="case-label">B2B</div></div>
           <p>Привлечение поставщиков на маркетплейс через таргетинг и ремаркетинг; +28 % партнёров.</p>
           <div class="stats"><div class="percentage">+28%</div><div class="label">новых поставщиков</div></div>
-          <a href="#" class="case-details" data-id="puls" onclick="openMarquiz()">Подробнее →</a>
+          <a href="#" class="case-details" data-id="puls">Подробнее →</a>
         </div>
         <div class="case-card">
           <div class="case-header"><h3>Продажа пеноблоков</h3><div class="case-label">Стройматериалы</div></div>
           <p>Запустили кампании в MyTarget и VK, интегрировали лендинг и CRM; рост продаж 52 % за 2 мес.</p>
           <div class="stats"><div class="percentage">+52%</div><div class="label">рост продаж</div></div>
-          <a href="#" class="case-details" data-id="blocks" onclick="openMarquiz()">Подробнее →</a>
+          <a href="#" class="case-details" data-id="blocks">Подробнее →</a>
         </div>
         <div class="case-card">
           <div class="case-header"><h3>Асм мебель</h3><div class="case-label">Розница</div></div>
           <p>Оптимизировали SEO, контекст и UX; конверсия сайта выросла на 22 %.</p>
           <div class="stats"><div class="percentage">+22%</div><div class="label">рост конверсии</div></div>
-          <a href="#" class="case-details" data-id="asm" onclick="openMarquiz()">Подробнее →</a>
+          <a href="#" class="case-details" data-id="asm">Подробнее →</a>
         </div>
       </div>
     </div>
@@ -1007,20 +868,6 @@
 </div>
 
 <script>
-  /* ===== Marquiz ===== */
-  (function(w, d, s, o) {
-      var j = d.createElement(s); j.async = true; j.src = '//script.marquiz.ru/v2.js';
-      j.onload = function() { if (d.readyState < 2) Marquiz.init(o); };
-      d.head.appendChild(j);
-  })(window, document, 'script', {
-      id: '682fd65617138a0019fb69d9',
-      autoOpen: false
-  });
-
-  function openMarquiz() {
-      Marquiz.showModal('682fd65617138a0019fb69d9');
-  }
-
   /* ===== Карусель ===== */
   const grid = document.querySelector('#casesGrid');
   const cards = [...grid.querySelectorAll('.case-card')];
@@ -1152,7 +999,7 @@
   /* ===== Инициализация ===== */
   setupInfiniteScroll();
 
-  /* ===== Модальное окно (опционально) ===== */
+  /* ===== Модальное окно ===== */
   const caseData = {
       ural: {
           title: 'Уралрегионстрой',
@@ -1198,8 +1045,6 @@
       setTimeout(() => modal.style.display = 'none', 300);
   });
 </script>
-```
-
 
 </script>    <section id="testimonials" class="py-16 px-6 bg-gray-900 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50"></div>
