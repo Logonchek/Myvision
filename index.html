@@ -1595,45 +1595,113 @@
       setupInfiniteScroll();
   });
 </script>
-    </section>    <section id="contact" class="py-8 px-6 contact-section">
-    <div class="max-w-xl mx-auto relative z-10">
-        <h2 class="text-3xl font-bold neon-green text-center mb-2">Готовы к результатам?</h2>
-        <p class="text-lg text-gray-300 text-center mb-6">
-            Давайте обсудим, как вывести ваш бизнес на новый уровень
-        </p>
-        <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit()">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="form-group">
-                    <label class="form-label">Ваше имя</label>
-                    <input type="text" 
-                           class="form-input" 
-                           id="name"
-                           required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Ваш email</label>
-                    <input type="email" 
-                           class="form-input" 
-                           id="email"
-                           required>
-                </div>
-            </div>
-            <div class="form-group mt-4">
-                <label class="form-label">Ваше сообщение</label>
-                <textarea class="form-input" 
-                          rows="4"
-                          id="message"
-                          required></textarea>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="submit-button">
-                    Запустить рост
-                </button>
-            </div>
-        </form>
+<!-- Contact Section -->
+<style>
+  :root { --neon-green: #22c55e; }
+  #contact {
+      background: rgba(36,32,32,1);
+      padding: 4rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+  }
+  #contact .bg-gradient-to-b {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(36,32,32,0.7));
+  }
+  .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+      text-align: center;
+  }
+  .contact-header h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+  }
+  .contact-header h2 .neon-green {
+      color: var(--neon-green);
+  }
+  .contact-header p {
+      color: #9ca3af;
+      font-size: 1.25rem;
+      margin: 1rem 0 2rem;
+      line-height: 1.5;
+  }
+  .cta-button {
+      display: inline-block;
+      background: var(--neon-green);
+      color: #000;
+      font-weight: 600;
+      font-size: 1.25rem;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+  }
+  .cta-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(34,197,94,0.5);
+      background: #34d399;
+  }
+  .contact-highlight {
+      font-size: 1.1rem;
+      color: #fff;
+      margin: 1.5rem 0;
+      font-weight: 500;
+      text-shadow: 0 0 8px rgba(34,197,94,0.3);
+  }
+  /* Адаптивность */
+  @media (max-width: 768px) {
+      .contact-header h2 {
+          font-size: 2.25rem;
+      }
+      .contact-header p {
+          font-size: 1rem;
+      }
+      .cta-button {
+          font-size: 1rem;
+          padding: 0.75rem 1.5rem;
+      }
+      .contact-highlight {
+          font-size: 1rem;
+      }
+  }
+</style>
+
+<section id="contact" class="py-8 px-6 contact-section">
+  <div class="bg-gradient-to-b"></div>
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2>Готовы к <span class="neon-green">результатам</span>?</h2>
+      <p>Оставьте контакты, и мы разработаем стратегию для взлёта вашего бизнеса за 48 часов!</p>
     </div>
+    <p class="contact-highlight">Наши эксперты уже помогли сотням компаний увеличить прибыль и масштабироваться.</p>
+    <div class="text-center">
+      <a href="#" class="cta-button" onclick="openMarquiz()">Начать сотрудничество</a>
+    </div>
+  </div>
 </section>
 
+<script>
+  /* ===== Marquiz ===== */
+  (function(w, d, s, o) {
+      var j = d.createElement(s); j.async = true; j.src = '//script.marquiz.ru/v2.js';
+      j.onload = function() { if (d.readyState < 2) Marquiz.init(o); };
+      d.head.appendChild(j);
+  })(window, document, 'script', {
+      id: '682fd65617138a0019fb69d9',
+      autoOpen: false
+  });
+
+  function openMarquiz() {
+      Marquiz.showModal('682fd65617138a0019fb69d9');
+  }
+</script>
     <footer class="py-8 bg-gray-900 text-center text-gray-300">
         <p>© 2025 Маркетинг, который работает. Все права защищены.</p>
     </footer>
