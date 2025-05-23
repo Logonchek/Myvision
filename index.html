@@ -1242,7 +1242,7 @@
       cursor: grabbing;
   }
   .testimonial-card {
-      flex: 0 0 800px; /* Увеличено в 2 раза с 400px */
+      flex: 0 0 800px;
       min-width: 800px;
       background: rgba(44,40,40,0.95);
       border: 1px solid rgba(34,197,94,0.1);
@@ -1263,7 +1263,7 @@
       left: 1rem;
   }
   .testimonial-image-wrapper {
-      width: 80px; /* Увеличено для соответствия широкой карточке */
+      width: 80px;
       height: 80px;
       margin: 0 auto 1rem;
   }
@@ -1277,7 +1277,7 @@
   .testimonial-text {
       color: #ccc;
       line-height: 1.5;
-      font-size: 1.1rem; /* Увеличен шрифт для широкой карточки */
+      font-size: 1.1rem;
       margin-bottom: 1rem;
       text-align: center;
   }
@@ -1333,7 +1333,7 @@
           width: 100%;
       }
       .testimonial-card {
-          flex: 0 0 600px; /* Увеличено в 2 раза с 300px */
+          flex: 0 0 600px;
           min-width: 600px;
       }
       .testimonials-nav.prev {
@@ -1428,216 +1428,179 @@
   });
 
   function openMarquiz() {
-      // console.log('Opening Marquiz'); // Дебаг
       Marquiz.showModal('682fd65617138a0019fb69d9');
   }
 
   /* ===== Карусель ===== */
-  const grid = document.querySelector('#testimonialsGrid');
-  const cards = [...grid.querySelectorAll('.testimonial-card')];
-  let isDragging = false;
-  let startPos = 0;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
-  let currentIndex = 0;
-  let animationID = 0;
+  document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.querySelector('#testimonialsGrid');
+      const cards = [...grid.querySelectorAll('.testimonial-card')];
+      let isDragging = false;
+      let startPos = 0;
+      let currentTranslate = 0;
+      let prevTranslate = 0;
+      let currentIndex = 0;
+      let animationID = 0;
 
-  function setupInfiniteScroll() {
-      if (!cards.length) {
-          // console.log('No cards found'); // Дебаг
-          return;
+      function setupInfiniteScroll() {
+          if (!cards.length) return;
+          const firstCard = cards[0].cloneNode(true);
+          const lastCard = cards[cards.length - 1].cloneNode(true);
+          grid.appendChild(firstCard);
+          grid.insertBefore(lastCard, grid.firstChild);
+          const cardWidth = getCardWidth();
+          grid.style.transform = `translateX(-${cardWidth}px)`;
       }
-      const firstCard = cards[0].cloneNode(true);
-      const lastCard = cards[cards.length - 1].cloneNode(true);
-      grid.appendChild(firstCard);
-      grid.insertBefore(lastCard, grid.firstChild);
-      const cardWidth = getCardWidth();
-      // console.log('Card width:', cardWidth); // Дебаг
-      grid.style.transform = `translateX(-${cardWidth}px)`;
-  }
 
-  function getCardWidth() {
-      if (!cards[0]) {
-          // console.log('No cards for width calculation'); // Дебаг
-          return 0;
+      function getCardWidth() {
+          if (!cards[0]) return 0;
+          const gap = parseFloat(getComputedStyle(grid).columnGap || 0);
+          return cards[0].offsetWidth + gap;
       }
-      const gap = parseFloat(getComputedStyle(grid).columnGap || 0);
-      return cards[0].offsetWidth + gap;
-  }
 
-  function setPositionByIndex() {
-      const cardWidth = getCardWidth();
-      currentTranslate = (currentIndex + 1) * -cardWidth;
-      prevTranslate = currentTranslate;
-      // console.log('Setting position, index:', currentIndex, 'translate:', currentTranslate); // Дебаг
-      setSliderPosition();
-  }
-
-  function setSliderPosition() {
-      grid.style.transform = `translateX(${currentTranslate}px)`;
-  }
-
-  function animation() {
-      setSliderPosition();
-      if (isDragging) {
-          animationID = requestAnimationFrame(animation);
+      function setPositionByIndex() {
+          const cardWidth = getCardWidth();
+          currentTranslate = (currentIndex + 1) * -cardWidth;
+          prevTranslate = currentTranslate;
+          setSliderPosition();
       }
-  }
 
-  function touchStart(event) {
-      isDragging = true;
-      startPos = getPositionX(event);
-      // console.log('Touch start, startPos:', startPos); // Дебаг
-      animationID = requestAnimationFrame(animation);
-      grid.style.cursor = 'grabbing';
-  }
-
-  function touchMove(event) {
-      if (isDragging) {
-          const currentPosition = getPositionX(event);
-          currentTranslate = prevTranslate + currentPosition - startPos;
-          // console.log('Touch move, currentTranslate:', currentTranslate); // Дебаг
+      function setSliderPosition() {
+          grid.style.transform = `translateX(${currentTranslate}px)`;
       }
-  }
 
-  function touchEnd() {
-      isDragging = false;
-      cancelAnimationFrame(animationID);
-      const movedBy = currentTranslate - prevTranslate;
-      // console.log('Touch end, movedBy:', movedBy); // Дебаг
-      if (Math.abs(movedBy) > getCardWidth() / 3) {
-          if (movedBy < 0) {
-              currentIndex++;
-          } else {
-              currentIndex--;
+      function animation() {
+          setSliderPosition();
+          if (isDragging) {
+              animationID = requestAnimationFrame(animation);
           }
       }
 
-      if (currentIndex >= cards.length) {
-          currentIndex = 0;
-          grid.style.transition = 'none';
-          setPositionByIndex();
-          setTimeout(() => {
-              grid.style.transition = 'transform 0.3s';
-              setPositionByIndex();
-          }, 10);
-      } else if (currentIndex < 0) {
-          currentIndex = cards.length - 1;
-          grid.style.transition = 'none';
-          setPositionByIndex();
-          setTimeout(() => {
-              grid.style.transition = 'transform 0.3s';
-              setPositionByIndex();
-          }, 10);
-      } else {
-          setPositionByIndex();
+      function touchStart(event) {
+          isDragging = true;
+          startPos = getPositionX(event);
+          animationID = requestAnimationFrame(animation);
+          grid.style.cursor = 'grabbing';
       }
-      grid.style.cursor = 'grab';
-  }
 
-  function getPositionX(event) {
-      const x = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-      // console.log('Position X:', x); // Дебаг
-      return x;
-  }
+      function touchMove(event) {
+          if (isDragging) {
+              const currentPosition = getPositionX(event);
+              currentTranslate = prevTranslate + currentPosition - startPos;
+          }
+      }
 
-  grid.addEventListener('mousedown', touchStart);
-  grid.addEventListener('touchstart', touchStart);
-  grid.addEventListener('mousemove', touchMove);
-  grid.addEventListener('touchmove', touchMove);
-  grid.addEventListener('mouseup', touchEnd);
-  grid.addEventListener('touchend', touchEnd);
-  grid.addEventListener('mouseleave', touchEnd);
+      function touchEnd() {
+          isDragging = false;
+          cancelAnimationFrame(animationID);
+          const movedBy = currentTranslate - prevTranslate;
+          if (Math.abs(movedBy) > getCardWidth() / 3) {
+              if (movedBy < 0) {
+                  currentIndex++;
+              } else {
+                  currentIndex--;
+              }
+          }
 
-  /* ===== Управление колесиком ===== */
-  grid.addEventListener('wheel', (event) => {
-      event.preventDefault();
-      const delta = event.deltaY;
-      // console.log('Wheel delta:', delta); // Дебаг
-      if (delta > 0) {
-          currentIndex++;
-      } else if (delta < 0) {
+          if (currentIndex >= cards.length) {
+              currentIndex = 0;
+              grid.style.transition = 'none';
+              setPositionByIndex();
+              setTimeout(() => {
+                  grid.style.transition = 'transform 0.3s';
+                  setPositionByIndex();
+              }, 10);
+          } else if (currentIndex < 0) {
+              currentIndex = cards.length - 1;
+              grid.style.transition = 'none';
+              setPositionByIndex();
+              setTimeout(() => {
+                  grid.style.transition = 'transform 0.3s';
+                  setPositionByIndex();
+              }, 10);
+          } else {
+              setPositionByIndex();
+          }
+          grid.style.cursor = 'grab';
+      }
+
+      function getPositionX(event) {
+          return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+      }
+
+      grid.addEventListener('mousedown', touchStart);
+      grid.addEventListener('touchstart', touchStart);
+      grid.addEventListener('mousemove', touchMove);
+      grid.addEventListener('touchmove', touchMove);
+      grid.addEventListener('mouseup', touchEnd);
+      grid.addEventListener('touchend', touchEnd);
+      grid.addEventListener('mouseleave', touchEnd);
+
+      /* ===== Управление колесиком ===== */
+      grid.addEventListener('wheel', (event) => {
+          event.preventDefault();
+          const delta = event.deltaY;
+          if (delta > 0) {
+              currentIndex++;
+          } else if (delta < 0) {
+              currentIndex--;
+          }
+
+          if (currentIndex >= cards.length) {
+              currentIndex = 0;
+              grid.style.transition = 'none';
+              setPositionByIndex();
+              setTimeout(() => {
+                  grid.style.transition = 'transform 0.3s';
+                  setPositionByIndex();
+              }, 10);
+          } else if (currentIndex < 0) {
+              currentIndex = cards.length - 1;
+              grid.style.transition = 'none';
+              setPositionByIndex();
+              setTimeout(() => {
+                  grid.style.transition = 'transform 0.3s';
+                  setPositionByIndex();
+              }, 10);
+          } else {
+              setPositionByIndex();
+          }
+      });
+
+      /* ===== Навигация стрелками ===== */
+      document.querySelector('.testimonials-nav.prev').addEventListener('click', () => {
           currentIndex--;
-      }
-
-      if (currentIndex >= cards.length) {
-          currentIndex = 0;
-          grid.style.transition = 'none';
-          setPositionByIndex();
-          setTimeout(() => {
-              grid.style.transition = 'transform 0.3s';
+          if (currentIndex < 0) {
+              currentIndex = cards.length - 1;
+              grid.style.transition = 'none';
               setPositionByIndex();
-          }, 10);
-      } else if (currentIndex < 0) {
-          currentIndex = cards.length - 1;
-          grid.style.transition = 'none';
-          setPositionByIndex();
-          setTimeout(() => {
-              grid.style.transition = 'transform 0.3s';
+              setTimeout(() => {
+                  grid.style.transition = 'transform 0.3s';
+                  setPositionByIndex();
+              }, 10);
+          } else {
               setPositionByIndex();
-          }, 10);
-      } else {
-          setPositionByIndex();
-      }
-  });
+          }
+      });
 
-  /* ===== Навигация стрелками ===== */
-  document.querySelector('.testimonials-nav.prev').addEventListener('click', () => {
-      // console.log('Prev clicked'); // Дебаг
-      currentIndex--;
-      if (currentIndex < 0) {
-          currentIndex = cards.length - 1;
-          grid.style.transition = 'none';
-          setPositionByIndex();
-          setTimeout(() => {
-              grid.style.transition = 'transform 0.3s';
+      document.querySelector('.testimonials-nav.next').addEventListener('click', () => {
+          currentIndex++;
+          if (currentIndex >= cards.length) {
+              currentIndex = 0;
+              grid.style.transition = 'none';
               setPositionByIndex();
-          }, 10);
-      } else {
-          setPositionByIndex();
-      }
-  });
-
-  document.querySelector('.testimonials-nav.next').addEventListener('click', () => {
-      // console.log('Next clicked'); // Дебаг
-      currentIndex++;
-      if (currentIndex >= cards.length) {
-          currentIndex = 0;
-          grid.style.transition = 'none';
-          setPositionByIndex();
-          setTimeout(() => {
-              grid.style.transition = 'transform 0.3s';
+              setTimeout(() => {
+                  grid.style.transition = 'transform 0.3s';
+                  setPositionByIndex();
+              }, 10);
+          } else {
               setPositionByIndex();
-          }, 10);
-      } else {
-          setPositionByIndex();
-      }
-  });
+          }
+      });
 
-  /* ===== Инициализация ===== */
-  document.addEventListener('DOMContentLoaded', () => {
-      // console.log('Initializing carousel'); // Дебаг
+      /* ===== Инициализация ===== */
       setupInfiniteScroll();
   });
-</script>
-
-  document.querySelector('.testimonials-nav.next').addEventListener('click', () => {
-      currentIndex++;
-      if (currentIndex >= cards.length) {
-          currentIndex = 0;
-          grid.style.transition = 'none';
-          setPositionByIndex();
-          setTimeout(() => {
-              grid.style.transition = 'transform 0.3s';
-              setPositionByIndex();
-          }, 10);
-      } else {
-          setPositionByIndex();
-      }
-  });
-
-  /* ===== Инициализация ===== */
-  setupInfiniteScroll();
 </script>
     </section>    <section id="contact" class="py-8 px-6 contact-section">
     <div class="max-w-xl mx-auto relative z-10">
