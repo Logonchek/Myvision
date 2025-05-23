@@ -1189,13 +1189,15 @@
 <style>
   :root { --neon-green: #22c55e; }
   #testimonials {
-    background-color: var(rgba(36, 32, 32, 1));
-    padding: 4rem 1.5rem;
+      background: rgba(36, 32, 32, 1); /* Исправлено: убран var() */
+      padding: 4rem 1.5rem;
+      position: relative;
+      overflow: hidden;
   }
   #testimonials .bg-gradient-to-b {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent,  var(rgba(36, 32, 32, 1));
+      background: linear-gradient(to bottom, transparent, rgba(36, 32, 32, 1)); /* Исправлено: убран var(), добавлена скобка */
   }
   .testimonials-container {
       max-width: 1200px;
@@ -1231,7 +1233,7 @@
   .testimonials-grid {
       display: flex;
       gap: 1rem;
-      transition: transform 0.5s ease-in-out; /* Увеличена длительность и более мягкая кривая */
+      transition: transform 0.5s ease-in-out;
       width: max-content;
       padding: 0 2rem;
       cursor: grab;
@@ -1346,7 +1348,7 @@
   }
 </style>
 
-<section id="testimonials" class="py-16 px-6 bg-gray-900 relative overflow-hidden">
+<section id="testimonials" class="py-16 px-6 relative overflow-hidden">
   <div class="bg-gradient-to-b"></div>
   <div class="testimonials-container">
     <div class="testimonials-header">
