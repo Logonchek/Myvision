@@ -1233,7 +1233,7 @@
   .testimonials-grid {
       display: flex;
       gap: 1rem;
-      transition: transform 0.3s ease;
+      transition: transform 0.5s ease-in-out; /* Увеличена длительность и более мягкая кривая */
       width: max-content;
       padding: 0 2rem;
       cursor: grab;
@@ -1293,10 +1293,6 @@
       color: #9ca3af;
       font-size: 1rem;
       margin-bottom: 0.5rem;
-  }
-  .testimonial-rating {
-      color: #FFD700;
-      font-size: 1.2rem;
   }
   .testimonial-cta {
       display: inline-block;
@@ -1374,9 +1370,8 @@
           <div class="testimonial-info">
             <div class="testimonial-name">Иван Петров</div>
             <div class="testimonial-position">Директор по маркетингу</div>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
-          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Связаться</a>
+          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Хочу так же</a>
         </div>
         <!-- Testimonial 2 -->
         <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
@@ -1390,9 +1385,8 @@
           <div class="testimonial-info">
             <div class="testimonial-name">Марина Соколова</div>
             <div class="testimonial-position">Руководитель отдела продаж</div>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
-          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Связаться</a>
+          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Хочу так же</a>
         </div>
         <!-- Testimonial 3 -->
         <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
@@ -1406,9 +1400,8 @@
           <div class="testimonial-info">
             <div class="testimonial-name">Дмитрий Волков</div>
             <div class="testimonial-position">CEO, TechStart</div>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
-          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Связаться</a>
+          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Хочу так же</a>
         </div>
       </div>
       <div class="testimonials-nav next">❯</div>
@@ -1507,7 +1500,7 @@
               grid.style.transition = 'none';
               setPositionByIndex();
               setTimeout(() => {
-                  grid.style.transition = 'transform 0.3s';
+                  grid.style.transition = 'transform 0.5s ease-in-out';
                   setPositionByIndex();
               }, 10);
           } else if (currentIndex < 0) {
@@ -1515,7 +1508,7 @@
               grid.style.transition = 'none';
               setPositionByIndex();
               setTimeout(() => {
-                  grid.style.transition = 'transform 0.3s';
+                  grid.style.transition = 'transform 0.5s ease-in-out';
                   setPositionByIndex();
               }, 10);
           } else {
@@ -1551,7 +1544,7 @@
               grid.style.transition = 'none';
               setPositionByIndex();
               setTimeout(() => {
-                  grid.style.transition = 'transform 0.3s';
+                  grid.style.transition = 'transform 0.5s ease-in-out';
                   setPositionByIndex();
               }, 10);
           } else if (currentIndex < 0) {
@@ -1559,7 +1552,7 @@
               grid.style.transition = 'none';
               setPositionByIndex();
               setTimeout(() => {
-                  grid.style.transition = 'transform 0.3s';
+                  grid.style.transition = 'transform 0.5s ease-in-out';
                   setPositionByIndex();
               }, 10);
           } else {
@@ -1575,7 +1568,7 @@
               grid.style.transition = 'none';
               setPositionByIndex();
               setTimeout(() => {
-                  grid.style.transition = 'transform 0.3s';
+                  grid.style.transition = 'transform 0.5s ease-in-out';
                   setPositionByIndex();
               }, 10);
           } else {
@@ -1590,7 +1583,7 @@
               grid.style.transition = 'none';
               setPositionByIndex();
               setTimeout(() => {
-                  grid.style.transition = 'transform 0.3s';
+                  grid.style.transition = 'transform 0.5s ease-in-out';
                   setPositionByIndex();
               }, 10);
           } else {
