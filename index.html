@@ -1185,59 +1185,404 @@
   });
 </script>
 
-</script>    <section id="testimonials" class="py-16 px-6 bg-gray-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50"></div>
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center">
-                <h2 class="text-4xl font-bold neon-green mb-4">Отзывы клиентов</h2>
-                <p class="text-gray-400 text-lg mb-12">Что говорят о нашей работе те, кто уже добился результата</p>
-            </div>            <div class="testimonials-wrapper">
-                <div class="testimonials-nav prev">❮</div>
-                <div class="testimonials-container">
-                    <!-- Testimonial 1 -->
-                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
-                    <div class="testimonial-quote">❝</div>
-                    <div class="testimonial-image-wrapper">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
-                             alt="Алексей Петров"
-                             class="testimonial-image">
-                    </div>
-                    <p class="testimonial-text">"Лидогенерация вырос
-                </div>
+```html
+<!-- Testimonials Section -->
+<style>
+  :root { --neon-green: #22c55e; }
+  #testimonials {
+      background: rgba(36,32,32,1);
+      padding: 4rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+  }
+  #testimonials .bg-gradient-to-b {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(36,32,32,0.5));
+  }
+  .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+  }
+  .testimonials-header {
+      text-align: center;
+      margin-bottom: 2rem;
+  }
+  .testimonials-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+  }
+  .testimonials-header h2 .neon-green {
+      color: var(--neon-green);
+  }
+  .testimonials-header p {
+      color: #9ca3af;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+  }
+  /* Карусель */
+  .testimonials-wrapper {
+      position: relative;
+      width: 900px; /* 2 карточки (400px) + половина третьей (200px) + gap (1rem * 2 = 32px) */
+      margin: 0 auto;
+      overflow-x: hidden;
+  }
+  .testimonials-grid {
+      display: flex;
+      gap: 1rem;
+      transition: transform 0.3s ease;
+      width: max-content;
+      padding: 0 2rem;
+      cursor: grab;
+  }
+  .testimonials-grid:active {
+      cursor: grabbing;
+  }
+  .testimonial-card {
+      flex: 0 0 400px;
+      min-width: 400px;
+      background: rgba(44,40,40,0.95);
+      border: 1px solid rgba(34,197,94,0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+  }
+  .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 16px rgba(34,197,94,0.3);
+  }
+  .testimonial-quote {
+      font-size: 2rem;
+      color: var(--neon-green);
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+  }
+  .testimonial-image-wrapper {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+  }
+  .testimonial-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--neon-green);
+  }
+  .testimonial-text {
+      color: #ccc;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      text-align: center;
+  }
+  .testimonial-info {
+      text-align: center;
+  }
+  .testimonial-name {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+  }
+  .testimonial-position {
+      color: #9ca3af;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+  }
+  .testimonial-rating {
+      color: #FFD700;
+      font-size: 1rem;
+  }
+  .testimonial-cta {
+      display: inline-block;
+      color: var(--neon-green);
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 1rem;
+  }
+  .testimonial-cta:hover {
+      text-decoration: underline;
+  }
+  .testimonials-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: var(--neon-green);
+      cursor: pointer;
+      z-index: 20;
+  }
+  .testimonials-nav.prev {
+      left: -3rem;
+  }
+  .testimonials-nav.next {
+      right: -3rem;
+  }
+  /* Адаптивность */
+  @media (max-width: 768px) {
+      .testimonials-wrapper {
+          width: 100%;
+      }
+      .testimonial-card {
+          flex: 0 0 300px;
+          min-width: 300px;
+      }
+      .testimonials-nav.prev {
+          left: 0.5rem;
+      }
+      .testimonials-nav.next {
+          right: 0.5rem;
+      }
+  }
+</style>
 
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
-                    <div class="testimonial-quote">❝</div>
-                    <div class="testimonial-image-wrapper">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Pink%20Simple%20Online%20Consultations%20Instagram%20Post%20(1).png?alt=media&token=e0e32873-9a02-4d29-ab1b-c785d8bfa70c" 
-                             alt="Марина Соколова"
-                             class="testimonial-image">
-                    </div>
-                    <p class="testimonial-text">"Внедренные чат-боты полностью изменили наш подход к работе с клиентами. Мы достигли 80% автоматизации в обработке запросов, что значительно разгрузило отдел продаж и повысило скорость реакции."</p>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Марина Соколова</div>
-                        <div class="testimonial-position">Руководитель отдела продаж</div>
-                        <div class="testimonial-rating">★★★★★</div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
-                    <div class="testimonial-quote">❝</div>
-                    <div class="testimonial-image-wrapper">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
-                             alt="Дмитрий Волков"
-                             class="testimonial-image">
-                    </div>
-                    <p class="testimonial-text">"За три месяца сотрудничества мы увеличили конверсию сайта на 45% и снизили стоимость привлечения клиента вдвое. Особенно впечатлила глубина аналитики и внимание к деталям."</p>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Дмитрий Волков</div>
-                        <div class="testimonial-position">CEO, TechStart</div>
-                        <div class="testimonial-rating">★★★★★</div>
-                    </div>
-                </div>
-            </div>
+<section id="testimonials" class="py-16 px-6 bg-gray-900 relative overflow-hidden">
+  <div class="bg-gradient-to-b"></div>
+  <div class="testimonials-container">
+    <div class="testimonials-header">
+      <h2>Отзывы <span class="neon-green">клиентов</span></h2>
+      <p>Что говорят о нашей работе те, кто уже добился результата</p>
+    </div>
+    <div class="testimonials-wrapper">
+      <div class="testimonials-nav prev">❮</div>
+      <div class="testimonials-grid" id="testimonialsGrid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
+          <div class="testimonial-quote">❝</div>
+          <div class="testimonial-image-wrapper">
+            <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
+                 alt="Иван Петров"
+                 class="testimonial-image">
+          </div>
+          <p class="testimonial-text">"Лидогенерация выросла на 30%, что позволило нам увеличить поток клиентов и масштабировать бизнес."</p>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Иван Петров</div>
+            <div class="testimonial-position">Директор по маркетингу</div>
+            <div class="testimonial-rating">★★★★★</div>
+          </div>
+          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Связаться</a>
         </div>
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
+          <div class="testimonial-quote">❝</div>
+          <div class="testimonial-image-wrapper">
+            <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Pink%20Simple%20Online%20Consultations%20Instagram%20Post%20(1).png?alt=media&token=e0e32873-9a02-4d29-ab1b-c785d8bfa70c" 
+                 alt="Марина Соколова"
+                 class="testimonial-image">
+          </div>
+          <p class="testimonial-text">"Внедренные чат-боты полностью изменили наш подход к работе с клиентами. Мы достигли 80% автоматизации в обработке запросов, что значительно разгрузило отдел продаж и повысило скорость реакции."</p>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Марина Соколова</div>
+            <div class="testimonial-position">Руководитель отдела продаж</div>
+            <div class="testimonial-rating">★★★★★</div>
+          </div>
+          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Связаться</a>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
+          <div class="testimonial-quote">❝</div>
+          <div class="testimonial-image-wrapper">
+            <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
+                 alt="Дмитрий Волков"
+                 class="testimonial-image">
+          </div>
+          <p class="testimonial-text">"За три месяца сотрудничества мы увеличили конверсию сайта на 45% и снизили стоимость привлечения клиента вдвое. Особенно впечатлила глубина аналитики и внимание к деталям."</p>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Дмитрий Волков</div>
+            <div class="testimonial-position">CEO, TechStart</div>
+            <div class="testimonial-rating">★★★★★</div>
+          </div>
+          <a href="#" class="testimonial-cta" onclick="openMarquiz()">Связаться</a>
+        </div>
+      </div>
+      <div class="testimonials-nav next">❯</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* ===== Marquiz ===== */
+  (function(w, d, s, o) {
+      var j = d.createElement(s); j.async = true; j.src = '//script.marquiz.ru/v2.js';
+      j.onload = function() { if (d.readyState < 2) Marquiz.init(o); };
+      d.head.appendChild(j);
+  })(window, document, 'script', {
+      id: '682fd65617138a0019fb69d9',
+      autoOpen: false
+  });
+
+  function openMarquiz() {
+      Marquiz.showModal('682fd65617138a0019fb69d9');
+  }
+
+  /* ===== Карусель ===== */
+  const grid = document.querySelector('#testimonialsGrid');
+  const cards = [...grid.querySelectorAll('.testimonial-card')];
+  let isDragging = false;
+  let startPos = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let currentIndex = 0;
+  let animationID = 0;
+
+  function setupInfiniteScroll() {
+      const firstCard = cards[0].cloneNode(true);
+      const lastCard = cards[cards.length - 1].cloneNode(true);
+      grid.appendChild(firstCard);
+      grid.insertBefore(lastCard, grid.firstChild);
+      grid.style.transform = `translateX(-${getCardWidth()}px)`;
+  }
+
+  function getCardWidth() {
+      return cards[0].offsetWidth + parseFloat(getComputedStyle(grid).columnGap || 0);
+  }
+
+  function setPositionByIndex() {
+      currentTranslate = (currentIndex + 1) * -getCardWidth();
+      prevTranslate = currentTranslate;
+      setSliderPosition();
+  }
+
+  function setSliderPosition() {
+      grid.style.transform = `translateX(${currentTranslate}px)`;
+  }
+
+  function animation() {
+      setSliderPosition();
+      if (isDragging) requestAnimationFrame(animation);
+  }
+
+  function touchStart(event) {
+      isDragging = true;
+      startPos = getPositionX(event);
+      animationID = requestAnimationFrame(animation);
+      grid.style.cursor = 'grabbing';
+  }
+
+  function touchMove(event) {
+      if (isDragging) {
+          const currentPosition = getPositionX(event);
+          currentTranslate = prevTranslate + currentPosition - startPos;
+      }
+  }
+
+  function touchEnd() {
+      isDragging = false;
+      cancelAnimationFrame(animationID);
+      const movedBy = currentTranslate - prevTranslate;
+      if (Math.abs(movedBy) > getCardWidth() / 3) {
+          if (movedBy < 0) {
+              currentIndex++;
+          } else {
+              currentIndex--;
+          }
+      }
+
+      if (currentIndex >= cards.length) {
+          currentIndex = 0;
+          grid.style.transition = 'none';
+          setPositionByIndex();
+          setTimeout(() => {
+              grid.style.transition = 'transform 0.3s';
+              setPositionByIndex();
+          }, 10);
+      } else if (currentIndex < 0) {
+          currentIndex = cards.length - 1;
+          grid.style.transition = 'none';
+          setPositionByIndex();
+          setTimeout(() => {
+              grid.style.transition = 'transform 0.3s';
+              setPositionByIndex();
+          }, 10);
+      } else {
+          setPositionByIndex();
+      }
+      grid.style.cursor = 'grab';
+  }
+
+  function getPositionX(event) {
+      return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+  }
+
+  grid.addEventListener('mousedown', touchStart);
+  grid.addEventListener('touchstart', touchStart);
+  grid.addEventListener('mousemove', touchMove);
+  grid.addEventListener('touchmove', touchMove);
+  grid.addEventListener('mouseup', touchEnd);
+  grid.addEventListener('touchend', touchEnd);
+  grid.addEventListener('mouseleave', touchEnd);
+
+  /* ===== Управление колесиком ===== */
+  grid.addEventListener('wheel', (event) => {
+      event.preventDefault();
+      const delta = event.deltaY;
+      if (delta > 0) {
+          currentIndex++;
+      } else if (delta < 0) {
+          currentIndex--;
+      }
+
+      if (currentIndex >= cards.length) {
+          currentIndex = 0;
+          grid.style.transition = 'none';
+          setPositionByIndex();
+          setTimeout(() => {
+              grid.style.transition = 'transform 0.3s';
+              setPositionByIndex();
+          }, 10);
+      } else if (currentIndex < 0) {
+          currentIndex = cards.length - 1;
+          grid.style.transition = 'none';
+          setPositionByIndex();
+          setTimeout(() => {
+              grid.style.transition = 'transform 0.3s';
+              setPositionByIndex();
+          }, 10);
+      } else {
+          setPositionByIndex();
+      }
+  });
+
+  /* ===== Навигация стрелками ===== */
+  document.querySelector('.testimonials-nav.prev').addEventListener('click', () => {
+      currentIndex--;
+      if (currentIndex < 0) {
+          currentIndex = cards.length - 1;
+          grid.style.transition = 'none';
+          setPositionByIndex();
+          setTimeout(() => {
+              grid.style.transition = 'transform 0.3s';
+              setPositionByIndex();
+          }, 10);
+      } else {
+          setPositionByIndex();
+      }
+  });
+
+  document.querySelector('.testimonials-nav.next').addEventListener('click', () => {
+      currentIndex++;
+      if (currentIndex >= cards.length) {
+          currentIndex = 0;
+          grid.style.transition = 'none';
+          setPositionByIndex();
+          setTimeout(() => {
+              grid.style.transition = 'transform 0.3s';
+              setPositionByIndex();
+          }, 10);
+      } else {
+          setPositionByIndex();
+      }
+  });
+
+  /* ===== Инициализация ===== */
+  setupInfiniteScroll();
+</script>
     </section>    <section id="contact" class="py-8 px-6 contact-section">
     <div class="max-w-xl mx-auto relative z-10">
         <h2 class="text-3xl font-bold neon-green text-center mb-2">Готовы к результатам?</h2>
