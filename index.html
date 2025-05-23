@@ -742,6 +742,145 @@
   </div>
 </section>
 
+<!-- Services Section -->
+<style>
+  /* Фон секции */
+  #services {
+    background-color: var(rgba(36, 32, 32, 1));
+    padding: 4rem 1.5rem;
+  }
+  /* Контейнер */
+  .services-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  /* Заголовок и подзаголовок */
+  .services-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .services-header h2 .neon-green {
+    color: var(--neon-green);
+  }
+  .services-header p {
+    font-size: 1rem;
+    text-align: center;
+    color: #9ca3af;
+    margin-bottom: 2rem;
+  }
+  /* Сетка карточек: 3 в ряд */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  /* Карточка услуги */
+  .service-card {
+    background-color: rgba(44, 40, 40, 1);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(34, 197, 94, 0.3);
+  }
+  /* Иконка в зеленом кружке */
+  .service-card .icon {
+    background-color: var(--neon-green);
+    color: #000;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  /* Заголовок карточки */
+  .service-card h3 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  /* Описание */
+  .service-card p {
+    color: #ccc;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  /* Ссылка подробнее */
+  .service-card a {
+    color: var(--neon-green);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .service-card a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+<section id="services">
+  <div class="services-container animate-on-scroll">
+    <div class="services-header">
+      <h2>Мои <span class="neon-green">услуги</span></h2>
+      <p>Комплексные решения для развития вашего бизнеса через эффективный маркетинг</p>
+    </div>
+    <div class="services-grid">
+      <!-- 1 -->
+      <div class="service-card">
+        <i class="fas fa-chart-line icon"></i>
+        <h3>Разработка маркетинговой стратегии</h3>
+        <p>Создание комплексной стратегии продвижения с учётом специфики вашего бизнеса, целевой аудитории и конкурентной среды.</p>
+        <a href="#contact">Подробнее →</a>
+      </div>
+      <!-- 2 -->
+      <div class="service-card">
+        <i class="fas fa-users icon"></i>
+        <h3>Создание отдела маркетинга</h3>
+        <p>Формирование эффективной структуры отдела, подбор специалистов, настройка процессов и KPI.</p>
+        <a href="#contact">Подробнее →</a>
+      </div>
+      <!-- 3 -->
+      <div class="service-card">
+        <i class="fas fa-rocket icon"></i>
+        <h3>Ускорение отдела маркетинга</h3>
+        <p>Аудит и оптимизация процессов, внедрение новых инструментов и методик для повышения эффективности.</p>
+        <a href="#contact">Подробнее →</a>
+      </div>
+      <!-- 4 -->
+      <div class="service-card">
+        <i class="fas fa-funnel-dollar icon"></i>
+        <h3>Настройка лидогенерации под ключ</h3>
+        <p>Комплексное решение: создание лендинга, настройка рекламных кампаний и внедрение аналитики.</p>
+        <a href="#contact">Подробнее →</a>
+      </div>
+      <!-- 5 -->
+      <div class="service-card">
+        <i class="fas fa-robot icon"></i>
+        <h3>Создание чат-ботов</h3>
+        <p>Разработка и внедрение интеллектуальных чат-ботов для автоматизации общения с клиентами.</p>
+        <a href="#contact">Подробнее →</a>
+      </div>
+      <!-- 6 -->
+      <div class="service-card">
+        <i class="fas fa-code icon"></i>
+        <h3>Запуск MVP и создание сайтов</h3>
+        <p>Быстрый запуск минимального жизнеспособного продукта и создание конверсионных сайтов и лендингов.</p>
+        <a href="#contact">Подробнее →</a>
+      </div>
+    </div>
+  </div>
+</section>
+    
 <!-- Cases Section -->
 <style>
   :root{--neon-green:#22c55e;}
