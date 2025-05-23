@@ -215,13 +215,14 @@
     max-width: 100%;
     padding: 0 4rem;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .testimonials-container {
     display: flex;
     gap: 2rem;
+    transition: transform 0.5s ease;
     width: max-content;
-    transition: transform 0.3s ease;
     padding: 1rem;
 }
 
@@ -229,8 +230,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     background: rgba(34, 197, 94, 0.9);
     border-radius: 50%;
     display: flex;
@@ -241,31 +242,26 @@
     font-size: 1.5rem;
     z-index: 3;
     transition: all 0.3s ease;
-}
-
-.testimonials-nav:hover {
-    background: rgba(34, 197, 94, 1);
-    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
 }
 
 .testimonials-nav.prev { left: 0; }
 .testimonials-nav.next { right: 0; }
 
-.testimonial-card {
-    flex: 0 0 400px;
-    min-width: 400px;
-    transform: scale(0.95);
-    transition: all 0.3s ease;
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
 }
 
 .testimonial-card {
-    position: relative;
+    flex: 0 0 400px;
+    min-width: 400px;
     background: rgba(31, 41, 55, 0.8);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(34, 197, 94, 0.1);
     border-radius: 1.5rem;
     padding: 2.5rem 2rem 2rem;
-    transition: all 0.3s ease;
 }
 
 .testimonial-image-wrapper {
@@ -289,189 +285,177 @@
     top: 1rem;
     left: 1.5rem;
     font-size: 4rem;
-    font-family: Georgia, serif;
     color: rgba(34, 197, 94, 0.1);
     line-height: 1;
 }
 
-.testimonial-text {
-    font-size: 1.125rem;
-    line-height: 1.75;
-    color: #e5e7eb;
-    margin-bottom: 1.5rem;
-    font-style: italic;
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
     position: relative;
-    z-index: 1;
-}
-
-.testimonial-info {
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.testimonial-name {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #22c55e;
-    margin-bottom: 0.25rem;
-}
-
-.testimonial-position {
-    color: #9ca3af;
-    font-size: 0.875rem;
-}
-
-.testimonial-rating {
     display: flex;
-    justify-content: center;
-    gap: 0.25rem;
-    margin-top: 1rem;
-    color: #fbbf24;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
-    border-color: rgba(34, 197, 94, 0.3);
-}
-
-/* Стили для контактной формы */
-.contact-section {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(to bottom, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.95));
-    padding: 2rem 0;
-}
-
-.contact-form {
-    background: rgba(31, 41, 55, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(34, 197, 94, 0.1);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.form-group {
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-.form-input {
-    width: 100%;
-    background: rgba(17, 24, 39, 0.8);
-    border: 2px solid rgba(34, 197, 94, 0.1);
-    border-radius: 0.75rem;
-    padding: 0.75rem 1rem;
-    color: white;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-label {
-    position: absolute;
-    top: -0.5rem;
-    left: 1rem;
-    padding: 0 0.5rem;
-    background: rgba(17, 24, 39, 0.8);
-    color: var(--neon-green);
-    font-size: 0.875rem;
-    transition: all 0.3s ease;
-}
-
-.submit-button {
-    background: var(--neon-green);
-    color: black;
-    font-weight: 600;
-    padding: 1rem 2rem;
-    border-radius: 0.75rem;
-    font-size: 1.125rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    margin-top: 1rem;
-    width: auto;
-}
-
-/* Анимации и эффекты при наведении */
-.contact-form:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(34, 197, 94, 0.15);
-    border-color: rgba(34, 197, 94, 0.2);
-}
-
-.form-input:focus {
-    background: rgba(17, 24, 39, 0.95);
-    border-color: var(--neon-green);
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
-    transform: translateY(-2px);
-    outline: none;
-}
-
-.submit-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
-}
-
-.submit-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
-}
-
-.submit-button:hover::before {
-    left: 100%;
-}
-
-.form-group {
-    position: relative;
-    margin-bottom: 1.5rem;
-}
-
-.form-label {
-    position: absolute;
-    top: -0.5rem;
-    left: 1rem;
-    padding: 0 0.5rem;
-    background: rgba(17, 24, 39, 0.8);
-    color: var(--neon-green);
-    font-size: 0.875rem;
-    transition: all 0.3s ease;
-}
-
-/* Стили карусели */
-#cases .cases-wrapper {
-    position: relative;
-    max-width: 950px;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 0 0.5rem;
-}
-
-#cases .cases-grid {
-    display: flex;
-    gap: 20px;
+    gap: 1.5rem;
     transition: transform 0.3s ease;
     width: max-content;
-    padding: 0.5rem 0;
+    padding: 0;
 }
 
-#cases .case-card {
-    flex: 0 0 380px;
-    min-width: 380px;
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
     background: rgba(44, 40, 40, 0.95);
     border: 1px solid rgba(34, 197, 94, 0.1);
     border-radius: 1rem;
@@ -479,48 +463,2592 @@
     transition: all 0.3s ease;
 }
 
-#cases .case-nav {
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     background: rgba(34, 197, 94, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
     z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
     transition: all 0.3s ease;
 }
 
-#cases .case-nav:hover {
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
     background: rgba(34, 197, 94, 1);
     transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
 }
 
-#cases .case-nav.prev { left: -0.5rem; }
-#cases .case-nav.next { right: -0.5rem; }
-
-/* Дополнительные стили навигации */
-#cases .case-nav::before {
-    content: '';
-    width: 0.8rem;
-    height: 0.8rem;
-    border-style: solid;
-    border-width: 2px 2px 0 0;
-    display: inline-block;
-    transform: rotate(45deg);
-    margin-left: -4px;
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
 }
 
-#cases .case-nav.prev::before {
-    transform: rotate(-135deg);
-    margin-left: 4px;
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+}
+        .hero-bg {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0343_Цифровая%20лаймовая%20сеть_simple_compose_01jth9w7ftf2h8a6fxpmw5bmy5.png?alt=media&token=0775cbac-9006-45a1-b41b-533c632f4732');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 0.5rem 0;
+        }        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .nav .container > div:last-child {
+            margin-left: auto;
+        }
+        .nav .container > div:first-child {
+            margin-right: auto;
+        }
+        .nav-item {
+            color: #e5e5e5;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-item:hover {
+            color: var(--neon-green);
+        }
+        .btn-green {
+            background-color: var(--neon-green);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-green:hover {
+            background-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-outline:hover {
+            color: #a3e635;
+            border-color: #a3e635;
+            transform: scale(1.05);
+        }
+        .button-container {
+            display: flex;
+            gap: 3rem; /* Явное расстояние между кнопками */
+            align-items: center;
+        }
+        .check-down {
+            text-align: center;
+            font-size: 4rem; /* Увеличенный размер */
+            color: #00ff00; /* Более яркий зеленый */
+            text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Эффект свечения */
+            animation: bounce 1.5s infinite;
+            position: absolute;
+            bottom: 1rem; /* Опускаем к низу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрирование только по горизонтали */
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .insights {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #a3e635;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Карточка услуги */
+.service-card {
+  background-color: rgba(17, 24, 39, 1);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(34,197,94,0.5);
+  border-color: rgba(34,197,94,0.4);
+}
+
+/* Контейнер для сетки — три колонки на десктопе */
+.services-grid {
+  display: grid;
+  gap: 2rem;
+}
+@media(min-width:768px) {
+  .services-grid { grid-template-columns: repeat(
+}
+
+/* Заголовок и подзаголовок */
+#services h2 { color: #fff; }
+#services h2 .neon-green { color: var(--neon-green); }
+#services p { color: #9ca3af; }
+
+/* Улучшенные стили для карусели */
+.cases-grid {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    width: max-content;
+    padding: 0;
+}
+
+.case-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cases-wrapper {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+/* Modal styles */
+.modal {
+    background: rgba(44, 40, 40, 0.95);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+}        /* Стили для отзывов */
+.testimonials-wrapper {
+    position: relative;
+    max-width: 100%;
+    padding: 0 4rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    width: max-content;
+    padding: 1rem;
+}
+
+.testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(34, 197, 94, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.testimonials-nav.prev { left: 0; }
+.testimonials-nav.next { right: 0; }
+
+.testimonials-nav:hover {
+    background: rgba(34, 197, 94, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    min-width: 400px;
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.testimonial-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -4rem auto 1.5rem;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+.testimonial-quote {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(34, 197, 94, 0.1);
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 2rem;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .testimonials-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
 }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <script src="//script.marquiz.ru/v2.js" type="application/javascript"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Анимация при скролле
@@ -645,7 +3173,7 @@
                     Эксперт по стратегическому маркетингу с фокусом на измеримые результаты и системный подход
                 </p>
                 <div class="button-container">
-                    <a href="#contact" class="btn-green glow">Обсудить проект</a>
+                    <a href="#" class="btn-green glow marquiz-button" data-marquiz-id="682fd65617138a0019fb69d9">Обсудить проект</a>
                     <a href="#cases" class="btn-outline">Смотреть кейсы</a>
                 </div>
             </div>
@@ -787,7 +3315,7 @@
   }
   .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 16px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 8px 16px rgba(34,197,94,0.3);
   }
   /* Иконка в зеленом кружке */
   .service-card .icon {
@@ -1109,198 +3637,61 @@ grid.addEventListener('mousemove', touchMove);
 grid.addEventListener('touchmove', touchMove);
 grid.addEventListener('mouseup', touchEnd);
 grid.addEventListener('touchend', touchEnd);
-grid.addEventListener('mouseleave', touchEnd);
 
-// Автоматическое прокручивание
-let autoScrollInterval;
+// ===== Модальное окно =====
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalContent = document.getElementById('modalContent');
 
-function startAutoScroll() {
-    autoScrollInterval = setInterval(() => {
-        if (!isDragging) {
-            currentIndex++;
-            if (currentIndex === cards.length) {
-                currentIndex = 0;
-                grid.style.transition = 'none';
-                setPositionByIndex();
-                setTimeout(() => {
-                    grid.style.transition = 'transform 0.3s';
-                    currentIndex = 0;
-                    setPositionByIndex();
-                }, 10);
-            } else {
-                setPositionByIndex();
+document.querySelectorAll('.case-details').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const caseId = link.getAttribute('data-id');
+        openModal(caseId);
+    });
+});
+
+function openModal(caseId) {
+    const caseCard = document.querySelector(`.case-card[data-id="${caseId}"]`);
+    if (caseCard) {
+        const title = caseCard.querySelector('h3').innerText;
+        const description = caseCard.querySelector('p').innerText;
+        const stats = caseCard.querySelector('.stats').innerHTML;
+
+        modalContent.innerHTML = `
+            <h3 class="text-xl font-bold mb-4">${title}</h3>
+            <p class="mb-4">${description}</p>
+            <div class="stats mb-4">${stats}</div>
+            <a href="#" class="btn-green" id="modalCloseBtn">Закрыть</a>
+        `;
+        modalBackdrop.style.display = 'flex';
+        
+        // Закрытие модалки
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) {
+                closeModal();
             }
-        }
-    }, 3000);
+        });
+    }
 }
 
-function stopAutoScroll() {
-    clearInterval(autoScrollInterval);
+function closeModal() {
+    modalBackdrop.style.display = 'none';
+    modalContent.innerHTML = '';
 }
 
-grid.addEventListener('mouseenter', stopAutoScroll);
-grid.addEventListener('mouseleave', startAutoScroll);
-
-// Инициализация
-setupInfiniteScroll();
-startAutoScroll();
-</script>
-
-
-
-
-
-
-
-<!-- Модальное окно -->
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal">
-    <div class="modal-close" id="modalClose">&times;</div>
-    <div id="modalContent"></div>
-  </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const caseData = {
-        ural: {
-            title: 'Уралрегионстрой',
-            description: 'Полностью реорганизовали процесс работы с клиентами. Внедрили CRM-систему, автоматизировали приём заявок и настроили сквозную аналитику. Сократили время обработки на 40%, увеличили количество заявок на 35%, ROI рекламного бюджета вырос в 2.5 раза.'
-        },
-        brendoss: {
-            title: 'Мебельная фабрика Brendoss',
-            description: 'Разработали и внедрили комплексную систему лидогенерации. Запустили таргетированные кампании с глубокой сегментацией аудитории, создали серию целевых лендингов и настроили интеграцию с CRM. Продажи выросли на 41% за первый квартал, стоимость привлечения клиента снизилась на 25%.'
-        },
-        puls: {
-            title: 'Пульс цен',
-            description: 'Реализовали стратегию масштабирования B2B-маркетплейса. Оптимизировали воронку привлечения поставщиков через контекст, таргетинг и ремаркетинг. Увеличили базу активных поставщиков на 28%, снизили стоимость привлечения на 35%.'
-        },
-        blocks: {
-            title: 'Продажа пеноблоков',
-            description: 'Разработали омниканальную стратегию продвижения. Запустили кампании в MyTarget и VK с точным таргетингом на целевую аудиторию, интегрировали высококонверсионный лендинг с CRM. Достигли роста продаж на 52% за два месяца, конверсия выросла на 75%.'
-        },
-        asm: {
-            title: 'Асм мебель',
-            description: 'Провели комплексный аудит и оптимизацию всех каналов продвижения. Улучшили SEO-показатели, перестроили контекстную рекламу и оптимизировали UX сайта. В результате конверсия выросла на 22%, органический трафик увеличился на 45%.'
-        }
-    };
-
-    // Обработка модального окна
-    document.querySelectorAll('.case-details').forEach(btn => {
-        btn.addEventListener('click', e => {
+/* ===== Инициализация Marquiz ===== */
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация Marquiz
+    const marquizButtons = document.querySelectorAll('.marquiz-button');
+    marquizButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
             e.preventDefault();
-            const id = btn.dataset.id;
-            const data = caseData[id];
-            const modalContent = document.getElementById('modalContent');
-            modalContent.innerHTML = `
-                <h3 class="text-2xl font-bold mb-4">${data.title}</h3>
-                <p class="text-gray-300 leading-relaxed">${data.description}</p>
-            `;
-            const modal = document.getElementById('modalBackdrop');
-            modal.style.display = 'flex';
-            setTimeout(() => modal.querySelector('.modal').classList.add('active'), 10);
+            Marquiz.showModal(button.getAttribute('data-marquiz-id'));
         });
     });
-
-    document.getElementById('modalClose').addEventListener('click', () => {
-        const modal = document.getElementById('modalBackdrop');
-        modal.querySelector('.modal').classList.remove('active');
-        setTimeout(() => modal.style.display = 'none', 300);
-    });
-</script>    <section id="testimonials" class="py-16 px-6 bg-gray-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50"></div>
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center">
-                <h2 class="text-4xl font-bold neon-green mb-4">Отзывы клиентов</h2>
-                <p class="text-gray-400 text-lg mb-12">Что говорят о нашей работе те, кто уже добился результата</p>
-            </div>            <div class="testimonials-wrapper">
-                <div class="testimonials-nav prev">❮</div>
-                <div class="testimonials-container">
-                    <!-- Testimonial 1 -->
-                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
-                    <div class="testimonial-quote">❝</div>
-                    <div class="testimonial-image-wrapper">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
-                             alt="Алексей Петров"
-                             class="testimonial-image">
-                    </div>
-                    <p class="testimonial-text">"Лидогенерация вырос
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
-                    <div class="testimonial-quote">❝</div>
-                    <div class="testimonial-image-wrapper">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/Pink%20Simple%20Online%20Consultations%20Instagram%20Post%20(1).png?alt=media&token=e0e32873-9a02-4d29-ab1b-c785d8bfa70c" 
-                             alt="Марина Соколова"
-                             class="testimonial-image">
-                    </div>
-                    <p class="testimonial-text">"Внедренные чат-боты полностью изменили наш подход к работе с клиентами. Мы достигли 80% автоматизации в обработке запросов, что значительно разгрузило отдел продаж и повысило скорость реакции."</p>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Марина Соколова</div>
-                        <div class="testimonial-position">Руководитель отдела продаж</div>
-                        <div class="testimonial-rating">★★★★★</div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card group hover:-translate-y-2 transition-all duration-300">
-                    <div class="testimonial-quote">❝</div>
-                    <div class="testimonial-image-wrapper">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/20250506_0318_Мужчина%20в%20костюме_simple_compose_01jth8ej21farvyrhv2m7z23d4.png?alt=media&token=8f10eb59-948b-461a-b2c2-f2f08d084a04" 
-                             alt="Дмитрий Волков"
-                             class="testimonial-image">
-                    </div>
-                    <p class="testimonial-text">"За три месяца сотрудничества мы увеличили конверсию сайта на 45% и снизили стоимость привлечения клиента вдвое. Особенно впечатлила глубина аналитики и внимание к деталям."</p>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Дмитрий Волков</div>
-                        <div class="testimonial-position">CEO, TechStart</div>
-                        <div class="testimonial-rating">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>    <section id="contact" class="py-8 px-6 contact-section">
-    <div class="max-w-xl mx-auto relative z-10">
-        <h2 class="text-3xl font-bold neon-green text-center mb-2">Готовы к результатам?</h2>
-        <p class="text-lg text-gray-300 text-center mb-6">
-            Давайте обсудим, как вывести ваш бизнес на новый уровень
-        </p>
-        <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit()">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="form-group">
-                    <label class="form-label">Ваше имя</label>
-                    <input type="text" 
-                           class="form-input" 
-                           id="name"
-                           required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Ваш email</label>
-                    <input type="email" 
-                           class="form-input" 
-                           id="email"
-                           required>
-                </div>
-            </div>
-            <div class="form-group mt-4">
-                <label class="form-label">Ваше сообщение</label>
-                <textarea class="form-input" 
-                          rows="4"
-                          id="message"
-                          required></textarea>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="submit-button">
-                    Запустить рост
-                </button>
-            </div>
-        </form>
-    </div>
-</section>
-
-    <footer class="py-8 bg-gray-900 text-center text-gray-300">
-        <p>© 2025 Маркетинг, который работает. Все права защищены.</p>
-    </footer>
+});
+    </script>
 </body>
 </html>
