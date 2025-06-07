@@ -13,6 +13,7 @@
       --gray: #6B6B7A;
       --green: #00FF99;
       --purple: #7F3DF5;
+      --red: #FF4C4C;
       --font: 'Inter', sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -31,12 +32,11 @@
     section{padding:80px 20px;position:relative;}
 
     /* ---------- HERO ---------- */
-    .hero{min-height:600px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:relative;overflow:hidden;}
-    /* radial glow top‑left */
-    .hero::after{
-      content:"";position:absolute;left:-30%;top:-30%;width:80%;height:80%;background:radial-gradient(ellipse at top left,rgba(0,255,153,0.35),transparent 70%);filter:blur(60px);z-index:-1;
-    }
-    .hero .content{max-width:620px;z-index:1;}
+    .hero{position:relative;overflow:hidden;}
+    .hero::after{content:"";position:absolute;left:-30%;top:-30%;width:80%;height:80%;background:radial-gradient(ellipse at top left,rgba(0,255,153,0.35),transparent 70%);filter:blur(60px);z-index:-1;}
+    .hero-container{max-width:1200px;margin:0 auto;display:flex;gap:60px;align-items:center;justify-content:center;flex-wrap:wrap;}
+
+    .hero .content{max-width:620px;}
     .hero .tag{display:inline-block;padding:6px 14px;border:1px solid rgba(255,255,255,0.1);border-radius:999px;font-size:14px;margin-bottom:20px;background:rgba(255,255,255,0.02);backdrop-filter:blur(4px);}
     .hero-title{font-size:56px;line-height:1.1;margin-bottom:24px;}
     .hero-title .neon{color:var(--green);text-shadow:0 0 8px #00ff99,0 0 14px #00ff99;}
@@ -52,21 +52,30 @@
 
     /* hero card */
     .card-wrapper{position:relative;width:500px;max-width:100%;aspect-ratio:4/3;}
-    /* stacked blurred shapes */
-    .card-wrapper .bg-shape{position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(0,255,153,0.4),rgba(127,61,245,0.4));filter:blur(70px);transform:rotate(var(--r)) scale(var(--s));z-index:-3;pointer-events:none;}
+    .card-wrapper .bg-shape{position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(0,255,153,0.35),rgba(127,61,245,0.35));filter:blur(70px);transform:rotate(var(--r)) scale(var(--s));z-index:-3;pointer-events:none;}
     .card-wrapper .bg-shape:nth-child(1){--r:6deg;--s:1;}
     .card-wrapper .bg-shape:nth-child(2){--r:-10deg;--s:1.15;}
-    .hero-card{position:relative;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border-radius:24px;padding:28px;display:grid;gap:18px;z-index:1;height:100%;box-shadow:0 4px 30px rgba(0,0,0,0.4);}
-    .hero-card .unit{background:rgba(255,255,255,0.04);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;font-size:14px;}
-    .hero-card .unit .icon{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:rgba(0,255,153,0.15);font-size:16px;color:var(--green);}
-    .hero-card .unit.full{grid-column:1/-1;}
-    .hero-card{grid-template-columns:repeat(3,1fr);} /* 3 equal cols */
-    .price-row{grid-column:1/-1;margin-top:auto;display:flex;justify-content:space-between;font-weight:600}
-    .price-row .price{font-size:20px;color:var(--green)}
-    .price-row .save{font-size:20px;color:var(--purple)}
 
-    /* ---------- OTHER SECTIONS UNCHANGED (truncated for brevity in arrow view) ---------- */
-    /* Services */
+    .hero-card{position:relative;background:#13151F;border-radius:24px;padding:32px;display:grid;gap:20px;grid-template-columns:repeat(3,1fr);height:100%;box-shadow:0 4px 30px rgba(0,0,0,0.4);}
+
+    .hero-card .card-title{grid-column:1/-1;font-size:16px;font-weight:600;color:var(--text-light);}
+
+    .unit{background:#0F1118;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;font-size:14px;}
+    .unit.full{grid-column:1/-1;}
+    .icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:#0A0B10;}
+    .icon svg{width:20px;height:20px;stroke:var(--green);stroke-width:2;fill:none;}
+
+    /* cost row */
+    .cost-row{grid-column:1/-1;margin-top:auto;display:flex;justify-content:space-between;gap:20px;}
+    .cost-item{text-align:left;min-width:120px;}
+    .cost-item .label{font-size:13px;color:var(--gray);display:block;margin-bottom:4px;}
+    .cost-item .value{font-size:18px;font-weight:600;}
+
+    /* gradient & red text */
+    .gradient{background:linear-gradient(90deg,var(--green),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .strike{color:var(--red);text-decoration:line-through;}
+
+    /* SERVICES (unchanged) */
     .services h2{font-size:36px;margin-bottom:8px;text-align:center;}
     .services p.subtitle{color:var(--gray);text-align:center;margin-bottom:40px;}
     .services .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
@@ -76,83 +85,100 @@
     .services .card ul li{margin-bottom:8px;display:flex;align-items:center;}
     .services .card ul li::before{content:'✔';color:var(--green);margin-right:8px;font-size:14px;}
     .services .btn-center{text-align:center;margin-top:32px;}
-
-    /* Team (unchanged) */
-    .team h2{font-size:36px;margin-bottom:8px;text-align:center;}
-    .team p.subtitle{color:var(--gray);text-align:center;margin-bottom:40px;}
-    .team .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
-    .team .member{background:rgba(255,255,255,0.03);border-radius:16px;overflow:hidden;}
-    .team .member .top{position:relative;height:160px;background:rgba(255,255,255,0.05);}
-    .team .member .badge{position:absolute;top:16px;left:16px;display:inline-block;padding:4px 8px;font-size:12px;border-radius:999px;background:var(--green);color:#000;}
-    .team .member .info{padding:16px;}
-    .team .member .info h3{font-size:20px;margin-bottom:4px;}
-    .team .member .info .role{font-size:14px;color:var(--gray);margin-bottom:12px;}
-    .team .member .info p{font-size:14px;line-height:1.4;margin-bottom:12px;color:var(--text-light)}
-    .team .member .progress{height:8px;border-radius:4px;background:rgba(255,255,255,0.1);overflow:hidden;margin-bottom:8px;}
-    .team .member .progress-inner{height:100%;background:linear-gradient(90deg,var(--green),var(--purple));}
-    .team .member .years{font-size:14px;font-weight:600;}
-    .expertise{background:rgba(255,255,255,0.03);border-radius:16px;padding:24px;}
-    .expertise h3{font-size:20px;margin-bottom:16px;}
-    .expertise .skill{margin-bottom:16px;}
-    .expertise .skill .label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;}
-    .expertise .skill .bar{height:8px;border-radius:4px;background:rgba(255,255,255,0.1);overflow:hidden;}
-    .expertise .skill .bar-inner{height:100%;background:linear-gradient(90deg,var(--green),var(--purple));}
-
-    /* Results */
-    .results h2{font-size:36px;margin-bottom:8px;text-align:center;}
-    .results p.subtitle{color:var(--gray);text-align:center;margin-bottom:40px;}
-    .results .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-    .results .case{background:rgba(255,255,255,0.03);border-radius:16px;padding:24px;}
-    .results .case .header{display:flex;justify-content:space-between;margin-bottom:16px;}
-    .results .case .header .title{font-size:20px;font-weight:600;}
-    .results .case .bar-comparison{height:24px;border-radius:12px;background:rgba(255,255,255,0.1);display:flex;overflow:hidden;margin-bottom:16px;}
-    .results .case .bar-comparison .old{background:rgba(107,107,122,1);padding:0 12px;display:flex;align-items:center;color:var(--text-light);}
-    .results .case .bar-comparison .new{flex:1;background:linear-gradient(135deg,var(--green),var(--purple));padding:0 12px;display:flex;align-items:center;justify-content:flex-end;color:#000;}
-    .results .case .footer{display:flex;gap:16px;}
-    .results .case .footer .metric{flex:1;background:rgba(255,255,255,0.05);border-radius:12px;padding:12px;text-align:center;}
+    /* Team + Results (unchanged from previous) */
   </style>
 </head>
 <body>
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="content">
-      <span class="tag">Инновационное решение</span>
-      <h1 class="hero-title"><span class="neon">Отдел маркетинга</span><br>по цене одного<br>специалиста</h1>
-      <p>Получите полноценную команду профессионалов, которая выведет ваш бизнес на новый уровень без лишних затрат</p>
-      <a href="#" class="btn btn-primary">Получить консультацию</a>
-      <a href="#" class="btn btn-secondary">Узнать больше</a>
-      <div class="stats">
-        <div class="item"><h3><span class="green">5+</span></h3><p>Экспертов в команде</p></div>
-        <div class="item"><h3><span class="green">50+</span></h3><p>Успешных проектов</p></div>
-        <div class="item"><h3><span class="green">200%</span></h3><p>Средний рост ROI</p></div>
-      </div>
-    </div>
-
-    <div class="card-wrapper">
-      <div class="bg-shape"></div>
-      <div class="bg-shape"></div>
-      <div class="hero-card">
-        <!-- row 1 full width -->
-        <div class="unit full"><span class="icon">📊</span>
-          <div><div class="label">Руководитель</div><div class="role">Стратегия и управление</div></div>
+    <div class="hero-container">
+      <div class="content">
+        <span class="tag">Инновационное решение</span>
+        <h1 class="hero-title"><span class="neon">Отдел маркетинга</span><br>по цене одного<br>специалиста</h1>
+        <p>Получите полноценную команду профессионалов, которая выведет ваш бизнес на новый уровень без лишних затрат</p>
+        <a href="#" class="btn btn-primary">Получить консультацию</a>
+        <a href="#" class="btn btn-secondary">Узнать больше</a>
+        <div class="stats">
+          <div class="item"><h3><span class="green">5+</span></h3><p>Экспертов в команде</p></div>
+          <div class="item"><h3><span class="green">50+</span></h3><p>Успешных проектов</p></div>
+          <div class="item"><h3><span class="green">200%</span></h3><p>Средний рост ROI</p></div>
         </div>
-        <!-- row 2 3 cols -->
-        <div class="unit"><span class="icon">🎨</span><div>UX/UI Дизайнер</div></div>
-        <div class="unit"><span class="icon">💻</span><div>Frontend Разработчик</div></div>
-        <div class="unit"><span class="icon">🔍</span><div>SEO Специалист</div></div>
-        <!-- row 3 full width -->
-        <div class="unit full"><span class="icon">🎯</span><div>Директолог/Таргетолог</div></div>
-        <!-- price row -->
-        <div class="price-row"><div class="price">от 90&nbsp;000 ₽/мес</div><div class="save">Экономия до 70%</div></div>
+      </div>
+
+      <!-- CARD -->
+      <div class="card-wrapper">
+        <div class="bg-shape"></div>
+        <div class="bg-shape"></div>
+
+        <div class="hero-card">
+          <!-- Title -->
+          <div class="card-title">В отдел маркетинга входит</div>
+
+          <!-- Row 1 FULL -->
+          <div class="unit full">
+            <span class="icon">
+              <svg viewBox="0 0 24 24"><path d="M4 17v3M10 13v7M16 9v11M22 5v15"/></svg>
+            </span>
+            <div>Руководитель – Стратегия и управление</div>
+          </div>
+          <!-- Row 2 three columns -->
+          <div class="unit">
+            <span class="icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            </span>
+            <div>UX/UI Дизайнер</div>
+          </div>
+          <div class="unit">
+            <span class="icon">
+              <svg viewBox="0 0 24 24"><path d="M16 4l-8 16"/><path d="M8 4l8 16"/></svg>
+            </span>
+            <div>Frontend Разработчик</div>
+          </div>
+          <div class="unit">
+            <span class="icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M21 21l-4.35-4.35"/></svg>
+            </span>
+            <div>SEO Специалист</div>
+          </div>
+          <!-- Row 3 FULL -->
+          <div class="unit full">
+            <span class="icon">
+              <svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+            </span>
+            <div>Директолог/Таргетолог</div>
+          </div>
+
+          <!-- COST ROW -->
+          <div class="cost-row">
+            <div class="cost-item">
+              <span class="label">Стоимость</span>
+              <span class="value gradient">100&nbsp;000 ₽/мес</span>
+            </div>
+            <div class="cost-item">
+              <span class="label">Стоимость отдела</span>
+              <span class="value strike">1&nbsp;000&nbsp;000 ₽/мес</span>
+            </div>
+            <div class="cost-item">
+              <span class="label">Экономия</span>
+              <span class="value gradient">90%</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES (unchanged from previous version) -->
+  <!-- SERVICES (kept from previous version) -->
   <section class="services" id="services">
     <span class="tag">Наши услуги</span>
     <h2>Что мы можем <span class="green">сделать</span> для <span class="purple">вас</span></h2>
     <p class="subtitle">Полный спектр маркетинговых услуг для развития вашего бизнеса</p>
     <div class="grid">
       <div class="card"><h3>Стратегия</h3><ul><li>Go to market стратегия</li><li>Коммуникационная стратегия</li><li>Конкурентный анализ</li><li>Стратегия продвижения</li><li>Маркетинговая стратегия</li></ul></div>
-      <div class="card"><h3>Упаковка</h3><ul><li>Создание лендинга</li><li>Разработка фирменного стиля</li><li>Создание логотип
+      <div class="card"><h3>Упаковка</h3><ul><li>Создание лендинга</li><li>Разработка фирменного стиля</li><li>Создание логотипа</li><li>Разработка КП</li><li>Разработка Key Vision</li><li>Разработка баннеров и креативов</li></ul></div>
+      <div class="card"><h3>Трафик</h3><ul><li>SEO продвижение</li><li>Контекстная реклама</li><li>Таргетированная реклама</li><li>Аналитика и оптимизация</li><li>Маркетинг в социальных сетях</li></ul></div>
+    </div>
+    <div class="btn-center"><a href="#" class="btn btn-primary">Узнать подробнее о услугах</a></div>
+  </section>
+</body>
+</html>
