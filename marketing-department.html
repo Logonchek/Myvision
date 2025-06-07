@@ -540,7 +540,6 @@
 </style>
 
  <!-- KEYS  -->
-  
 <section class="results" id="results">
   <h2>
     <span class="gradient" style="font-size: 42px;">Результаты</span>
@@ -575,6 +574,7 @@
         <div class="metric"><span style="color: var(--green);">+180%</span> Органический трафик</div>
         <div class="metric"><span style="color: var(--green);">+75%</span> Конверсия</div>
       </div>
+      <button class="btn btn-secondary" onclick="openPopup('b2b')">Подробнее</button>
     </div>
 
     <!-- Brendoss мебельная фабрика -->
@@ -604,6 +604,7 @@
         <div class="metric"><span style="color: var(--green);">+200%</span> Средний чек</div>
         <div class="metric"><span style="color: var(--green);">+60%</span> Заказы</div>
       </div>
+      <button class="btn btn-secondary" onclick="openPopup('brendoss')">Подробнее</button>
     </div>
 
     <!-- Уралградстрой -->
@@ -633,12 +634,59 @@
         <div class="metric"><span style="color: var(--green);">+150%</span> Органический трафик</div>
         <div class="metric"><span style="color: var(--green);">+70%</span> Конверсия</div>
       </div>
+      <button class="btn btn-secondary" onclick="openPopup('uralgrad')">Подробнее</button>
+    </div>
+  </div>
+
+  <!-- Поп-ап -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h3 id="popup-title"></h3>
+      <p id="popup-text"></p>
     </div>
   </div>
 </section>
 
+<script>
+  function openPopup(caseId) {
+    const popup = document.getElementById('popup');
+    const title = document.getElementById('popup-title');
+    const text = document.getElementById('popup-text');
+
+    switch (caseId) {
+      case 'b2b':
+        title.textContent = 'B2B маркетплейс';
+        text.textContent = 'Проведена комплексная SEO-оптимизация сайта, включая технический аудит и улучшение контента. Настроены рекламные кампании в Google Ads и социальных сетях, что привело к увеличению органического трафика и конверсий.';
+        break;
+      case 'brendoss':
+        title.textContent = 'Brendoss мебельная фабрика';
+        text.textContent = 'Выполнен редизайн сайта с улучшением UX/UI. Запущены таргетированные рекламные кампании в Instagram и VK, а также оптимизирована аналитика для повышения среднего чека и числа заказов.';
+        break;
+      case 'uralgrad':
+        title.textContent = 'Уралградстрой';
+        text.textContent = 'Реализована SEO-оптимизация с акцентом на местный поиск и создание качественного контента. Проведена настройка контекстной рекламы, что увеличило выручку и привлекло новых клиентов.';
+        break;
+    }
+
+    popup.style.display = 'block';
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+
+  // Закрытие поп-апа при клике вне его
+  window.onclick = function(event) {
+    const popup = document.getElementById('popup');
+    if (event.target == popup) {
+      popup.style.display = 'none';
+    }
+  }
+</script>
+
 <style>
-  .results { padding-top: 120px; max-width: 1400px; margin: 0 auto; padding: 0 20px; overflow-x: auto; white-space: nowrap; }
+  .results { padding-top: 180px; max-width: 1400px; margin: 0 auto; padding: 0 20px; overflow-x: auto; white-space: nowrap; }
   .results h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
   .subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; }
   .cases-container { display: flex; gap: 40px; padding-bottom: 20px; }
@@ -674,6 +722,55 @@
   .change { display: block; margin-top: 5px; font-size: 16px; }
   .metrics { margin-top: 10px; }
   .metric { color: #A0A0A0; font-size: 14px; margin-bottom: 5px; }
+  .btn {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 2px solid var(--purple);
+    background: transparent;
+    color: var(--purple);
+    margin-top: 15px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.25s;
+  }
+  .btn:hover {
+    transform: translateY(-4px);
+    color: #fff;
+    background: var(--purple);
+  }
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+  }
+  .popup-content {
+    background: #13151F;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    color: #A0A0A0;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #A0A0A0;
+  }
+  .close-btn:hover { color: var(--green); }
   @keyframes fill {
     0% { width: 0; }
     100% { width: 100%; }
