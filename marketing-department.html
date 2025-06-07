@@ -75,13 +75,46 @@
     .hero-title .neon { color: var(--green); }
     .hero p { font-size: 18px; margin-bottom: 32px; color: var(--gray); }
     .btn {
+      position: relative;
       display: inline-block;
       padding: 14px 32px;
       border-radius: 999px;
       font-weight: 600;
       border: 2px solid currentColor;
       background: transparent;
-      transition: background 0.3s, color 0.3s, transform 0.25s;
+      overflow: hidden;
+      transition: color 0.3s, transform 0.25s;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background: currentColor;
+      z-index: -1;
+      transition: width 0.3s ease;
+    }
+    .btn:hover { transform: translateY(-4px); }
+    .btn-primary {
+      color: var(--green);
+      margin-right: 12px;
+    }
+    .btn-primary:hover {
+      color: #000;
+    }
+    .btn-primary:hover::before {
+      width: 100%;
+    }
+    .btn-secondary {
+      color: var(--purple);
+    }
+    .btn-secondary:hover {
+      color: #fff;
+    }
+    .btn-secondary:hover::before {
+      width: 100%;
     }
     .btn-primary { color: var(--green); margin-right: 12px; }
     .btn-primary:hover { background: var(--green); color: #000; transform: translateY(-4px); }
