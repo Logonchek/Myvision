@@ -35,9 +35,9 @@
     /* Sections padding */
     section{padding:120px 20px 0; position:relative;}
     /* Hero */
-    .hero{min-height:100vh; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:40px;}
-    .hero .content{max-width:600px; text-align:left; z-index:1;}
-    .hero .tag{display:inline-block; padding:6px 12px; border:1px solid var(--gray); border-radius:999px; font-size:14px; margin-bottom:16px;
+    .hero{min-height:100vh; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:60px; max-width:1200px; margin:0 auto;}
+    .hero .content{max-width:500px; text-align:left; z-index:1;}
+    .hero .tag{display:inline-block; padding:6px 12px; border:2px solid; border-image: linear-gradient(90deg, var(--green), var(--purple)) 1; border-radius:999px; font-size:14px; margin-bottom:16px;
       background: transparent; color: var(--text-light); -webkit-text-fill-color: transparent; -webkit-background-clip:text;
       background: linear-gradient(90deg, var(--green), var(--purple));}
     .hero h1{font-size:48px; line-height:1.1; margin-bottom:16px;}
@@ -52,28 +52,30 @@
     .stats .item h3{font-size:24px; margin-bottom:8px; animation: neonPulse 2s infinite;}
     .stats .item p{font-size:14px; color:var(--gray)}
     /* Glow card */
-    .hero .card-wrapper{position:relative; width:650px; height:450px; order:2;}
+    .hero .card-wrapper{position:relative; width:650px; height:500px; order:2;}
     .hero .glow{position:absolute; inset:0; border-radius:20px; background:linear-gradient(135deg, rgba(0, 255, 153, 0.1), rgba(127, 61, 245, 0.1)); filter:blur(20px); z-index:-2;}
     .hero .glow:nth-child(2){transform:rotate(10deg) scale(1.1); filter:blur(30px);}
     .hero .glow:nth-child(3){transform:rotate(-10deg) scale(1.2); filter:blur(40px);}
     .hero .card{position:relative; background:var(--bg); border:1px solid var(--green); border-radius:20px; padding:24px; display:grid; grid-template-columns:1fr; gap:12px; z-index:1;}
-    .hero .card .sub-card{background: rgba(107, 107, 122, 0.2); border-radius:10px; padding:10px; margin:5px 0; display:flex; align-items:center; justify-content:center;}
-    .hero .card .sub-card svg{margin-right:10px; width:20px; height:20px;}
+    .hero .card .sub-card{background: rgba(107, 107, 122, 0.2); border-radius:10px; padding:15px; margin:10px 0; display:flex; align-items:center; justify-content:center; min-width:300px;}
     .hero .card .sub-card .icon-frame {
-      width: 24px;
-      height: 24px;
-      background: linear-gradient(135deg, var(--green), var(--purple));
-      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, rgba(0, 255, 153, 0.2), rgba(127, 61, 245, 0.2));
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.3));
+      margin-right: 15px;
+      filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.1));
     }
+    .hero .card .sub-card .icon-frame svg { width: 18px; height: 18px; color: var(--gray); }
     .hero .card .sub-card .label{text-align:center; font-size:16px; color:var(--text-light); font-weight:600;}
-    .hero .card-row{display:flex; gap:12px;}
+    .hero .card-row{display:flex; gap:12px; flex-wrap:wrap;}
+    .hero .card .header-card { font-size: 18px; color: var(--gray); text-align: center; margin-bottom: 15px; }
     .hero .price-row{display:flex; justify-content:space-around; margin-top:24px; font-weight:600; flex-wrap:wrap; text-align:center;}
-    .hero .price-row .price{font-size:20px; background:linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip:text; color:transparent;}
-    .hero .price-row .save{font-size:20px; text-align:center;}
+    .hero .price-row .price{font-size:20px; color: var(--gray);}
+    .hero .price-row .save{font-size:20px; text-align:center; color: var(--gray);}
     .hero .price-row .save del{color:var(--red); margin-right:5px;}
     .hero .price-row .save .economy{background:linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip:text; color:transparent;}
     /* Services */
@@ -129,7 +131,7 @@
 <body>
   <section class="hero">
     <div class="content">
-      <span class="tag">Инновационное решение</span>
+      <span class="tag">Инновационные технологии</span>
       <h1><span class="green">Отдел маркетинга</span> по цене <span class="purple">одного специалиста</span></h1>
       <p>Получите полноценную команду профессионалов, которая выведет ваш бизнес на новый уровень без лишних затрат</p>
       <a href="#" class="btn btn-primary">Получить консультацию</a>
@@ -145,13 +147,14 @@
       <div class="glow"></div>
       <div class="glow"></div>
       <div class="card">
-        <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.74"></path></svg></div><div class="label">Директор по маркетингу</div></div>
+        <div class="header-card">В отдел маркетинга входит</div>
+        <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.74"></path></svg></div><div class="label">Директор по маркетингу</div></div>
         <div class="card-row">
-          <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paint-brush"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-5-5z"></path><path d="M9 13h6"></path><path d="M12 10v6"></path></svg></div><div class="label">UX/UI Дизайнер</div></div>
-          <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div><div class="label">Frontend Разработчик</div></div>
-          <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="label">SEO Специалист</div></div>
+          <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paint-brush"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-5-5z"></path><path d="M9 13h6"></path><path d="M12 10v6"></path></svg></div><div class="label">UX/UI Дизайнер</div></div>
+          <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div><div class="label">Frontend Разработчик</div></div>
+          <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><div class="label">SEO Специалист</div></div>
         </div>
-        <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div><div class="label">Директолог/Таргетолог</div></div>
+        <div class="sub-card"><div class="icon-frame"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div><div class="label">Директолог/Таргетолог</div></div>
         <div class="price-row">
           <div class="price" style="text-align: center;">Стоимость<br><span>100 000 ₽</span>/мес</div>
           <div class="save" style="text-align: center;">Зарплата отдела<br><del>1 000 000 ₽</del>/мес</div>
