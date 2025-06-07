@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Vision — Отдел маркетинга</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #0A0B10;
@@ -226,6 +226,166 @@
     .gradient { background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     /* FOOTER */
     footer { padding: 40px 20px; text-align: center; color: var(--gray); font-size: 14px; }
+  .team { max-width: 1400px; margin: 0 auto; padding: 120px 20px 80px; }
+  .team h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; }
+  .grid { display: grid; gap: 40px; grid-template-columns: repeat(3, 1fr); justify-content: center; }
+  .card {
+    background: #13151F;
+    border-radius: 20px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+    min-height: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 40px rgba(0, 255, 153, 0.3);
+  }
+  .card-header { margin-bottom: 15px; }
+  .photo { width: 100%; background-size: cover; background-position: center; }
+  .progress-bar {
+    width: 100%;
+    background: #1a1a2e;
+    border-radius: 10px;
+    height: 10px;
+    position: relative;
+  }
+  .progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), var(--purple));
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  @keyframes move {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+  }
+  .expertise-bars { text-align: left; margin-top: 20px; }
+  .expertise-item { margin-bottom: 15px; }
+  .expertise-item span { color: #A0A0A0; font-size: 16px; display: block; margin-bottom: 5px; }
+
+  .results {
+    padding: 120px 20px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh; /* Каждый блок занимает полный экран */
+  }
+  .results h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
+  .cases-container {
+    display: flex;
+    gap: 40px;
+    padding-bottom: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  .cases-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  .case-card {
+    background: #13151F;
+    border-radius: 20px;
+    padding: 20px;
+    width: 450px;
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+    min-height: 400px;
+    flex-shrink: 0;
+  }
+  .case-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(0, 255, 153, 0.3); }
+  .case-header { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+  .category-tag {
+    background: #2e2e3e;
+    padding: 5px 15px; /* Увеличена ширина плашки */
+    border-radius: 10px;
+    color: #A0A0A0;
+    font-size: 14px;
+    white-space: nowrap; /* Текст в одну строку */
+  }
+  .comparison { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .before, .after { text-align: left; width: 48%; }
+  .bar {
+    background: #2e2e3e;
+    border-radius: 10px;
+    height: 20px;
+    position: relative;
+    margin-top: 5px;
+    overflow: hidden;
+  }
+  .value { position: absolute; color: #A0A0A0; font-size: 14px; top: 50%; left: 10px; transform: translateY(-50%); z-index: 1; }
+  .progress {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .change { display: block; margin-top: 5px; font-size: 16px; }
+  .metrics { margin-top: 10px; }
+  .metric { color: #A0A0A0; font-size: 14px; margin-bottom: 5px; }
+  .btn {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 2px solid var(--purple);
+    background: transparent;
+    color: var(--purple);
+    margin-top: 15px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.25s;
+  }
+  .btn:hover {
+    transform: translateY(-4px);
+    color: #fff;
+    background: var(--purple);
+  }
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+  }
+  .popup-content {
+    background: #13151F;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    color: #A0A0A0;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #A0A0A0;
+  }
+  .close-btn:hover { color: var(--green); }
+  @keyframes fill {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
   </style>
 </head>
 <body>
@@ -502,52 +662,6 @@
   </div>
 </section>
 
-<style>
-  .team { padding-top: 120px; padding-bottom: 80px; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
-  .team h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
-  .subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; }
-  .grid { display: grid; gap: 40px; grid-template-columns: repeat(3, 1fr); justify-content: center; }
-  .card {
-    background: #13151F;
-    border-radius: 20px;
-    padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
-    min-height: 400px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 40px rgba(0, 255, 153, 0.3);
-  }
-  .card-header { margin-bottom: 15px; }
-  .photo { width: 100%; background-size: cover; background-position: center; }
-  .progress-bar {
-    width: 100%;
-    background: #1a1a2e;
-    border-radius: 10px;
-    height: 10px;
-    position: relative;
-  }
-  .progress {
-    height: 100%;
-    background: linear-gradient(90deg, var(--green), var(--purple));
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-  }
-  @keyframes move {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-  }
-  .expertise-bars { text-align: left; margin-top: 20px; }
-  .expertise-item { margin-bottom: 15px; }
-  .expertise-item span { color: #A0A0A0; font-size: 16px; display: block; margin-bottom: 5px; }
-</style>
-
  <!-- KEYS  -->
 <section class="results" id="results">
   <h2>
@@ -696,126 +810,6 @@
   }
 </script>
 
-<style>
-  .results {
-    padding-top: 400px;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    min-height: 100vh; /* Каждый блок занимает полный экран */
-  }
-  .results h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
-  .subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; }
-  .cases-container {
-    display: flex;
-    gap: 40px;
-    padding-bottom: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
-  .cases-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
-  .case-card {
-    background: #13151F;
-    border-radius: 20px;
-    padding: 20px;
-    width: 450px;
-    display: inline-block;
-    vertical-align: top;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s;
-    min-height: 400px;
-    flex-shrink: 0;
-  }
-  .case-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(0, 255, 153, 0.3); }
-  .case-header { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-  .category-tag {
-    background: #2e2e3e;
-    padding: 5px 15px; /* Увеличена ширина плашки */
-    border-radius: 10px;
-    color: #A0A0A0;
-    font-size: 14px;
-    white-space: nowrap; /* Текст в одну строку */
-  }
-  .comparison { display: flex; justify-content: space-between; margin-bottom: 15px; }
-  .before, .after { text-align: left; width: 48%; }
-  .bar {
-    background: #2e2e3e;
-    border-radius: 10px;
-    height: 20px;
-    position: relative;
-    margin-top: 5px;
-    overflow: hidden;
-  }
-  .value { position: absolute; color: #A0A0A0; font-size: 14px; top: 50%; left: 10px; transform: translateY(-50%); z-index: 1; }
-  .progress {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .change { display: block; margin-top: 5px; font-size: 16px; }
-  .metrics { margin-top: 10px; }
-  .metric { color: #A0A0A0; font-size: 14px; margin-bottom: 5px; }
-  .btn {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 999px;
-    font-weight: 600;
-    border: 2px solid var(--purple);
-    background: transparent;
-    color: var(--purple);
-    margin-top: 15px;
-    cursor: pointer;
-    transition: color 0.3s, transform 0.25s;
-  }
-  .btn:hover {
-    transform: translateY(-4px);
-    color: #fff;
-    background: var(--purple);
-  }
-  .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-  }
-  .popup-content {
-    background: #13151F;
-    padding: 20px;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    color: #A0A0A0;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
-  }
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #A0A0A0;
-  }
-  .close-btn:hover { color: var(--green); }
-  @keyframes fill {
-    0% { width: 0; }
-    100% { width: 100%; }
-  }
-</style>
 
   
   <!-- FOOTER -->
