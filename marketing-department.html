@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отдел маркетинга по цене одного специалиста</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .team-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; }
+  </style>
+</head>
+<body class="bg-dark text-white font-sans">
+  <nav class="nav">
+    <div class="container flex items-center justify-between px-6">
+      <div class="text-xl font-bold neon-green">My Vision</div>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="nav-item">Главная</a>
+        <a href="services-site-dev.html" class="nav-item">Услуги</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-24 mt-16 animate-on-scroll fade-up">
+    <div class="container">
+      <h1 class="text-4xl md:text-5xl font-bold neon-green mb-6 text-center">Отдел маркетинга по цене одного специалиста</h1>
+      <p class="text-lg text-gray-300 text-center mb-12">Мы собрали команду экспертов, которая закрывает все ключевые задачи интернет-маркетинга.</p>
+      <div class="team-grid">
+        <div class="card fade-up">
+          <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/replicate-prediction-mab28pbrc5rm80cpma38e7q6y8.jpg?alt=media&token=fec2bc6c-15bb-4176-8e3d-14b9f11002b4" alt="Руководитель отдела маркетинга" class="team-photo">
+          <h3 class="text-xl font-semibold mb-2 text-center">Руководитель отдела маркетинга</h3>
+          <p class="text-gray-300 text-center">Более 10 лет в маркетинге. Строю системы лидогенерации и формирую стратегию, которая приносит измеримые результаты бизнесу.</p>
+        </div>
+        <div class="card fade-up">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?crop=faces&fit=crop&w=400&h=400" alt="UX/UI дизайнер Ангелина" class="team-photo">
+          <h3 class="text-xl font-semibold mb-2 text-center">Ангелина — UX/UI дизайнер</h3>
+          <p class="text-gray-300 text-center">Проектирует удобные интерфейсы и следит за визуальным стилем. Делает продукты понятными и красивыми.</p>
+        </div>
+        <div class="card fade-up">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=faces&fit=crop&w=400&h=400" alt="SEO специалист Виталий" class="team-photo">
+          <h3 class="text-xl font-semibold mb-2 text-center">Виталий — SEO специалист</h3>
+          <p class="text-gray-300 text-center">Оптимизирует сайты под поисковые системы, строит стратегию контента и выводит проекты в топ выдачи.</p>
+        </div>
+        <div class="card fade-up">
+          <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a4?crop=faces&fit=crop&w=400&h=400" alt="Frontend разработчик Павел" class="team-photo">
+          <h3 class="text-xl font-semibold mb-2 text-center">Павел — Frontend разработчик</h3>
+          <p class="text-gray-300 text-center">Разрабатывает быстрый и адаптивный фронтенд, внедряет интерактив и заботится о технической стороне проектов.</p>
+        </div>
+        <div class="card fade-up">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=faces&fit=crop&w=400&h=400" alt="Директолог/таргетолог Кристина" class="team-photo">
+          <h3 class="text-xl font-semibold mb-2 text-center">Кристина — Директолог/Таргетолог</h3>
+          <p class="text-gray-300 text-center">Запускает эффективные рекламные кампании в поиске и соцсетях, повышая конверсию и охват.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
