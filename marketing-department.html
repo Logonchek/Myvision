@@ -191,16 +191,30 @@
     .cost-item .value { font-size: 18px; font-weight: 600; }
     .gradient { background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .strike { color: var(--red); text-decoration: line-through; }
-    /* SERVICES */
+/* SERVICES */
     .services { padding-top: 120px; }
-    .services h2 { text-align: center; font-size: 36px; margin-bottom: 8px; }
+    .services h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
     .subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; }
-    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .services .card { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px; }
-    .services .card h3 { font-size: 18px; margin-bottom: 16px; color: var(--green); }
+    .grid { display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); justify-content: center; }
+    .services .card {
+      background: #13151F;
+      border-radius: 20px;
+      padding: 40px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+      min-height: 500px;
+    }
+    .services .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 40px rgba(0, 255, 153, 0.3);
+    }
+    .services .card h3 { font-size: 24px; margin-bottom: 20px; }
     .services ul { list-style: none; }
-    .services li { display: flex; align-items: center; margin-bottom: 8px; }
-    .services li::before { content: '✔'; color: var(--green); margin-right: 8px; }
+    .services li { display: flex; align-items: center; margin-bottom: 15px; }
+    .services li .checkmark { margin-right: 10px; }
+    .icon-wrapper { text-align: left; margin-bottom: 10px; padding-left: 20px; }
+    .icon { display: inline-flex; justify-content: center; align-items: center; width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, rgba(0, 255, 153, 0.1), rgba(127, 61, 245, 0.1)); filter: drop-shadow(0 0 10px rgba(0, 255, 153, 0.2)); }
+    .gradient { background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     /* FOOTER */
     footer { padding: 40px 20px; text-align: center; color: var(--gray); font-size: 14px; }
   </style>
@@ -267,11 +281,11 @@
       </div>
       <h3 style="font-size: 24px; background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; padding-left: 20px;">Стратегия</h3>
       <ul>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="neonCheckGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#00FF99;"/><stop offset="100%" style="stop-color:#7F3DF5;"/></linearGradient></defs></svg></span> Go-to-market стратегия</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Коммуникационная стратегия</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Конкурентный анализ</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Стратегия продвижения</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Маркетинговая стратегия</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="neonCheckGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7F3DF5;"/><stop offset="100%" style="stop-color:#7F3DF5;"/></linearGradient></defs></svg></span> Go-to-market стратегия</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Коммуникационная стратегия</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Конкурентный анализ</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Стратегия продвижения</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Маркетинговая стратегия</li>
       </ul>
     </div>
 
@@ -292,12 +306,12 @@
       </div>
       <h3 style="font-size: 24px; background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; padding-left: 20px;">Упаковка</h3>
       <ul>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Создание лендинга</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Разработка фирменного стиля</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Создание логотипа</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Разработка КП</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Разработка Key Vision</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Разработка баннеров и креативов</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="neonCheckGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7F3DF5;"/><stop offset="100%" style="stop-color:#7F3DF5;"/></linearGradient></defs></svg></span> Создание лендинга</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Разработка фирменного стиля</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Создание логотипа</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Разработка КП</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Разработка Key Vision</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Разработка баннеров и креативов</li>
       </ul>
     </div>
 
@@ -319,11 +333,11 @@
       </div>
       <h3 style="font-size: 24px; background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; padding-left: 20px;">Трафик</h3>
       <ul>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> SEO-продвижение</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Контекстная реклама</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Таргетированная реклама</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Аналитика и оптимизация</li>
-        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(0, 255, 153, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Маркетинг в соцсетях</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="neonCheckGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7F3DF5;"/><stop offset="100%" style="stop-color:#7F3DF5;"/></linearGradient></defs></svg></span> SEO-продвижение</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Контекстная реклама</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Таргетированная реклама</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Аналитика и оптимизация</li>
+        <li style="color: #A0A0A0; font-size: 16px;"><span class="checkmark"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; filter: drop-shadow(0 0 5px rgba(127, 61, 245, 0.5));"><path d="M5 13l4 4L19 7" fill="none" stroke="url(#neonCheckGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Маркетинг в соцсетях</li>
       </ul>
     </div>
   </div>
@@ -332,32 +346,6 @@
     <a class="btn btn-primary">Узнать подробнее о услугах</a>
   </div>
 </section>
-
-<style>
-  .services { padding-top: 120px; }
-  .services h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
-  .subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; }
-  .grid { display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); justify-content: center; }
-  .services .card {
-    background: #13151F;
-    border-radius: 20px;
-    padding: 40px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
-    min-height: 500px;
-  }
-  .services .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 40px rgba(0, 255, 153, 0.3);
-  }
-  .services .card h3 { font-size: 24px; margin-bottom: 20px; }
-  .services ul { list-style: none; }
-  .services li { display: flex; align-items: center; margin-bottom: 15px; }
-  .services li .checkmark { margin-right: 10px; }
-  .icon-wrapper { text-align: left; margin-bottom: 10px; padding-left: 20px; }
-  .icon { display: inline-flex; justify-content: center; align-items: center; width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, rgba(0, 255, 153, 0.1), rgba(127, 61, 245, 0.1)); filter: drop-shadow(0 0 10px rgba(0, 255, 153, 0.2)); }
-  .gradient { background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-</style>
 
   
   <!-- FOOTER -->
