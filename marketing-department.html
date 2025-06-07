@@ -538,6 +538,148 @@
   .expertise-item { margin-bottom: 15px; }
   .expertise-item span { color: #A0A0A0; font-size: 16px; display: block; margin-bottom: 5px; }
 </style>
+
+ <!-- KEYS  -->
+  
+<section class="results" id="results">
+  <h2>
+    <span class="gradient" style="font-size: 42px;">Результаты</span>
+  </h2>
+  <p class="subtitle">Мы гордимся успехами наших клиентов и измеряемыми результатами, которых мы помогли достичь</p>
+
+  <div class="cases-container">
+    <!-- B2B маркетплейс -->
+    <div class="case-card">
+      <div class="case-header">
+        <h3 style="font-size: 24px; background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">B2B маркетплейс</h3>
+      </div>
+      <div class="comparison">
+        <div class="before">
+          <span>Кейс</span>
+          <div class="bar">
+            <div class="value">100К ₽</div>
+            <div class="progress" style="width: 0%; background: #2e2e3e;"></div>
+          </div>
+          <span class="change" style="color: var(--green);">+215%</span>
+        </div>
+        <div class="after">
+          <span>Стало</span>
+          <div class="bar">
+            <div class="value">315К ₽</div>
+            <div class="progress" style="width: 100%; background: linear-gradient(90deg, var(--green), var(--purple)); animation: fill 2s infinite;"></div>
+          </div>
+        </div>
+      </div>
+      <p style="color: #A0A0A0; margin-top: 10px;">Увеличение ежемесячной выручки после комплексного маркетинга: SEO-оптимизация и настройка рекламных кампаний.</p>
+      <div class="metrics">
+        <div class="metric"><span style="color: var(--green);">+180%</span> Органический трафик</div>
+        <div class="metric"><span style="color: var(--green);">+75%</span> Конверсия</div>
+      </div>
+    </div>
+
+    <!-- Brendoss мебельная фабрика -->
+    <div class="case-card">
+      <div class="case-header">
+        <h3 style="font-size: 24px; background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Brendoss мебельная фабрика</h3>
+      </div>
+      <div class="comparison">
+        <div class="before">
+          <span>Кейс</span>
+          <div class="bar">
+            <div class="value">5</div>
+            <div class="progress" style="width: 0%; background: #2e2e3e;"></div>
+          </div>
+          <span class="change" style="color: var(--green);">+320%</span>
+        </div>
+        <div class="after">
+          <span>Стало</span>
+          <div class="bar">
+            <div class="value">16</div>
+            <div class="progress" style="width: 100%; background: linear-gradient(90deg, var(--green), var(--purple)); animation: fill 2s infinite;"></div>
+          </div>
+        </div>
+      </div>
+      <p style="color: #A0A0A0; margin-top: 10px;">Рост числа крупных заказов после редизайна сайта и запуска таргетированной рекламы.</p>
+      <div class="metrics">
+        <div class="metric"><span style="color: var(--green);">+200%</span> Средний чек</div>
+        <div class="metric"><span style="color: var(--green);">+60%</span> Заказы</div>
+      </div>
+    </div>
+
+    <!-- Уралградстрой -->
+    <div class="case-card">
+      <div class="case-header">
+        <h3 style="font-size: 24px; background: linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Уралградстрой</h3>
+      </div>
+      <div class="comparison">
+        <div class="before">
+          <span>Кейс</span>
+          <div class="bar">
+            <div class="value">50К ₽</div>
+            <div class="progress" style="width: 0%; background: #2e2e3e;"></div>
+          </div>
+          <span class="change" style="color: var(--green);">+250%</span>
+        </div>
+        <div class="after">
+          <span>Стало</span>
+          <div class="bar">
+            <div class="value">175К ₽</div>
+            <div class="progress" style="width: 100%; background: linear-gradient(90deg, var(--green), var(--purple)); animation: fill 2s infinite;"></div>
+          </div>
+        </div>
+      </div>
+      <p style="color: #A0A0A0; margin-top: 10px;">Увеличение выручки после SEO-оптимизации и контент-маркетинга для строительного сектора.</p>
+      <div class="metrics">
+        <div class="metric"><span style="color: var(--green);">+150%</span> Органический трафик</div>
+        <div class="metric"><span style="color: var(--green);">+70%</span> Конверсия</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .results { padding-top: 120px; max-width: 1400px; margin: 0 auto; padding: 0 20px; overflow-x: auto; white-space: nowrap; }
+  .results h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; }
+  .cases-container { display: flex; gap: 40px; padding-bottom: 20px; }
+  .case-card {
+    background: #13151F;
+    border-radius: 20px;
+    padding: 20px;
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+  }
+  .case-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(0, 255, 153, 0.3); }
+  .case-header { margin-bottom: 15px; }
+  .comparison { display: flex; justify-content: space-between; margin-bottom: 15px; }
+  .before, .after { text-align: left; width: 48%; }
+  .bar {
+    background: #2e2e3e;
+    border-radius: 10px;
+    height: 20px;
+    position: relative;
+    margin-top: 5px;
+    overflow: hidden;
+  }
+  .value { position: absolute; color: #A0A0A0; font-size: 14px; top: 50%; left: 10px; transform: translateY(-50%); z-index: 1; }
+  .progress {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .change { display: block; margin-top: 5px; font-size: 16px; }
+  .metrics { margin-top: 10px; }
+  .metric { color: #A0A0A0; font-size: 14px; margin-bottom: 5px; }
+  @keyframes fill {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+</style>
+
   
   <!-- FOOTER -->
   <footer>
