@@ -688,7 +688,14 @@
 </script>
 
 <style>
-  .results { padding-top: 180px; max-width: 1400px; margin: 0 auto; padding: 0 20px; position: relative; }
+  .results {
+    padding-top: 400px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    min-height: 100vh; /* Каждый блок занимает полный экран */
+  }
   .results h2 { text-align: center; font-size: 42px; margin-bottom: 8px; }
   .subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; }
   .cases-container {
@@ -720,10 +727,11 @@
   .case-header { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
   .category-tag {
     background: #2e2e3e;
-    padding: 5px 10px;
+    padding: 5px 15px; /* Увеличена ширина плашки */
     border-radius: 10px;
     color: #A0A0A0;
     font-size: 14px;
+    white-space: nowrap; /* Текст в одну строку */
   }
   .comparison { display: flex; justify-content: space-between; margin-bottom: 15px; }
   .before, .after { text-align: left; width: 48%; }
