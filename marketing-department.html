@@ -13,6 +13,7 @@
       --gray: #6B6B7A;
       --green: #00FF99;
       --purple: #7F3DF5;
+      --red: #FF4444;
       --font: 'Inter', sans-serif;
     }
     *{box-sizing:border-box; margin:0; padding:0}
@@ -34,10 +35,11 @@
     /* Sections padding */
     section{padding:80px 20px; position:relative;}
     /* Hero */
-    .hero{min-height:600px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;}
-    .hero .content{max-width:600px; z-index:1;}
-    .hero .tag{display:inline-block; padding:6px 12px; border-radius:999px; font-size:14px; margin-bottom:16px;
-      background: linear-gradient(90deg, var(--green), var(--purple)); color:#000; text-align:center;}
+    .hero{min-height:600px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:40px;}
+    .hero .content{max-width:700px; text-align:center; z-index:1;}
+    .hero .tag{display:inline-block; padding:6px 12px; border:1px solid var(--gray); border-radius:999px; font-size:14px; margin-bottom:16px;
+      background: transparent; -webkit-text-fill-color: transparent; -webkit-background-clip:text;
+      background: linear-gradient(90deg, var(--green), var(--purple));}
     .hero h1{font-size:48px; line-height:1.1; margin-bottom:16px;}
     .hero h1 .green{color:var(--green)}
     .hero p{font-size:18px; margin-bottom:24px; color:var(--gray)}
@@ -45,24 +47,25 @@
     .btn-primary{background:linear-gradient(90deg, var(--green), var(--purple)); color:#fff; margin-right:12px}
     .btn-secondary{border:2px solid var(--purple); color:var(--purple)}
     .btn:hover{transform:translateY(-3px)}
-    .stats{display:flex; gap:40px; margin-top:60px; flex-wrap:wrap}
+    .stats{display:flex; gap:40px; margin-top:60px; flex-wrap:wrap; justify-content:center;}
     .stats .item{text-align:center;}
     .stats .item h3{font-size:24px; margin-bottom:8px; animation: neonPulse 2s infinite;}
     .stats .item p{font-size:14px; color:var(--gray)}
     /* Glow card */
-    .hero .card-wrapper{position:relative; width:480px; height:400px; order:2;}
-    .hero .glow{position:absolute; inset:0; border-radius:20px; background:linear-gradient(135deg, var(--green), var(--purple)); filter:blur(60px); z-index:-2;}
-    .hero .glow:nth-child(2){transform:rotate(10deg) scale(1.1); filter:blur(80px);}
-    .hero .glow:nth-child(3){transform:rotate(-10deg) scale(1.2); filter:blur(100px);}
+    .hero .card-wrapper{position:relative; width:600px; height:450px; order:2;}
+    .hero .glow{position:absolute; inset:0; border-radius:20px; background:linear-gradient(135deg, rgba(0, 255, 153, 0.1), rgba(127, 61, 245, 0.1)); filter:blur(20px); z-index:-2;}
+    .hero .glow:nth-child(2){transform:rotate(10deg) scale(1.1); filter:blur(30px);}
+    .hero .glow:nth-child(3){transform:rotate(-10deg) scale(1.2); filter:blur(40px);}
     .hero .card{position:relative; background:var(--bg); border:1px solid var(--green); border-radius:20px; padding:24px; display:grid; grid-template-columns:1fr; gap:12px; z-index:1;}
-    .hero .card .sub-card{background: rgba(107, 107, 122, 0.2); border-radius:10px; padding:10px; margin:5px 0;}
+    .hero .card .sub-card{background: rgba(107, 107, 122, 0.2); border-radius:10px; padding:10px; margin:5px 0; display:flex; align-items:center;}
+    .hero .card .sub-card svg{margin-right:10px;}
     .hero .card-row{display:flex; gap:12px;}
-    .hero .card .label{font-size:12px; color:var(--gray)}
-    .hero .card .role{font-weight:600; font-size:16px}
-    .hero .price-row{display:flex; justify-content:space-between; margin-top:24px; font-weight:600;}
+    .hero .card .label{font-size:16px; color:var(--text-light); font-weight:600;}
+    .hero .price-row{display:flex; justify-content:space-between; margin-top:24px; font-weight:600; flex-wrap:wrap;}
     .hero .price-row .price{font-size:20px; background:linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip:text; color:transparent;}
     .hero .price-row .save{font-size:20px; text-align:right;}
-    .hero .price-row .save del{color:var(--gray); margin-right:5px;}
+    .hero .price-row .save del{color:var(--red); margin-right:5px;}
+    .hero .price-row .save .economy{background:linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip:text; color:transparent;}
     /* Services */
     .services h2{font-size:36px; margin-bottom:8px; text-align:center;}
     .services p.subtitle{color:var(--gray); text-align:center; margin-bottom:40px;}
@@ -132,16 +135,16 @@
       <div class="glow"></div>
       <div class="glow"></div>
       <div class="card">
-        <div class="sub-card"><div class="label">Руководитель</div><div class="role">Стратегия и управление</div></div>
+        <div class="sub-card"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.74"></path></svg><div class="label">Руководитель</div><div class="role">Стратегия и управление</div></div>
         <div class="card-row">
-          <div class="sub-card"><div class="label">UX/UI Дизайнер</div></div>
-          <div class="sub-card"><div class="label">Frontend Разработчик</div></div>
-          <div class="sub-card"><div class="label">SEO Специалист</div></div>
+          <div class="sub-card"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paint-brush"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-5-5z"></path><path d="M9 13h6"></path><path d="M12 10v6"></path></svg><div class="label">UX/UI Дизайнер</div></div>
+          <div class="sub-card"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg><div class="label">Frontend Разработчик</div></div>
+          <div class="sub-card"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><div class="label">SEO Специалист</div></div>
         </div>
-        <div class="sub-card"><div class="label">Директолог/Таргетолог</div></div>
+        <div class="sub-card"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg><div class="label">Директолог/Таргетолог</div></div>
         <div class="price-row">
-          <div class="price">Стоимость: <span>100 000 ₽</span>/мес</div>
-          <div class="save">Зарплата отдела: <del>1 000 000 ₽</del>/мес - Экономия: <span>900 000 ₽</span>/мес</div>
+          <div class="price">Стоимость<br><span>100 000 ₽</span>/мес</div>
+          <div class="save">Зарплата отдела<br><del>1 000 000 ₽</del>/мес - Экономия: <span class="economy">90%</span></div>
         </div>
       </div>
     </div>
