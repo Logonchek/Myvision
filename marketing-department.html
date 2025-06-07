@@ -2,70 +2,224 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Отдел маркетинга по цене одного специалиста</title>
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Vision — Маркетинговый отдел</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .team-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; }
+    :root {
+      --bg: #0A0B10;
+      --grid-line: rgba(255,255,255,0.03);
+      --text-light: #F2F2F7;
+      --gray: #6B6B7A;
+      --green: #00FF99;
+      --purple: #7F3DF5;
+      --font: 'Inter', sans-serif;
+    }
+    *{box-sizing:border-box; margin:0; padding:0}
+    body{font-family:var(--font); background:var(--bg); color:var(--text-light);}
+    a{color:inherit; text-decoration:none}
+    img{display:block; width:100%}
+    h1,h2,h3{font-weight:800}
+    p{font-weight:400; color:var(--text-light);}
+    /* Grid background */
+    body::before{
+      content:''; position:fixed; inset:0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events:none;
+      z-index: -1;
+    }
+    /* Sections padding */
+    section{padding:80px 20px; position:relative;}
+    /* Hero */
+    .hero{min-height:600px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;}
+    .hero .content{max-width:600px; z-index:1;}
+    .hero .tag{display:inline-block; padding:6px 12px; border-radius:999px; font-size:14px; margin-bottom:16px;
+      background: linear-gradient(90deg, var(--green), var(--purple)); color:#000; text-align:center;}
+    .hero h1{font-size:48px; line-height:1.1; margin-bottom:16px;}
+    .hero h1 .green{color:var(--green)}
+    .hero p{font-size:18px; margin-bottom:24px; color:var(--gray)}
+    .btn{display:inline-block; padding:14px 28px; border-radius:999px; font-weight:600; transition:transform .3s}
+    .btn-primary{background:linear-gradient(90deg, var(--green), var(--purple)); color:#fff; margin-right:12px}
+    .btn-secondary{border:2px solid var(--purple); color:var(--purple)}
+    .btn:hover{transform:translateY(-3px)}
+    .stats{display:flex; gap:40px; margin-top:60px; flex-wrap:wrap}
+    .stats .item{text-align:center;}
+    .stats .item h3{font-size:24px; margin-bottom:8px; animation: neonPulse 2s infinite;}
+    .stats .item p{font-size:14px; color:var(--gray)}
+    /* Glow card */
+    .hero .card-wrapper{position:relative; width:480px; height:400px; order:2;}
+    .hero .glow{position:absolute; inset:0; border-radius:20px; background:linear-gradient(135deg, var(--green), var(--purple)); filter:blur(60px); z-index:-2;}
+    .hero .glow:nth-child(2){transform:rotate(10deg) scale(1.1); filter:blur(80px);}
+    .hero .glow:nth-child(3){transform:rotate(-10deg) scale(1.2); filter:blur(100px);}
+    .hero .card{position:relative; background:var(--bg); border:1px solid var(--green); border-radius:20px; padding:24px; display:grid; grid-template-columns:1fr; gap:12px; z-index:1;}
+    .hero .card .sub-card{background: rgba(107, 107, 122, 0.2); border-radius:10px; padding:10px; margin:5px 0;}
+    .hero .card-row{display:flex; gap:12px;}
+    .hero .card .label{font-size:12px; color:var(--gray)}
+    .hero .card .role{font-weight:600; font-size:16px}
+    .hero .price-row{display:flex; justify-content:space-between; margin-top:24px; font-weight:600;}
+    .hero .price-row .price{font-size:20px; background:linear-gradient(90deg, var(--green), var(--purple)); -webkit-background-clip:text; color:transparent;}
+    .hero .price-row .save{font-size:20px; text-align:right;}
+    .hero .price-row .save del{color:var(--gray); margin-right:5px;}
+    /* Services */
+    .services h2{font-size:36px; margin-bottom:8px; text-align:center;}
+    .services p.subtitle{color:var(--gray); text-align:center; margin-bottom:40px;}
+    .services .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;}
+    .services .card{background:linear-gradient(135deg, rgba(0, 255, 153, 0.05), rgba(127, 61, 245, 0.05)); border:1px solid var(--green); border-radius:16px; padding:24px;}
+    .services .card h3{font-size:20px; margin-bottom:16px; color:var(--green)}
+    .services .card ul{list-style:none; padding-left:0;}
+    .services .card ul li{margin-bottom:8px; display:flex; align-items:center;}
+    .services .card ul li::before{content:'✔'; color:var(--green); margin-right:8px; font-size:14px;}
+    .services .btn-center{text-align:center; margin-top:32px;}
+    /* Team */
+    .team h2{font-size:36px; margin-bottom:8px; text-align:center;}
+    .team p.subtitle{color:var(--gray); text-align:center; margin-bottom:40px;}
+    .team .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;}
+    .team .member{background:linear-gradient(135deg, rgba(0, 255, 153, 0.05), rgba(127, 61, 245, 0.05)); border:1px solid var(--green); border-radius:16px; overflow:hidden;}
+    .team .member .top{position:relative; height:160px; background:linear-gradient(135deg, rgba(0, 255, 153, 0.1), rgba(127, 61, 245, 0.1));}
+    .team .member .badge{position:absolute; top:16px; left:16px; display:inline-block; padding:4px 8px; font-size:12px; border-radius:999px; background:var(--green); color:#000;}
+    .team .member .info{padding:16px;}
+    .team .member .info h3{font-size:20px; margin-bottom:4px;}
+    .team .member .info .role{font-size:14px; color:var(--gray); margin-bottom:12px;}
+    .team .member .info p{font-size:14px; line-height:1.4; margin-bottom:12px; color:var(--text-light)}
+    .team .member .progress{height:8px; border-radius:4px; background:linear-gradient(90deg, rgba(0, 255, 153, 0.1), rgba(127, 61, 245, 0.1)); overflow:hidden; margin-bottom:8px;}
+    .team .member .progress-inner{height:100%; background:linear-gradient(90deg, var(--green), var(--purple));}
+    .team .member .years{font-size:14px; font-weight:600;}
+    /* Expertise */
+    .expertise{background:linear-gradient(135deg, rgba(0, 255, 153, 0.05), rgba(127, 61, 245, 0.05)); border:1px solid var(--green); border-radius:16px; padding:24px;}
+    .expertise h3{font-size:20px; margin-bottom:16px;}
+    .expertise .skill{margin-bottom:16px;}
+    .expertise .skill .label{display:flex; justify-content:space-between; font-size:14px; margin-bottom:4px;}
+    .expertise .skill .bar{height:8px; border-radius:4px; background:linear-gradient(90deg, rgba(0, 255, 153, 0.1), rgba(127, 61, 245, 0.1)); overflow:hidden;}
+    .expertise .skill .bar-inner{height:100%; background:linear-gradient(90deg, var(--green), var(--purple));}
+    /* Results */
+    .results h2{font-size:36px; margin-bottom:8px; text-align:center;}
+    .results p.subtitle{color:var(--gray); text-align:center; margin-bottom:40px;}
+    .results .grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+    .results .case{background:linear-gradient(135deg, rgba(0, 255, 153, 0.05), rgba(127, 61, 245, 0.05)); border:1px solid var(--green); border-radius:16px; padding:24px;}
+    .results .case .header{display:flex; justify-content:space-between; margin-bottom:16px;}
+    .results .case .header .title{font-size:20px; font-weight:600;}
+    .results .case .bar-comparison{height:24px; border-radius:12px; background:linear-gradient(90deg, rgba(0, 255, 153, 0.1), rgba(127, 61, 245, 0.1)); display:flex; overflow:hidden; margin-bottom:16px;}
+    .results .case .bar-comparison .old{background:linear-gradient(90deg, rgba(107, 107, 122, 0.5), rgba(107, 107, 122, 0.5)); padding:0 12px; display:flex; align-items:center; color:var(--text-light);}
+    .results .case .bar-comparison .new{flex:1; background:linear-gradient(135deg, var(--green), var(--purple)); padding:0 12px; display:flex; align-items:center; justify-content:flex-end; color:#000;}
+    .results .case .footer{display:flex; gap:16px;}
+    .results .case .footer .metric{flex:1; background:linear-gradient(135deg, rgba(0, 255, 153, 0.05), rgba(127, 61, 245, 0.05)); border-radius:12px; padding:12px; text-align:center;}
+    /* Animation */
+    @keyframes neonPulse {
+      0%, 100% { text-shadow: 0 0 5px rgba(0, 255, 153, 0.5); }
+      50% { text-shadow: 0 0 10px rgba(0, 255, 153, 0.8); }
+    }
   </style>
 </head>
-<body class="bg-dark text-white font-sans">
-  <nav class="nav">
-    <div class="container flex items-center justify-between px-6">
-      <div class="text-xl font-bold neon-green">My Vision</div>
-      <div class="flex items-center gap-6">
-        <a href="index.html" class="nav-item">Главная</a>
-        <a href="services-site-dev.html" class="nav-item">Услуги</a>
+<body>
+  <section class="hero">
+    <div class="content">
+      <span class="tag">Инновационное решение</span>
+      <h1><span class="green">Отдел маркетинга</span> по цене <span class="purple">одного специалиста</span></h1>
+      <p>Получите полноценную команду профессионалов, которая выведет ваш бизнес на новый уровень без лишних затрат</p>
+      <a href="#" class="btn btn-primary">Получить консультацию</a>
+      <a href="#" class="btn btn-secondary">Узнать больше</a>
+      <div class="stats">
+        <div class="item"><h3><span class="green">5+</span></h3><p>Экспертов в команде</p></div>
+        <div class="item"><h3><span class="green">50+</span></h3><p>Успешных проектов</p></div>
+        <div class="item"><h3><span class="green">200%</span></h3><p>Средний рост ROI</p></div>
       </div>
     </div>
-  </nav>
-
-  <section class="py-24 mt-16 animate-on-scroll fade-up">
-    <div class="container">
-      <h1 class="text-4xl md:text-5xl font-bold neon-green mb-6 text-center">Отдел маркетинга по цене одного специалиста</h1>
-      <p class="text-lg text-gray-300 text-center mb-12">Мы собрали команду экспертов, которая закрывает все ключевые задачи интернет-маркетинга.</p>
-      <div class="team-grid">
-        <div class="card fade-up">
-          <img src="https://firebasestorage.googleapis.com/v0/b/life-game-d6cb1.firebasestorage.app/o/replicate-prediction-mab28pbrc5rm80cpma38e7q6y8.jpg?alt=media&token=fec2bc6c-15bb-4176-8e3d-14b9f11002b4" alt="Руководитель отдела маркетинга" class="team-photo">
-          <h3 class="text-xl font-semibold mb-2 text-center">Руководитель отдела маркетинга</h3>
-          <p class="text-gray-300 text-center">Более 10 лет в маркетинге. Строю системы лидогенерации и формирую стратегию, которая приносит измеримые результаты бизнесу.</p>
+    <div class="card-wrapper">
+      <div class="glow"></div>
+      <div class="glow"></div>
+      <div class="glow"></div>
+      <div class="card">
+        <div class="sub-card"><div class="label">Руководитель</div><div class="role">Стратегия и управление</div></div>
+        <div class="card-row">
+          <div class="sub-card"><div class="label">UX/UI Дизайнер</div></div>
+          <div class="sub-card"><div class="label">Frontend Разработчик</div></div>
+          <div class="sub-card"><div class="label">SEO Специалист</div></div>
         </div>
-        <div class="card fade-up">
-          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?crop=faces&fit=crop&w=400&h=400" alt="UX/UI дизайнер Ангелина" class="team-photo">
-          <h3 class="text-xl font-semibold mb-2 text-center">Ангелина — UX/UI дизайнер</h3>
-          <p class="text-gray-300 text-center">Проектирует удобные интерфейсы и следит за визуальным стилем. Делает продукты понятными и красивыми.</p>
-        </div>
-        <div class="card fade-up">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=faces&fit=crop&w=400&h=400" alt="SEO специалист Виталий" class="team-photo">
-          <h3 class="text-xl font-semibold mb-2 text-center">Виталий — SEO специалист</h3>
-          <p class="text-gray-300 text-center">Оптимизирует сайты под поисковые системы, строит стратегию контента и выводит проекты в топ выдачи.</p>
-        </div>
-        <div class="card fade-up">
-          <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a4?crop=faces&fit=crop&w=400&h=400" alt="Frontend разработчик Павел" class="team-photo">
-          <h3 class="text-xl font-semibold mb-2 text-center">Павел — Frontend разработчик</h3>
-          <p class="text-gray-300 text-center">Разрабатывает быстрый и адаптивный фронтенд, внедряет интерактив и заботится о технической стороне проектов.</p>
-        </div>
-        <div class="card fade-up">
-          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=faces&fit=crop&w=400&h=400" alt="Директолог/таргетолог Кристина" class="team-photo">
-          <h3 class="text-xl font-semibold mb-2 text-center">Кристина — Директолог/Таргетолог</h3>
-          <p class="text-gray-300 text-center">Запускает эффективные рекламные кампании в поиске и соцсетях, повышая конверсию и охват.</p>
+        <div class="sub-card"><div class="label">Директолог/Таргетолог</div></div>
+        <div class="price-row">
+          <div class="price">Стоимость: <span>100 000 ₽</span>/мес</div>
+          <div class="save">Зарплата отдела: <del>1 000 000 ₽</del>/мес - Экономия: <span>900 000 ₽</span>/мес</div>
         </div>
       </div>
     </div>
   </section>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
+  <section class="services" id="services">
+    <span class="tag">Наши услуги</span>
+    <h2>Что мы можем <span class="green">сделать</span> для <span class="purple">вас</span></h2>
+    <p class="subtitle">Полный спектр маркетинговых услуг для развития вашего бизнеса</p>
+    <div class="grid">
+      <div class="card"><h3>Стратегия</h3><ul><li>Go to market стратегия</li><li>Коммуникационная стратегия</li><li>Конкурентный анализ</li><li>Стратегия продвижения</li><li>Маркетинговая стратегия</li></ul></div>
+      <div class="card"><h3>Упаковка</h3><ul><li>Создание лендинга</li><li>Разработка фирменного стиля</li><li>Создание логотипа</li><li>Разработка КП</li><li>Key Visual</li><li>Баннеры и креативы</li></ul></div>
+      <div class="card"><h3>Трафик</h3><ul><li>SEO продвижение</li><li>Контекстная реклама</li><li>Таргетированная реклама</li></ul></div>
+    </div>
+    <div class="btn-center"><a href="#" class="btn btn-primary">Узнать подробнее о услугах</a></div>
+  </section>
+
+  <section class="team" id="team">
+    <span class="tag">Профессионалы, которые будут работать на вас</span>
+    <h2>Команда</h2>
+    <p class="subtitle">Команда экспертов с многолетним опытом в различных областях маркетинга</p>
+    <div class="grid">
+      <div class="member">
+        <div class="top"><span class="badge">Руководитель</span></div>
+        <div class="info"><h3>Руководитель отдела маркетинга</h3><div class="role">Опытный маркетолог с более чем 10-летним стажем</div>
+        <p>Разрабатывает стратегии, которые приносят результат. Специализируется на комплексном маркетинге и управлении командой.</p>
+        <div class="progress"><div class="progress-inner" style="width:95%;"></div></div>
+        <div class="years">10+ лет</div></div>
+      </div>
+      <div class="member">
+        <div class="top"><span class="badge">Дизайн</span></div>
+        <div class="info"><h3>Ангелина</h3><div class="role">UX/UI Дизайнер</div>
+        <p>Креативный дизайнер с глубоким пониманием пользовательского опыта. Создает интерфейсы, которые конвертируют.</p>
+        <div class="progress"><div class="progress-inner" style="width:90%;"></div></div>
+        <div class="years">7+ лет</div></div>
+      </div>
+      <div class="member">
+        <div class="top"><span class="badge">SEO</span></div>
+        <div class="info"><h3>Виталий</h3><div class="role">SEO Специалист</div>
+        <p>Эксперт по поисковой оптимизации с глубоким пониманием алгоритмов. Помогает бизнесам занимать топы.</p>
+        <div class="progress"><div class="progress-inner" style="width:88%;"></div></div>
+        <div class="years">8+ лет</div></div>
+      </div>
+      <div class="member">
+        <div class="top"><span class="badge">Разработка</span></div>
+        <div class="info"><h3>Павел</h3><div class="role">Frontend Разработчик</div>
+        <p>Создает современные и быстрые веб-сайты с отличным UX и производительностью.</p>
+        <div class="progress"><div class="progress-inner" style="width:85%;"></div></div>
+        <div class="years">6+ лет</div></div>
+      </div>
+      <div class="member">
+        <div class="top"><span class="badge">Трафик</span></div>
+        <div class="info"><h3>Кристина</h3><div class="role">Директолог/Таргетолог</div>
+        <p>Специалист по контекстной и таргетированной рекламе с опытом оптимизации кампаний.</p>
+        <div class="progress"><div class="progress-inner" style="width:92%;"></div></div>
+        <div class="years">5+ лет</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="results" id="results">
+    <span class="tag">Реальные достижения наших клиентов</span>
+    <h2>Результаты</h2>
+    <p class="subtitle">Мы гордимся успехами наших клиентов и измеримыми результатами</p>
+    <div class="grid">
+      <div class="case">
+        <div class="header"><div class="title">Интернет-магазин</div><div class="growth green">+215%</div></div>
+        <div class="bar-comparison"><div class="old">100K ₽</div><div class="new">315K ₽</div></div>
+        <p>Увеличение выручки после редизайна сайта, SEO и рекламы.</p>
+        <div class="footer"><div class="metric"><span>Органический трафик</span><div class="green">+180%</div></div>
+                        <div class="metric"><span>Конверсия</span><div class="green">+75%</div></div></div>
+      </div>
+      <div class="case">
+        <div class="header"><div class="title">B2B Компания</div><div class="growth green">+320%</div></div>
+        <div class="bar-comparison"><div class="old">5 лидов</div><div class="new">21 лид</div></div>
+        <p>Рост лидов за счет таргетинга и оптимизации воронки продаж.</p>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
