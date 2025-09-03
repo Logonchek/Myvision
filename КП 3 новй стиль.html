@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персональное КП: Внедрение Контент-Завода для Wildberries</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0B10;
+            --grid-line: rgba(255,255,255,0.05);
+            --text: #F2F2F7;
+            --gray: #6B6B7A;
+            --green: #00FF99;
+            --purple: #7F3DF5;
+            --header-h: 90px;
+            --container-bg: rgba(19,21,31,0.85);
+            --accent-gradient: linear-gradient(90deg, rgba(0,255,153,0.1), rgba(127,61,245,0.1));
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 18px;
+            line-height: 1.8;
+            overflow: hidden;
+        }
+        h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; }
+        h3 { font-family: 'Inter', sans-serif; font-weight: 600; }
+        a { color: inherit; text-decoration: none; cursor: pointer; }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -2;
+            background-image:
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        section { width: 100vw; height: 100vh; padding: 40px 20px; display: flex; align-items: center; justify-content: center; position: relative; }
+
+        /* Content Wrapper for Padding and Beauty */
+        .content-wrapper {
+            max-width: 1200px;
+            width: 90%;
+            background: var(--container-bg);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        .content-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0.5;
+            z-index: -1;
+            border-radius: 24px;
+        }
+
+        /* HEADER SECTION */
+        .article-header {
+            text-align: center;
+        }
+        .article-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0,255,153,0.15), transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
+        }
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .tag {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 999px;
+            font-size: 16px;
+            margin-bottom: 24px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(6px);
+            background-image: linear-gradient(90deg, var(--green), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .animate-bounce { animation: bounce 2s infinite; }
+        .article-title {
+            font-size: 60px;
+            line-height: 1.2;
+            margin-bottom: 28px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .article-title .neon {
+            background: linear-gradient(90deg, var(--green), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0,255,153,0.5);
+        }
+        .intro-text {
+            font-size: 22px;
+            color: var(--gray);
+            margin-bottom: 48px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+        .tech-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 12px 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tech-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 15px rgba(0,255,153,0.3);
+        }
+        .tech-item i {
+            font-size: 28px;
+            margin-right: 12px;
+            color: var(--green);
+            animation: pulse 2s infinite;
+        }
+        .tech-item span {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* BUTTONS */
+        .btn {
+            position: relative;
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 999px;
+            font-weight: 600;
+            border: 2px solid;
+            background: transparent;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(0,255,153,0.3);
+        }
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        .btn-primary {
+            color: var(--green) !important;
+            border-color: var(--green) !important;
+        }
+        .btn-primary::before {
+            background: var(--green) !important;
+        }
+        .btn-primary:hover {
+            color: var(--bg) !important;
+            border-color: var(--green) !important;
+        }
+        .btn-primary:hover::before {
+            width: 100%;
+        }
+        .btn-secondary {
+            color: var(--purple) !important;
+            border-color: var(--purple) !important;
+        }
+        .btn-secondary::before {
+            background: var(--purple) !important;
+        }
+        .btn-secondary:hover {
+            color: var(--text) !important;
+            border-color: var(--purple) !important;
+        }
+        .btn-secondary:hover::before {
+            width: 100%;
+        }
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(0,255,153,0.5);
+        }
+
+        /* ARTICLE CONTENT */
+        .article-content::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: -5%;
+            width: 4px;
+            height: 80%;
+            background: linear-gradient(to bottom, var(--green), var(--purple));
+            opacity: 0.4;
+            animation: pulseLine 6s infinite;
+        }
+        @media (max-width: 768px) {
+            .article-content::before { display: none; }
+        }
+        .article-section {
+            margin-bottom: 60px;
+        }
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0,255,153,0.15), rgba(127,61,245,0.15));
+            margin-bottom: 16px;
+            animation: iconScale 1s ease-in-out;
+        }
+        .section-icon:hover {
+            box-shadow: 0 0 20px rgba(0,255,153,0.4);
+            transform: scale(1.15);
+        }
+        .section-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--green);
+            stroke-width: 2;
+            fill: none;
+        }
+        .section-title {
+            font-size: 40px;
+            margin-bottom: 24px;
+            color: var(--text);
+            animation: fadeIn 1s ease-in-out;
+            text-shadow: 0 0 10px rgba(0,255,153,0.3);
+            position: relative;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--green);
+            margin: 8px auto 0;
+            opacity: 0.5;
+        }
+        .section-text {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+        .pull-quote {
+            font-size: 24px;
+            font-style: italic;
+            color: var(--text);
+            background: rgba(255,255,255,0.08);
+            border-left: 4px solid var(--green);
+            padding: 24px;
+            margin: 32px 0;
+            max-width: 700px;
+            animation: fadeIn 1.2s ease-in-out;
+            box-shadow: 0 0 15px rgba(0,255,153,0.2);
+            position: relative;
+        }
+        .pull-quote::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--green);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.3;
+        }
+        .pull-quote:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px rgba(0,255,153,0.3);
+        }
+        .section-conclusion {
+            font-size: 20px;
+            color: var(--text);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Process and Characteristics */
+        .process-list, .characteristics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .process-item, .char-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .process-number {
+            min-width: 40px;
+            height: 40px;
+            background: var(--green);
+            color: var(--bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .process-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .process-content p {
+            font-size: 16px;
+            color: var(--gray);
+        }
+        .characteristics {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .characteristics ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .characteristics li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 16px;
+        }
+        .characteristics i {
+            font-size: 20px;
+            margin-top: 2px;
+        }
+        .old-price {
+            color: red;
+            text-decoration: line-through;
+        }
+        .new-price {
+            color: green;
+        }
+
+        /* CTA SECTION */
+        .cta {
+            text-align: center;
+        }
+        .cta::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0,255,153,0.15), transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
+        }
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .cta h2 {
+            font-size: 44px;
+            margin-bottom: 28px;
+            animation: fadeIn 1s ease-in-out;
+            text-shadow: 0 0 10px rgba(0,255,153,0.3);
+        }
+        .cta p {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 48px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* PRESENTATION STRUCTURE */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--green), var(--purple));
+            width: 0;
+            transition: width 0.5s ease;
+            z-index: 1000;
+        }
+        .timeline {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
+            border-radius: 999px;
+            backdrop-filter: blur(6px);
+        }
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            background: var(--gray);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .timeline-dot.active {
+            background: var(--green);
+            transform: scale(1.6);
+            box-shadow: 0 0 10px var(--green);
+        }
+        .timeline-label {
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: var(--gray);
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+        .timeline-dot.active .timeline-label {
+            color: var(--text);
+        }
+        .nav-controls {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 48px;
+            z-index: 1000;
+        }
+        .nav-btn {
+            width: 72px;
+            height: 72px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 28px;
+            color: var(--text);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0,255,153,0.3);
+        }
+        .nav-btn:hover {
+            background: var(--green);
+            box-shadow: 0 0 20px rgba(0,255,153,0.5);
+            transform: scale(1.1);
+        }
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            flex: 0 0 100%;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .comparison-table {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 20px;
+            border: 1px solid var(--grid-line);
+            text-align: center;
+            font-size: 16px;
+        }
+        .comparison-table th {
+            background: var(--accent-gradient);
+            color: var(--text);
+            text-transform: uppercase;
+        }
+        .faq-item {
+            cursor: pointer;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            margin-bottom: 16px;
+        }
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 15px rgba(0,255,153,0.3);
+        }
+        .faq-question {
+            background: rgba(255,255,255,0.08);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            display: none;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .faq-toggle i {
+            transition: transform 0.3s;
+        }
+        .faq-item.active .faq-toggle i {
+            transform: rotate(180deg);
+        }
+
+        /* UTILITY CLASSES */
+        .grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+        @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }
+        .text-2xl { font-size: 28px; }
+        .text-xl { font-size: 20px; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        .mb-6 { margin-bottom: 24px; }
+        .mb-8 { margin-bottom: 32px; }
+        .mt-12 { margin-top: 48px; }
+        .p-6 { padding: 24px; }
+        .rounded-xl { border-radius: 16px; }
+        .shadow-md { box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+        .overflow-x-auto { overflow-x: auto; }
+        .space-y-6 > * + * { margin-top: 24px; }
+        .space-y-8 > * + * { margin-top: 32px; }
+        .text-indigo-700, .text-indigo-600 { color: var(--purple); }
+        .text-gray-800 { color: var(--text); }
+        .text-gray-600 { color: var(--gray); }
+        .bg-indigo-50 { background: rgba(127,61,245,0.1); }
+        .pt-4 { padding-top: 16px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .content-wrapper { padding: 24px; max-height: 90vh; width: 95%; }
+            .article-title { font-size: 40px; }
+            .cta h2 { font-size: 32px; }
+            .section-title { font-size: 32px; }
+            .intro-text, .section-text, .section-conclusion { font-size: 16px; }
+            .pull-quote { font-size: 20px; padding: 16px; max-width: 100%; }
+            .section-icon { width: 40px; height: 40px; }
+            .section-icon svg { width: 20px; height: 20px; }
+            .cta-buttons { flex-direction: column; align-items: center; gap: 16px; }
+            section { padding: 20px 10px; }
+            .nav-btn { width: 60px; height: 60px; font-size: 24px; }
+            .nav-controls { gap: 24px; bottom: 20px; }
+            .timeline { gap: 12px; padding: 6px 12px; flex-wrap: wrap; justify-content: center; }
+            .timeline-label { font-size: 12px; top: 20px; }
+            .grid { grid-template-columns: 1fr; gap: 24px; }
+            .process-item, .char-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .comparison-table th, .comparison-table td { padding: 12px; font-size: 14px; }
+            .faq-question { padding: 16px; }
+            .faq-answer { padding: 16px; }
+            .tech-list { gap: 12px; flex-direction: column; }
+            .tech-item { width: 100%; justify-content: center; }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes iconScale {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+        @keyframes pulseLine {
+            0% { opacity: 0.4; transform: translateY(0); }
+            50% { opacity: 0.6; transform: translateY(10px); }
+            100% { opacity: 0.4; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Timeline Navigation -->
+    <div class="timeline" id="timeline">
+        <div class="timeline-dot active" data-slide="0">
+            <div class="timeline-label">Главная</div>
+        </div>
+        <div class="timeline-dot" data-slide="1">
+            <div class="timeline-label">Вариант 1: Full AI</div>
+        </div>
+        <div class="timeline-dot" data-slide="2">
+            <div class="timeline-label">Вариант 2: Фото-ролики</div>
+        </div>
+        <div class="timeline-dot" data-slide="3">
+            <div class="timeline-label">Сравнение</div>
+        </div>
+        <div class="timeline-dot" data-slide="4">
+            <div class="timeline-label">Часто задаваемые вопросы</div>
+        </div>
+        <div class="timeline-dot" data-slide="5">
+            <div class="timeline-label">Кейсы</div>
+        </div>
+        <div class="timeline-dot" data-slide="6">
+            <div class="timeline-label">Внедрение</div>
+        </div>
+    </div>
+    
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <div class="nav-btn" id="prevBtn">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="nav-btn" id="nextBtn">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+    
+    <div class="presentation-container">
+        <div class="slides-container" id="slidesContainer">
+            <!-- Slide 1: Intro -->
+            <section class="slide article-header">
+                <div class="content-wrapper">
+                    <div class="header-content">
+                        <div class="tag animate-bounce">Персональное предложение для Александра Михайловича</div>
+                        <h1 class="article-title">Внедрение <span class="neon">Контент‑Завода</span> для Wildberries</h1>
+                        <p class="intro-text">Автоматизированная фабрика, создающая до десяти стильных Reels в день и продвигающая ваши товары на Wildberries за счёт искусственного интеллекта.</p>
+                        <div class="tech-list">
+                            <div class="tech-item">
+                                <i class="fas fa-video"></i>
+                                <span>Veo 3</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-image"></i>
+                                <span>Runway</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-volume-up"></i>
+                                <span>ElevenLabs</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-music"></i>
+                                <span>Pictory</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-film"></i>
+                                <span>Luma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Вариант 1 - Полная генерация ИИ -->
+            <section class="slide article-content">
+                <div class="content-wrapper">
+                    <h2 class="section-title">Вариант 1: <span class="neon">Full AI Генерация</span></h2>
+                    <div class="grid">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">Процесс работы</h3>
+                            <div class="process-list">
+                                <div class="process-item">
+                                    <div class="process-number">1</div>
+                                    <div class="process-content">
+                                        <h4>Умная разработка сценария</h4>
+                                        <p>Нейросеть формирует сценарий, тонко подчёркивающий достоинства товара.</p>
+                                    </div>
+                                </div>
+                                <div class="process-item">
+                                    <div class="process-number">2</div>
+                                    <div class="process-content">
+                                        <h4>Создание видеоряда</h4>
+                                        <p>Veo 3, Runway или Luma генерируют динамичные визуальные образы.</p>
+                                    </div>
+                                </div>
+                                <div class="process-item">
+                                    <div class="process-number">3</div>
+                                    <div class="process-content">
+                                        <h4>Премиальная озвучка</h4>
+                                        <p>Живой голос ElevenLabs превращает ролик в мини‑историю.</p>
+                                    </div>
+                                </div>
+                                <div class="process-item">
+                                    <div class="process-number">4</div>
+                                    <div class="process-content">
+                                        <h4>Эмоциональный саундтрек</h4>
+                                        <p>Треки из Mubert усиливают впечатление.</p>
+                                    </div>
+                                </div>
+                                <div class="process-item">
+                                    <div class="process-number">5</div>
+                                    <div class="process-content">
+                                        <h4>Монтаж</h4>
+                                        <p>Финальный рендер в формате 9:16, готовый к публикации.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="characteristics">
+                                <h3 class="text-2xl font-bold mb-6 text-indigo-700">Характеристики</h3>
+                                <ul class="characteristics-list">
+                                    <li>
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span><strong>Срок реализации:</strong> 5 недель</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span><strong>Инвестиции:</strong> <del class="old-price">250 000 ₽</del> <span class="new-price">150 000 ₽</span></span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span><strong>Сервисное сопровождение:</strong> 50 000–80 000 ₽/мес</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span><strong>Преимущества:</strong> Неповторимость и максимальная вовлечённость</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-times-circle text-red-600"></i>
+                                        <span><strong>Особенности:</strong> Требует регулярного контроля качества</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-buttons mt-12">
+                        <a href="#popup:myform" class="btn btn-primary">Заказать звонок</a>
+                        <a href="#popup:myform" class="btn btn-secondary">Получить детали</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: Вариант 2 - Ролики из фото клиента -->
+            <section class="slide article-content">
+                <div class="content-wrapper">
+                    <h2 class="section-title">Вариант 2: <span class="neon">Ролики из Фото</span></h2>
+                    <div class="grid">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">Процесс работы</h3>
+                            <div class="process-list">
+                                <div class="process-item">
+                                    <div class="process-number">1</div>
+                                    <div class="process-content">
+                                        <h4>Загрузка ваших фото</h4>
+                                        <p>Используем фирменные снимки товаров с Wildberries.</p>
+                                    </div>
+                                </div>
+                                <div class="process-item">
+                                    <div class="process-number">2</div>
+                                    <div class="process-content">
+                                        <h4>Автоматическая сборка</h4>
+                                        <p>Pictory или VEED собирают ролик за минуты.</p>
+                                    </div>
+                                </div>
+                                <div class="process-item">
+                                    <div class="process-number">3</div>
+                                    <div class="process-content">
+                                        <h4>Озвучивание</h4>
+                                        <p>Голос ElevenLabs.</p>
+                                    </div>
+                                </div>
+                                <div class="process-item">
+                                    <div class="process-number">4</div>
+                                    <div class="process-content">
+                                        <h4>Музыкальное оформление</h4>
+                                        <p>Лицензионные треки из Epidemic Sound.</p>
+                                    </div>
+                                </div>
+                                <div class="process-item">
+                                    <div class="process-number">5</div>
+                                    <div class="process-content">
+                                        <h4>Экспорт</h4>
+                                        <p>Рендер в формате 9:16.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="characteristics">
+                                <h3 class="text-2xl font-bold mb-6 text-indigo-700">Характеристики</h3>
+                                <ul class="characteristics-list">
+                                    <li>
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span><strong>Срок реализации:</strong> 4 недели</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span><strong>Инвестиции:</strong> <del class="old-price">120 000 ₽</del> <span class="new-price">85 000 ₽</span></span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span><strong>Сервисное сопровождение:</strong> 10 000–15 000 ₽/мес</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <span><strong>Преимущества:</strong> Рациональная цена и быстрый старт</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-times-circle text-red-600"></i>
+                                        <span><strong>Особенности:</strong> Менее динамичный визуал</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-buttons mt-12">
+                        <a href="#popup:myform" class="btn btn-primary">Заказать звонок</a>
+                        <a href="#popup:myform" class="btn btn-secondary">Получить детали</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Сравнение -->
+            <section class="slide article-content">
+                <div class="content-wrapper">
+                    <h2 class="section-title">Сравнение <span class="neon">Вариантов</span></h2>
+                    <div class="overflow-x-auto mb-8">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Параметр</th>
+                                    <th>Full AI</th>
+                                    <th>Фото-ролики</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-medium">Сроки</td>
+                                    <td>5 недель</td>
+                                    <td>4 недели</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Инвестиции</td>
+                                    <td><del class="old-price">250 000 ₽</del> <span class="new-price">150 000 ₽</span></td>
+                                    <td><del class="old-price">120 000 ₽</del> <span class="new-price">85 000 ₽</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Сервисное сопровождение/мес</td>
+                                    <td>50 000–80 000 ₽</td>
+                                    <td>10 000–15 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Динамика</td>
+                                    <td>Высокая</td>
+                                    <td>Средняя</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Уникальность</td>
+                                    <td>Максимальная</td>
+                                    <td>Хорошая</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Контроль</td>
+                                    <td>Высокий</td>
+                                    <td>Минимальный</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-12 bg-indigo-50 p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-4 text-indigo-700">Почему это лучший выбор?</h3>
+                        <p>Оба сценария работают на рост ваших продаж: Full AI — для премиального позиционирования, Фото-ролики — для экономного масштабирования.</p>
+                    </div>
+                    <div class="cta-buttons mt-12">
+                        <a href="#popup:myform" class="btn btn-primary">Заказать звонок</a>
+                        <a href="#popup:myform" class="btn btn-secondary">Получить детали</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: FAQ -->
+            <section class="slide article-content">
+                <div class="content-wrapper">
+                    <h2 class="section-title">Часто Задаваемые <span class="neon">Вопросы</span></h2>
+                    <div class="space-y-6">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3 class="text-xl font-semibold text-gray-800">Как происходит интеграция с Wildberries?</h3>
+                                <div class="faq-toggle">
+                                    <i class="fas fa-chevron-down text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="pt-4 text-gray-600">Ролики автоматически загружаются через API и привязываются к карточкам товаров.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3 class="text-xl font-semibold text-gray-800">Будет ли контент уникальным?</h3>
+                                <div class="faq-toggle">
+                                    <i class="fas fa-chevron-down text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="pt-4 text-gray-600">Нейросеть генерирует полностью оригинальные сценарии и визуалы.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3 class="text-xl font-semibold text-gray-800">Можно ли масштабировать производство?</h3>
+                                <div class="faq-toggle">
+                                    <i class="fas fa-chevron-down text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="pt-4 text-gray-600">Платформа легко масштабируется до 50 Reels в сутки без потери качества.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-buttons mt-12">
+                        <a href="#popup:myform" class="btn btn-primary">Заказать звонок</a>
+                        <a href="#popup:myform" class="btn btn-secondary">Получить детали</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6: Кейсы -->
+            <section class="slide article-content">
+                <div class="content-wrapper">
+                    <h2 class="section-title"><span class="neon">Кейсы</span> Успешных Внедрений</h2>
+                    <div class="space-y-8">
+                        <div class="pull-quote">
+                            «Продажи на Wildberries выросли на 40% всего за месяц благодаря нашим Reels» — Клиент A
+                        </div>
+                        <div class="section-text">
+                            <p><strong>Кейс 1: Одежда.</strong> Full AI на базе Veo 3 увеличил охват Reels в три раза.</p>
+                            <p><strong>Кейс 2: Электроника.</strong> Фото-ролики через Pictory сократили стоимость лида на 25%.</p>
+                            <p><strong>Кейс 3: Косметика.</strong> Комбо-вариант обеспечил ROI 5:1 за два месяца.</p>
+                        </div>
+                        <a href="#popup:myform" class="btn btn-primary">Обсудить ваш кейс</a>
+                    </div>
+                    <div class="cta-buttons mt-12">
+                        <a href="#popup:myform" class="btn btn-primary">Заказать звонок</a>
+                        <a href="#popup:myform" class="btn btn-secondary">Получить детали</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7: Внедрение -->
+            <section class="slide cta">
+                <div class="content-wrapper">
+                    <div class="cta-content">
+                        <h2>Готовы запустить Контент‑Завод?</h2>
+                        <p>Александр Михайлович, это персональное предложение: премиальный Full AI за <del class="old-price">250 000 ₽</del> <span class="new-price">150 000 ₽</span> за 5 недель или рациональные Фото-ролики за <del class="old-price">120 000 ₽</del> <span class="new-price">85 000 ₽</span> за 4 недели. Выберите подход и стартуйте продвижение уже сегодня.</p>
+                        <div class="cta-buttons">
+                            <a href="#popup:myform" class="btn btn-primary">Заказать звонок</a>
+                            <a href="#popup:myform" class="btn btn-secondary">Получить детали</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slidesContainer = document.getElementById('slidesContainer');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressBar = document.getElementById('progressBar');
+            const timelineDots = document.querySelectorAll('.timeline-dot');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            const updateProgressBar = () => {
+                const progress = ((currentSlide + 1) / totalSlides) * 100;
+                progressBar.style.width = `${progress}%`;
+            };
+            
+            const updateTimelineDots = () => {
+                timelineDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            };
+            
+            const goToSlide = (slideIndex) => {
+                if (slideIndex < 0) slideIndex = 0;
+                else if (slideIndex >= totalSlides) slideIndex = totalSlides - 1;
+                
+                currentSlide = slideIndex;
+                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                updateProgressBar();
+                updateTimelineDots();
+            };
+            
+            prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+            
+            timelineDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => goToSlide(index));
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+                else if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+            });
+            
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(faqItem => faqItem.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+            
+            updateProgressBar();
+            updateTimelineDots();
+        });
+    </script>
+</body>
+</html>
